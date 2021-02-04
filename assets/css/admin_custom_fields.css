@@ -1,0 +1,214 @@
+.photos_custom_admin_fields {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.photos_custom_admin_fields span.dashicons.dashicons-plus-alt {
+    font-size: 30px !important;
+    width: 30px !important;
+    height: 30px !important;
+}
+
+.photos_fields_item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 1rem;
+    position: relative;
+    width: 200px;
+}
+
+.photos_fields_item_add_wrapper {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    margin: 3rem 0 2rem ;
+
+}
+
+.photos_fields_item_add {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    font-size: 1.05rem;
+    background: #1abc9c;
+    border-radius: 10px;
+    color: white;
+    cursor: pointer;
+    width: 170px;
+    height: 35px;
+    text-align: center;
+    padding: 3px 7px 3px 7px ;
+}
+.photos_fields_item_add:hover {
+    background: #16a085;
+}
+
+.photos_fields_item .photos_fields_item_delete {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    font-size: 1.05rem;
+    width: 60%;
+    height: 25px;
+    background: #e74c3c;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    text-align: center;
+    padding: 3px 3px 7px 3px ;
+    margin: -5px 0 0;
+}
+
+.photos_fields_item .photos_fields_item_delete:hover {
+     background: #c0392b;
+ }
+
+.photos_fields_item > img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-bottom: 2px solid #ccc;
+    border-radius: 5px;
+}
+
+.miparti_school_prices > .school_prices_visible,
+.miparti_school_prices > .school_prices_individual_visible {
+    display: none;
+    margin-top: 2rem;
+}
+
+.miparti_video_url_and_description > .miparti_video_tooltip, .meta_box_dance_staging_menu > .dance_staging_menu_tooltip {
+    font-size: 1.1rem;
+    margin: 1.7rem 0 0;
+}
+
+.miparti_school_prices > .school_prices_visible > .miparti_prices_tooltip, .miparti_school_prices > .school_prices_individual_visible > .miparti_prices_tooltip{
+    font-size: 1.1rem;
+    margin: 0;
+}
+
+.miparti_video_url_and_description > .miparti_video_tooltip_detail,
+.miparti_school_prices > .school_prices_visible > .miparti_prices_tooltip_detail,.miparti_school_prices > .school_prices_individual_visible > .miparti_prices_tooltip_detail {
+    font-size: .9rem;
+    margin-top: .3em;
+    color: #0d66c2;
+}
+.miparti_video_url_and_description > .miparti_video_url,
+.meta_box_dance_staging_menu > .dance_staging_menu_item {
+    width: 90%;
+    font-size: 1rem;
+}
+.miparti_school_prices > .school_prices_visible > .miparti_prices_item,.miparti_school_prices > .school_prices_individual_visible > .miparti_prices_item {
+    width: 15%;
+    font-size: 1rem;
+    margin: .7rem 1rem;
+}
+
+.miparti_school_prices > .school_prices_individual_visible > .miparti_prices_item_exception {
+    width: 20%;
+    font-size: 1rem;
+    margin: .7rem 1rem;
+}
+
+
+.school_prices_type_lessons {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    align-items: center;
+    margin: 2rem 0;
+}
+
+.type_lessons_tooltip {
+    margin-top: 2rem;
+    font-size: 1.2rem;
+    text-align: center;
+}
+.school_prices_type_lessons > button {
+    width: 40%;
+    font-size: 1.1rem;
+    padding: .7rem;
+    border-radius: 10px;
+    background: #007cba;
+    border-color: #007cba;
+    box-shadow: none;
+    color: #fff;
+    cursor: pointer;
+    outline: none;
+}
+.school_prices_type_lessons > button:hover {
+    background: #00a0d2;
+    box-shadow: 3.5px 3.5px 7px grey ;
+}
+.school_prices_type_lessons > button.active_lesson_type {
+    border : 1px solid #007cba;
+    background : transparent;
+    color : black;
+    box-shadow: none;
+    cursor: auto;
+
+}
+
+.miparti_video_url_and_description > .miparti_video_description {
+    width: 90%;
+    font-size: 1rem;
+    margin-top: .3em;
+
+}
+
+@media (max-width: 600px)  {
+    .miparti_school_prices > .school_prices_individual_visible > .miparti_prices_item_exception {
+        width: 80%;
+    }
+    .miparti_school_prices > .school_prices_visible > .miparti_prices_item,.miparti_school_prices > .school_prices_individual_visible > .miparti_prices_item {
+        width: 60%;
+    }
+}
+@media (max-width: 700px)  {
+    .school_prices_type_lessons > button {
+        width: 80%;
+    }
+    .school_prices_type_lessons > button:first-child {
+        margin-bottom: 1.5rem;
+    }
+
+}
+
+                                        /*** Time_Table  ***/
+
+.miparti_time_table > .time_table_tooltip {
+    font-size: .95rem;
+    font-weight: bold;
+    margin-top: 3rem;
+
+}
+
+.miparti_time_table > .time_table_item {
+    margin: 0 auto;
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.miparti_time_table > .time_table_item > .item_time_label, .miparti_time_table > .time_table_item > p {
+    font-size: 1.1rem;
+}
+
+.miparti_time_table > .time_table_item > .item_time_label > .item_time {
+    width: 7rem;
+    margin-right: 1rem;
+    cursor: pointer;
+    font-size: 1.1rem;
+}
+
+.miparti_time_table > .item_day_label > #team_color {
+    margin-right: 1rem;
+    height: 5rem;
+    width: 7rem;
+    cursor: pointer;
+}
