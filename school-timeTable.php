@@ -27,7 +27,7 @@
                         $team_color_monday = get_post_meta(get_the_ID(), 'team_color', true);
                         if ($monday_day !== '') :
                         ?>
-                        <div class="timetable_table_item top_of_item" style="background-color: <?php echo hexToRgb($team_color_monday,0.4, true); ?> ">
+                        <div class="timetable_table_item top_of_item">
                             <div class="subscription_form_link">
                                 <a href="#form-popup" class="subscription_form_popup">
                                     <p>Записаться</p>
@@ -36,16 +36,17 @@
                         <?php else: ?>
                         <div class="timetable_table_item">
                         <?php endif; ?>
-
-                            <div class="timetable_table_item_text">
-                                <?php
-                                if ($monday_day !== '') :
-                                ?>
+                            <?php
+                            if ($monday_day !== '') :
+                            ?>
+                            <div class="timetable_table_item_text" style="background-color: <?php echo hexToRgb($team_color_monday,0.4, true); ?> ">
                                 <time class="post_id_<?php echo get_the_ID() ; ?> get_for_form" datetime="<?php echo $monday_day ; ?>"><?php echo $monday_day ; ?></time>
                                 <p class="get_for_form"><?php the_title() ; ?></p>
-                                <?php
-                                    endif;
-                                ?>
+                            <?php else: ?>
+                            <div class="timetable_table_item_text">
+                            <?php
+                               endif;
+                            ?>
                             </div>
                         </div>
 
@@ -75,7 +76,7 @@
                         $team_color_tuesday = get_post_meta(get_the_ID(), 'team_color', true);
                         if ($tuesday_day !== '') :
                         ?>
-                        <div class="timetable_table_item top_of_item" style="background-color: <?php echo hexToRgb($team_color_tuesday, .4, true); ?> ">
+                        <div class="timetable_table_item top_of_item" >
                             <div class="subscription_form_link">
                                 <a href="#form-popup" class="subscription_form_popup">
                                     <p>Записаться</p>
@@ -84,13 +85,16 @@
                         <?php else: ?>
                         <div class="timetable_table_item">
                         <?php endif; ?>
-
-                            <div class="timetable_table_item_text">
-                                <?php
-                                if ($tuesday_day !== '') :
-                                ?>
+                            <?php
+                            if ($tuesday_day !== '') :
+                            ?>
+                            <div class="timetable_table_item_text" style="background-color: <?php echo hexToRgb($team_color_tuesday, .4, true); ?> ">
                                 <time class="post_id_<?php echo get_the_ID() ; ?> get_for_form" datetime="<?php echo $tuesday_day ; ?>"><?php echo $tuesday_day ; ?></time>
                                 <p class="get_for_form"><?php the_title() ; ?> </p>
+                                <?php
+                                    else:
+                                ?>
+                                <div class="timetable_table_item_text">
                                 <?php
                                     endif;
                                 ?>
@@ -122,7 +126,7 @@
                     $team_color_wednesday = get_post_meta(get_the_ID(), 'team_color', true);
                         if ($wednesday_day !== '') :
                         ?>
-                        <div class="timetable_table_item top_of_item" style="background-color: <?php echo hexToRgb($team_color_wednesday, .4, true) ; ?> ">
+                        <div class="timetable_table_item top_of_item">
                             <div class="subscription_form_link">
                                 <a href="#form-popup" class="subscription_form_popup">
                                     <p>Записаться</p>
@@ -131,13 +135,16 @@
                         <?php else: ?>
                         <div class="timetable_table_item">
                         <?php endif; ?>
-
-                            <div class="timetable_table_item_text">
-                                <?php
-                                if ($wednesday_day !== '') :
-                                ?>
+                            <?php
+                            if ($wednesday_day !== '') :
+                            ?>
+                            <div class="timetable_table_item_text" style="background-color: <?php echo hexToRgb($team_color_wednesday, .4, true) ; ?> ">
                                 <time class="post_id_<?php echo get_the_ID() ; ?> get_for_form" datetime="<?php echo $wednesday_day ; ?>"><?php echo $wednesday_day ; ?></time>
                                 <p class="get_for_form"><?php the_title() ; ?></p>
+                                <?php
+                                    else:
+                                ?>
+                                <div class="timetable_table_item_text">
                                 <?php
                                     endif;
                                 ?>
@@ -170,7 +177,7 @@
 
                     if ($thursday_day !== '') :
                     ?>
-                    <div class="timetable_table_item top_of_item" style="background-color: <?php echo hexToRgb($team_color_thursday, .4, true) ; ?> ">
+                    <div class="timetable_table_item top_of_item">
                         <div class="subscription_form_link">
                             <a href="#form-popup" class="subscription_form_popup">
                                 <p>Записаться</p>
@@ -179,16 +186,19 @@
                         <?php else: ?>
                     <div class="timetable_table_item">
                         <?php endif; ?>
-
+                        <?php
+                        if ($thursday_day !== '') :
+                        ?>
+                        <div class="timetable_table_item_text" style="background-color: <?php echo hexToRgb($team_color_thursday, .4, true) ; ?> ">
+                            <time class="post_id_<?php echo get_the_ID() ; ?> get_for_form" datetime="<?php echo $thursday_day ; ?>"><?php echo $thursday_day ; ?></time>
+                            <p class="get_for_form"><?php the_title() ; ?> </p>
+                        <?php
+                        else:
+                        ?>
                         <div class="timetable_table_item_text">
-                            <?php
-                            if ($thursday_day !== '') :
-                                ?>
-                                <time class="post_id_<?php echo get_the_ID() ; ?> get_for_form" datetime="<?php echo $thursday_day ; ?>"><?php echo $thursday_day ; ?></time>
-                                <p class="get_for_form"><?php the_title() ; ?> </p>
-                            <?php
-                            endif;
-                            ?>
+                        <?php
+                        endif;
+                        ?>
                         </div>
                     </div>
                     <?php
@@ -217,7 +227,7 @@
                     $team_color_friday = get_post_meta(get_the_ID(), 'team_color', true);
                     if ($friday_day !== '') :
                     ?>
-                    <div class="timetable_table_item top_of_item" style="background-color: <?php echo hexToRgb($team_color_friday, .4, true)  ?> ">
+                    <div class="timetable_table_item top_of_item">
                         <div class="subscription_form_link">
                             <a href="#form-popup" class="subscription_form_popup">
                                 <p>Записаться</p>
@@ -226,16 +236,19 @@
                     <?php else: ?>
                     <div class="timetable_table_item">
                     <?php endif; ?>
-
+                        <?php
+                        if ($friday_day !== '') :
+                        ?>
+                        <div class="timetable_table_item_text" style="background-color: <?php echo hexToRgb($team_color_friday, .4, true)  ?> ">
+                            <time class="post_id_<?php echo get_the_ID() ; ?> get_for_form" datetime="<?php echo $friday_day ; ?>"><?php echo $friday_day ; ?></time>
+                            <p class="get_for_form"><?php the_title() ; ?> </p>
+                        <?php
+                        else:
+                        ?>
                         <div class="timetable_table_item_text">
-                            <?php
-                            if ($friday_day !== '') :
-                                ?>
-                                <time class="post_id_<?php echo get_the_ID() ; ?> get_for_form" datetime="<?php echo $friday_day ; ?>"><?php echo $friday_day ; ?></time>
-                                <p class="get_for_form"><?php the_title() ; ?> </p>
-                            <?php
-                            endif;
-                            ?>
+                        <?php
+                        endif;
+                        ?>
                         </div>
                     </div>
                     <?php
@@ -263,7 +276,7 @@
                     $team_color_saturday = get_post_meta(get_the_ID(), 'team_color', true);
                     if ($saturday_day !== '') :
                     ?>
-                    <div class="timetable_table_item top_of_item" style="background-color: <?php echo hexToRgb($team_color_saturday, .4, true) ?> ">
+                    <div class="timetable_table_item top_of_item">
                         <div class="subscription_form_link">
                             <a href="#form-popup" class="subscription_form_popup">
                                 <p>Записаться</p>
@@ -272,13 +285,16 @@
                         <?php else: ?>
                         <div class="timetable_table_item">
                         <?php endif; ?>
-
-                        <div class="timetable_table_item_text">
+                        <?php
+                        if ($saturday_day !== '') :
+                        ?>
+                        <div class="timetable_table_item_text" style="background-color: <?php echo hexToRgb($team_color_saturday, .4, true) ?> ">
+                            <time class="post_id_<?php echo get_the_ID() ; ?> get_for_form" datetime="<?php echo $saturday_day ; ?>"><?php echo $saturday_day ; ?></time>
+                            <p class="get_for_form"><?php the_title() ; ?></p>
                             <?php
-                            if ($saturday_day !== '') :
-                                ?>
-                                <time class="post_id_<?php echo get_the_ID() ; ?> get_for_form" datetime="<?php echo $saturday_day ; ?>"><?php echo $saturday_day ; ?></time>
-                                <p class="get_for_form"><?php the_title() ; ?></p>
+                            else:
+                            ?>
+                            <div class="timetable_table_item_text">
                             <?php
                             endif;
                             ?>
@@ -292,28 +308,28 @@
             </div>
 
 
-                    <div id="form-popup" class="signUp mfp-hide" style="background: url(<?php echo MIPARTI_IMG_DIR . '/bg_body.jpg' ?>) no-repeat top/cover; filter: brightness(150%);">
-                        <form class="signUp_form" id="add_subscribe">
-                            <p class="signUp_form_heading">Предварительная регистрация</p>
-                            <p class="signUp_form_note"><span>*</span> Обязательные для заполнения поля</p>
-                            <div class="signUp_form_item">
-                                <label class="signUp_form_item_label" for="subscribe_name"><input type="text" name="subscribe_name" id="subscribe_name" class="inputBox"  placeholder="&nbsp;"  /><span class="spanBox">Ваше имя : <span class="spanStar">*</span></span></label>
-                            </div>
-                            <div class="signUp_form_item">
-                                <label class="signUp_form_item_label" for="subscribe_phone"><input type="tel" name="subscribe_phone" id="subscribe_phone" class="inputBox"  placeholder="&nbsp;" /><span class="spanBox">Ваш телефон : <span class="spanStar">*</span></span></label>
-                            </div>
-                            <div class="signUp_form_item">
-                                <label class="signUp_form_item_label" for="subscribe_email"><input type="email" name="subscribe_email" id="subscribe_email" class="inputBox"  placeholder="&nbsp;" /><span class="spanBox">Ваш e-mail : </span></label>
-                            </div>
-
-                            <input type="checkbox" name="subscribe_anticheck" id="subscribe_anticheck" style="display: none !important;" value="true" checked="checked"/>
-                            <input type="text" name="subscribe_submitted" id="subscribe_submitted" value="" style="display: none !important;"/>
-
-                            <div class="signUp_form_item">
-                                <input type="submit" id="submit_subscribe" value="Записаться">
-                            </div>
-                        </form>
+            <div id="form-popup" class="signUp mfp-hide" style="background: url(<?php echo MIPARTI_IMG_DIR . '/bg_body.jpg' ?>) no-repeat top/cover; filter: brightness(150%);">
+                <form class="signUp_form" id="add_subscribe">
+                    <p class="signUp_form_heading">Предварительная регистрация</p>
+                    <p class="signUp_form_note"><span>*</span> Обязательные для заполнения поля</p>
+                    <div class="signUp_form_item">
+                        <label class="signUp_form_item_label" for="subscribe_name"><input type="text" name="subscribe_name" id="subscribe_name" class="inputBox"  placeholder="&nbsp;"  /><span class="spanBox">Ваше имя : <span class="spanStar">*</span></span></label>
                     </div>
+                    <div class="signUp_form_item">
+                        <label class="signUp_form_item_label" for="subscribe_phone"><input type="tel" name="subscribe_phone" id="subscribe_phone" class="inputBox"  placeholder="&nbsp;" /><span class="spanBox">Ваш телефон : <span class="spanStar">*</span></span></label>
+                    </div>
+                    <div class="signUp_form_item">
+                        <label class="signUp_form_item_label" for="subscribe_email"><input type="email" name="subscribe_email" id="subscribe_email" class="inputBox"  placeholder="&nbsp;" /><span class="spanBox">Ваш e-mail : </span></label>
+                    </div>
+
+                    <input type="checkbox" name="subscribe_anticheck" id="subscribe_anticheck" style="display: none !important;" value="true" checked="checked"/>
+                    <input type="text" name="subscribe_submitted" id="subscribe_submitted" value="" style="display: none !important;"/>
+
+                    <div class="signUp_form_item">
+                        <input type="submit" id="submit_subscribe" value="Записаться">
+                    </div>
+                </form>
+            </div>
 
 
                     <div class="common_description container">
