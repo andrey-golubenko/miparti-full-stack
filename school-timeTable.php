@@ -35,21 +35,18 @@
                             </div>
                         <?php else: ?>
                         <div class="timetable_table_item">
-                        <?php endif; ?>
-                            <?php
+                        <?php
+                            endif;
                             if ($monday_day !== '') :
-                            ?>
+                        ?>
                             <div class="timetable_table_item_text" style="background-color: <?php echo hexToRgb($team_color_monday,0.4, true); ?> ">
                                 <time class="post_id_<?php echo get_the_ID() ; ?> get_for_form" datetime="<?php echo $monday_day ; ?>"><?php echo $monday_day ; ?></time>
                                 <p class="get_for_form"><?php the_title() ; ?></p>
                             <?php else: ?>
                             <div class="timetable_table_item_text">
-                            <?php
-                               endif;
-                            ?>
+                            <?php endif; ?>
                             </div>
                         </div>
-
                     <?php
                     endwhile;
                     wp_reset_postdata();
@@ -76,7 +73,7 @@
                         $team_color_tuesday = get_post_meta(get_the_ID(), 'team_color', true);
                         if ($tuesday_day !== '') :
                         ?>
-                        <div class="timetable_table_item top_of_item" >
+                        <div class="timetable_table_item top_of_item">
                             <div class="subscription_form_link">
                                 <a href="#form-popup" class="subscription_form_popup">
                                     <p>Записаться</p>
@@ -84,20 +81,15 @@
                             </div>
                         <?php else: ?>
                         <div class="timetable_table_item">
-                        <?php endif; ?>
-                            <?php
+                        <?php endif;
                             if ($tuesday_day !== '') :
-                            ?>
+                        ?>
                             <div class="timetable_table_item_text" style="background-color: <?php echo hexToRgb($team_color_tuesday, .4, true); ?> ">
                                 <time class="post_id_<?php echo get_the_ID() ; ?> get_for_form" datetime="<?php echo $tuesday_day ; ?>"><?php echo $tuesday_day ; ?></time>
                                 <p class="get_for_form"><?php the_title() ; ?> </p>
-                                <?php
-                                    else:
-                                ?>
+                                <?php else: ?>
                                 <div class="timetable_table_item_text">
-                                <?php
-                                    endif;
-                                ?>
+                                <?php endif; ?>
                             </div>
                         </div>
                     <?php
@@ -134,20 +126,15 @@
                             </div>
                         <?php else: ?>
                         <div class="timetable_table_item">
-                        <?php endif; ?>
-                            <?php
+                        <?php endif;
                             if ($wednesday_day !== '') :
-                            ?>
+                        ?>
                             <div class="timetable_table_item_text" style="background-color: <?php echo hexToRgb($team_color_wednesday, .4, true) ; ?> ">
                                 <time class="post_id_<?php echo get_the_ID() ; ?> get_for_form" datetime="<?php echo $wednesday_day ; ?>"><?php echo $wednesday_day ; ?></time>
                                 <p class="get_for_form"><?php the_title() ; ?></p>
-                                <?php
-                                    else:
-                                ?>
+                                <?php else: ?>
                                 <div class="timetable_table_item_text">
-                                <?php
-                                    endif;
-                                ?>
+                                <?php endif; ?>
                             </div>
                         </div>
 
@@ -174,7 +161,6 @@
                     $thursday_query->the_post();
                     $thursday_day = get_post_meta(get_the_ID(), 'thursday', true);
                     $team_color_thursday = get_post_meta(get_the_ID(), 'team_color', true);
-
                     if ($thursday_day !== '') :
                     ?>
                     <div class="timetable_table_item top_of_item">
@@ -185,20 +171,15 @@
                         </div>
                         <?php else: ?>
                     <div class="timetable_table_item">
-                        <?php endif; ?>
-                        <?php
+                        <?php endif;
                         if ($thursday_day !== '') :
                         ?>
                         <div class="timetable_table_item_text" style="background-color: <?php echo hexToRgb($team_color_thursday, .4, true) ; ?> ">
                             <time class="post_id_<?php echo get_the_ID() ; ?> get_for_form" datetime="<?php echo $thursday_day ; ?>"><?php echo $thursday_day ; ?></time>
                             <p class="get_for_form"><?php the_title() ; ?> </p>
-                        <?php
-                        else:
-                        ?>
+                        <?php else: ?>
                         <div class="timetable_table_item_text">
-                        <?php
-                        endif;
-                        ?>
+                        <?php endif; ?>
                         </div>
                     </div>
                     <?php
@@ -206,7 +187,6 @@
                     wp_reset_postdata();
                     ?>
                 </div>
-
 
                 <div class="timetable_table_day">
 
@@ -235,20 +215,15 @@
                         </div>
                     <?php else: ?>
                     <div class="timetable_table_item">
-                    <?php endif; ?>
-                        <?php
+                    <?php endif;
                         if ($friday_day !== '') :
-                        ?>
+                    ?>
                         <div class="timetable_table_item_text" style="background-color: <?php echo hexToRgb($team_color_friday, .4, true)  ?> ">
                             <time class="post_id_<?php echo get_the_ID() ; ?> get_for_form" datetime="<?php echo $friday_day ; ?>"><?php echo $friday_day ; ?></time>
                             <p class="get_for_form"><?php the_title() ; ?> </p>
-                        <?php
-                        else:
-                        ?>
+                        <?php else: ?>
                         <div class="timetable_table_item_text">
-                        <?php
-                        endif;
-                        ?>
+                        <?php endif; ?>
                         </div>
                     </div>
                     <?php
@@ -284,20 +259,15 @@
                         </div>
                         <?php else: ?>
                         <div class="timetable_table_item">
-                        <?php endif; ?>
-                        <?php
+                        <?php endif;
                         if ($saturday_day !== '') :
                         ?>
                         <div class="timetable_table_item_text" style="background-color: <?php echo hexToRgb($team_color_saturday, .4, true) ?> ">
                             <time class="post_id_<?php echo get_the_ID() ; ?> get_for_form" datetime="<?php echo $saturday_day ; ?>"><?php echo $saturday_day ; ?></time>
                             <p class="get_for_form"><?php the_title() ; ?></p>
-                            <?php
-                            else:
-                            ?>
+                            <?php else: ?>
                             <div class="timetable_table_item_text">
-                            <?php
-                            endif;
-                            ?>
+                            <?php endif; ?>
                         </div>
                     </div>
                     <?php
@@ -313,10 +283,10 @@
                     <p class="signUp_form_heading">Предварительная регистрация</p>
                     <p class="signUp_form_note"><span>*</span> Обязательные для заполнения поля</p>
                     <div class="signUp_form_item">
-                        <label class="signUp_form_item_label" for="subscribe_name"><input type="text" name="subscribe_name" id="subscribe_name" class="inputBox"  placeholder="&nbsp;"  /><span class="spanBox">Ваше имя : <span class="spanStar">*</span></span></label>
+                        <label class="signUp_form_item_label" for="subscribe_name"><input type="text" name="subscribe_name" id="subscribe_name" class="inputBox"  placeholder="&nbsp;" required /><span class="spanBox">Ваше имя : <span class="spanStar">*</span></span></label>
                     </div>
                     <div class="signUp_form_item">
-                        <label class="signUp_form_item_label" for="subscribe_phone"><input type="tel" name="subscribe_phone" id="subscribe_phone" class="inputBox"  placeholder="&nbsp;" /><span class="spanBox">Ваш телефон : <span class="spanStar">*</span></span></label>
+                        <label class="signUp_form_item_label" for="subscribe_phone"><input type="tel" name="subscribe_phone" id="subscribe_phone" class="inputBox"  placeholder="&nbsp;" required /><span class="spanBox">Ваш телефон : <span class="spanStar">*</span></span></label>
                     </div>
                     <div class="signUp_form_item">
                         <label class="signUp_form_item_label" for="subscribe_email"><input type="email" name="subscribe_email" id="subscribe_email" class="inputBox"  placeholder="&nbsp;" /><span class="spanBox">Ваш e-mail : </span></label>
@@ -332,7 +302,7 @@
             </div>
 
 
-                    <div class="common_description container">
+            <div class="common_description container">
                 <div class="common_description_item">
                     <p class="common_description_text">
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum deleniti deserunt illo omnis, optio sunt voluptatibus. Beatae blanditiis numquam rerum!

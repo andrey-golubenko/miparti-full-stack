@@ -44,7 +44,7 @@
     border-top:5px solid red
 }
 
-div.signUp .message-success {
+div.signUp .message-success, div.contacts_visual_form .message-success{
     width: 85%;
     position: absolute;
     z-index: 25;
@@ -53,11 +53,15 @@ div.signUp .message-success {
     border-radius: 15px;
     box-shadow: 0 0 30px #929292 inset;
     font: 1.15rem/2 'Lora';
-    background: rgba(19, 104, 19, .9); /*34 98 34*/
+    background: rgba(19, 104, 19, .9);
     color: #fff;
 }
 
-div.signUp .message-success::before {
+ {
+
+}
+
+div.signUp .message-success::before, div.contacts_visual_form .message-success::before {
     content: '×';
     width: 30px;
     height: 30px;
@@ -66,6 +70,4 @@ div.signUp .message-success::before {
     top: -5%;
     right: 5%;
     cursor: pointer;
-
-
 }

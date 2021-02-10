@@ -13,6 +13,8 @@ function add_meta_box_photos() {
 
     add_meta_box('meta_box_school_time_table', 'Цвет, время и день занятий группы', 'meta_box_school_time_table', 'school_time_table', 'normal', 'high');
 
+    add_meta_box('meta_box_school_educators', 'Информация о педагоге', 'meta_box_school_educators', 'school_educators', 'normal', 'high');
+
 
 }
 
@@ -59,12 +61,10 @@ function meta_box_videos_url_and_description ($post) {
         <p class="miparti_video_tooltip_detail">(для этого на сайте "YouTube", над выбранным видео, найти адресную строку браузера, где полностью скопировать URL-адрес, начиная с https://www.youtube.com/watch?v= . . . и так далее до конца строки)</p>
         <input type="text" class="miparti_video_url" placeholder="Пример: https://www.youtube.com/watch?v= . . . и так далее" name="miparti_video[youTube_url]" value="<?php echo esc_url(get_post_meta($post->ID, 'youTube_url', 1)); ?>" />
         <p class="miparti_video_tooltip">Введите Видомое описание видео:</p>
-        <textarea type="text" class="miparti_video_description" name="miparti_video[visible_description]" rows="7">
-            <?php echo esc_textarea(get_post_meta($post->ID, 'visible_description', 1)); ?>
+        <textarea type="text" class="miparti_video_description" name="miparti_video[visible_description]" rows="7"><?php echo esc_textarea(get_post_meta($post->ID, 'visible_description', 1)); ?>
         </textarea>
         <p class="miparti_video_tooltip">Введите Скрытое описание видео:</p>
-        <textarea type="text" class="miparti_video_description" name="miparti_video[invisible_description]" rows="7">
-            <?php echo esc_textarea(get_post_meta($post->ID, 'invisible_description', 1)); ?>
+        <textarea type="text" class="miparti_video_description" name="miparti_video[invisible_description]" rows="7"><?php echo esc_textarea(get_post_meta($post->ID, 'invisible_description', 1)); ?>
         </textarea>
         <input type="hidden" name="miparti_video_fields_nonce" value="<?php echo wp_create_nonce(__FILE__); ?>" />
     </div>
@@ -185,12 +185,39 @@ function meta_box_school_time_table ($post) {
 }
 // Custom fields func. in admin-panel for adding groups in school time-table post-type
 
+// Custom fields func. in admin-panel for adding Url and Description in video  dance staging post-type
+function meta_box_school_educators ($post) {
+
+    ?>
+    <div class="miparti_video_url_and_description">
+
+        <p class="miparti_video_tooltip">Введите Видомую информацию о педагоге:</p>
+        <textarea type="text" class="miparti_video_description" name="miparti_educators[visible_description]" rows="7"><?php echo esc_textarea(get_post_meta($post->ID, 'visible_description', 1)); ?>
+        </textarea>
+        <p class="miparti_video_tooltip">Введите Скрытую информацию о педагоге:</p>
+        <textarea type="text" class="miparti_video_description" name="miparti_educators[invisible_description]" rows="7"><?php echo esc_textarea(get_post_meta($post->ID, 'invisible_description', 1)); ?>
+        </textarea>
+
+          <p class="miparti_video_tooltip"> Введите URL-адрес аккаунта педагога 'Facebook': </p>
+        <input type="text" class="miparti_video_url"  name="miparti_educators[facebook_url]" value="<?php echo esc_url(get_post_meta($post->ID, 'facebook_url', 1)); ?>" />
+          <p class="miparti_video_tooltip"> Введите URL-адрес аккаунта педагога 'Instagram': </p>
+        <input type="text" class="miparti_video_url"  name="miparti_educators[instagram_url]" value="<?php echo esc_url(get_post_meta($post->ID, 'instagram_url', 1)); ?>" />
+          <p class="miparti_video_tooltip"> Введите URL-адрес аккаунта педагога 'YouTube': </p>
+        <input type="text" class="miparti_video_url"  name="miparti_educators[youTube_url]" value="<?php echo esc_url(get_post_meta($post->ID, 'youTube_url', 1)); ?>" />
+        <input type="hidden" name="educators_fields_nonce" value="<?php echo wp_create_nonce(__FILE__); ?>" />
+    </div>
+
+    <?php
+
+}
+
 // включаем обновление полей при сохранении
 add_action('save_post', 'miparti_uploadedPhoto_update', 0);
 add_action('save_post', 'miparti_video_description_update', 0);
 add_action('save_post', 'miparti_dance_staging_update', 0);
 add_action('save_post', 'miparti_school_prices_update', 0);
 add_action('save_post', 'miparti_school_time_table_update', 0);
+add_action('save_post', 'miparti_school_educators_update', 0);
 /* Сохраняем данные, при сохранении поста */
 function miparti_uploadedPhoto_update($post_id) {
     //var_dump($_POST);
@@ -317,12 +344,38 @@ function miparti_school_time_table_update ($post_id) {
         return false;
 }
 
+function miparti_school_educators_update ($post_id) {
+    //var_dump($_POST);
+    $miparti_educators = $_POST['miparti_educators'];
+    if ($miparti_educators) {
+        if (
+            empty($miparti_educators)
+        || !wp_verify_nonce($_POST['educators_fields_nonce'], __FILE__)
+        ||  wp_is_post_autosave( $post_id )
+        ||  wp_is_post_revision( $post_id )
+        ) { return false; }
+
+        $miparti_educators = array_map( 'sanitize_textarea_field', $_POST['miparti_educators'] );
+
+        foreach ($miparti_educators as $key => $value) {
+            if(empty($value)){
+                delete_post_meta( $post_id, $key ); // удаляем поле если значение пустое
+                continue;
+            }
+
+            else {update_post_meta( $post_id, $key, $value );}
+        }
+        return $post_id;
+    }
+        return false;
+}
+
 
 
 //МЕНЯЕМ плейсхолдер в поле 'title' админки в КАСТОМНЫХ ТИПАХ ПОСТОВ.
 add_filter( 'enter_title_here', 'enter_title_here', 10, 2 );
 function enter_title_here( $text, $post ) {
-	if ( $post->post_type === 'photos_studio' || $post->post_type === 'photos_school' || $post->post_type === 'videos_studio' || $post->post_type === 'videos_school' || $post->post_type === 'dance_staging' || $post->post_type === 'school_prices' || $post->post_type === 'school_time_table' ) {
+	if ( $post->post_type === 'photos_studio' || $post->post_type === 'photos_school' || $post->post_type === 'videos_studio' || $post->post_type === 'videos_school' || $post->post_type === 'dance_staging' || $post->post_type === 'school_prices' || $post->post_type === 'school_time_table' || $post->post_type === 'school_educators') {
 		$text = 'Добавить название';
 	}
 	return $text;

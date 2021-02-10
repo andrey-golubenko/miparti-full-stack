@@ -21,7 +21,6 @@
                             <span class="text_address">Украина, город Харьков,<br> улица Скрыпника, 5</span>
                         </div>
                     </li>
-
                     <li>
                         <div class="contacts_subtitle">
                             <p class="contacts_subtitle_text">
@@ -54,34 +53,32 @@
                     </li>
                 </ul>
             </div>
-
-
-
-
         </section>
         <section class="contacts_visual container">
 
             <div class="contacts_visual_map">
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1282.3514621413697!2d36.2387887191286!3d49.998178902732654!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4127a0e8a914fc29%3A0xe600616ad3090ee2!2z0YPQuy4g0KHQutGA0LjQv9C90LjQutCwLCA1LCDQpdCw0YDRjNC60L7Qsiwg0KXQsNGA0YzQutC-0LLRgdC60LDRjyDQvtCx0LvQsNGB0YLRjCwgNjEwMDA!5e0!3m2!1sru!2sua!4v1598885662986!5m2!1sru!2sua" style="border: 1px solid #000;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
-
             </div>
 
             <div class="contacts_visual_form" style="background: url(<?php echo MIPARTI_IMG_DIR . '/bg_body.jpg' ?>) no-repeat top/cover; filter: brightness(150%);">
-                <form class="signUp_form">
+                <form class="signUp_form" id="add_subscribe">
                     <p class="signUp_form_heading">Предварительная регистрация</p>
                     <p class="signUp_form_note"><span>*</span> Обязательные для заполнения поля</p>
                     <div class="signUp_form_item">
-                        <label class="signUp_form_item_label" for="name"><input id="name" class="inputBox" type="text" placeholder="&nbsp;" required /><span class="spanBox">Ваше имя : <span class="spanStar">*</span></span></label>
+                        <label class="signUp_form_item_label" for="name"><input type="text" name="subscribe_name" id="subscribe_name" class="inputBox"  placeholder="&nbsp;" required /><span class="spanBox">Ваше имя : <span class="spanStar">*</span></span></label>
                     </div>
                     <div class="signUp_form_item">
-                        <label class="signUp_form_item_label" for="tel"><input id="tel" class="inputBox" type="tel" placeholder="&nbsp;" required /><span class="spanBox">Ваш телефон : <span class="spanStar">*</span></span></label>
+                        <label class="signUp_form_item_label" for="tel"><input type="tel" name="subscribe_phone" id="subscribe_phone" class="inputBox"  placeholder="&nbsp;" required /><span class="spanBox">Ваш телефон : <span class="spanStar">*</span></span></label>
                     </div>
                     <div class="signUp_form_item">
-                        <label class="signUp_form_item_label" for="email"><input id="email" class="inputBox" type="email" placeholder="&nbsp;" /><span class="spanBox">Ваш e-mail : </span></label>
+                        <label class="signUp_form_item_label" for="email"><input type="email" name="subscribe_email" id="subscribe_email" class="inputBox"  placeholder="&nbsp;" /><span class="spanBox">Ваш e-mail : </span></label>
                     </div>
 
+                    <input type="checkbox" name="subscribe_anticheck" id="subscribe_anticheck" style="display: none !important;" value="true" checked="checked"/>
+                    <input type="text" name="subscribe_submitted" id="subscribe_submitted" value="" style="display: none !important;"/>
+
                     <div class="signUp_form_item">
-                        <input type="submit" value="Зарегистрироваться">
+                        <input type="submit" id="submit_subscribe" value="Записаться">
                     </div>
                 </form>
 

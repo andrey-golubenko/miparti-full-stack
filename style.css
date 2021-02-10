@@ -10529,11 +10529,6 @@ section.educators .educators_item .educators_item_content .educators_item_descri
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  display: flex;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
   -webkit-box-align: center;
   -webkit-align-items: center;
   -ms-flex-align: center;
@@ -10542,6 +10537,7 @@ section.educators .educators_item .educators_item_content .educators_item_descri
   -webkit-justify-content: space-evenly;
   -ms-flex-pack: space-evenly;
   justify-content: space-evenly;
+  margin-top: 3rem;
 }
 
 section.contacts_content {
@@ -10766,20 +10762,17 @@ section.contacts_visual .contacts_visual_map > iframe {
 }
 
 section.contacts_visual .contacts_visual_form {
-  width: 47%;
-  -webkit-box-shadow: 0 0 20px 5px grey;
-  box-shadow: 0 0 20px 5px grey;
   position: relative;
-  padding: 20px;
   width: 50%;
-  height: 90vh;
   max-width: 600px;
-  margin: 20px auto;
   -webkit-box-shadow: 0 0 20px 7px grey;
   box-shadow: 0 0 20px 7px grey;
   padding: 0;
   margin: 0;
   height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 @media (max-width: 1024px) {
@@ -10974,6 +10967,8 @@ section.contacts_visual .contacts_visual_form form.signUp_form .signUp_form_item
 
 section.contacts_visual .contacts_visual_form form.signUp_form .signUp_form_item label.signUp_form_item_label > input.inputBox,
 section.contacts_visual .contacts_visual_form form.signUp_form .signUp_form_item label.signUp_form_item_label > textarea.inputBox {
+  position: relative;
+  z-index: 5;
   background-color: transparent;
   color: #fff;
   border: 0;
