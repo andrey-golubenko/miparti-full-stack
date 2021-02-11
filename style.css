@@ -12036,7 +12036,7 @@ section.about .about_slider button.slick-next.slick-arrow {
 section.about .about_slider .slick-list.draggable {
   width: 70%;
   height: 450px;
-  border: 1px solid #fff;
+  box-shadow: 0 0 50px 5px #fff;
 }
 
 @media (max-width: 767px) {
