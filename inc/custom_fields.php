@@ -1,7 +1,9 @@
 <?php
 
-add_filter('admin_init', 'add_meta_box_photos', 10, 1);
-function add_meta_box_photos() {
+add_filter('admin_init', 'add_custom_meta_box', 10, 1);
+function add_custom_meta_box() {
+
+    add_meta_box('meta_box_sliders', 'Фотографии для слайдера', 'meta_box_sliders_photos', array('about_us'), 'normal', 'high');
 
     add_meta_box('meta_box_dance_staging_menu', 'Виды постановки танца', 'meta_box_dance_staging_menu', 'dance_staging', 'normal', 'high');
 
@@ -18,9 +20,38 @@ function add_meta_box_photos() {
 
 }
 
+// Custom fields func. in admin-panel for adding Photos in sliders
+function meta_box_sliders_photos($post) {
+    ?>
+        <div class="photos_custom_admin_fields">
+    <?php
+            // output of stored "photos"
+        $slider_photos_array = get_post_meta(get_the_ID(), 'slider_photos',1);
+        if (is_array($slider_photos_array)) {
+            foreach ($slider_photos_array as $photo_value) {
+                ?>
+                <div class="photos_fields_item">
+                    <img src="<?php echo $photo_value; ?>" width="150" height="150" alt="Photos image in admin-bar"/>
+                    <div class="photos_fields_item_delete">Удалить<span class="dashicons dashicons-trash"></span></div>
+                    <input name="slider_photos[]" type="hidden" value="<?php echo $photo_value; ?>">
+                </div>
+                <?php
+            }
+        }
+        ?>
+        <input name="exist_slider_photos_field_check" type="hidden" value="<?php echo true; ?>">
+        <div class="photos_fields_item_add_wrapper">
+            <div class="photos_fields_item_add">Добавить новую<span class="dashicons dashicons-plus-alt"></span></div>
+        </div>
+    </div>
+            <input type="hidden" name="slider_photos_nonce" value="<?php echo wp_create_nonce(__FILE__); ?>" />
+    <?php
+}
+
+
 // Custom fields func. in admin-panel for adding Photos in some post-types
 function meta_box_all_photos($post) {
-    if ((get_post_type($post->ID) === 'photos_studio') || (get_post_type($post->ID) === 'photos_school')) :
+    if (($post->post_type === 'photos_studio') || ($post->post_type === 'photos_school')) :
     ?>
         <div class="photos_custom_admin_fields">
     <?php
@@ -30,7 +61,7 @@ function meta_box_all_photos($post) {
     <?php
     endif;
             // output of stored "photos"
-        $content_array = get_post_meta($post->ID, 'uploadedPhoto',1);
+        $content_array = get_post_meta(get_the_ID(), 'uploadedPhoto',1);
         if (is_array($content_array)) {
             foreach ($content_array as $value) {
                 ?>
@@ -212,6 +243,7 @@ function meta_box_school_educators ($post) {
 }
 
 // включаем обновление полей при сохранении
+add_action('save_post', 'miparti_sliders_photos_update', 0);
 add_action('save_post', 'miparti_uploadedPhoto_update', 0);
 add_action('save_post', 'miparti_video_description_update', 0);
 add_action('save_post', 'miparti_dance_staging_update', 0);
@@ -219,6 +251,35 @@ add_action('save_post', 'miparti_school_prices_update', 0);
 add_action('save_post', 'miparti_school_time_table_update', 0);
 add_action('save_post', 'miparti_school_educators_update', 0);
 /* Сохраняем данные, при сохранении поста */
+function miparti_sliders_photos_update($post_id) {
+    //var_dump($_POST);
+    if ($_POST['exist_slider_photos_field_check']) { // checking if this field is a field for uploading photos, since when removing in 'js' the components of this field with the 'uploadedPhoto' key, it is impossible to check this using this key. Therefore, an additional field with the key 'exist_field_check' is set for this check.
+
+        if (!wp_verify_nonce($_POST['slider_photos_nonce'], __FILE__)
+        ||  wp_is_post_autosave( $post_id )
+        ||  wp_is_post_revision( $post_id )
+        ) { return false; }
+
+        /*** Все ОК! Теперь, нужно сохранить/удалить данные ***/
+        if ($_POST['slider_photos']) {
+
+            foreach ($_POST['slider_photos'] as $key => $value) {
+                if (isset($value)) {
+                    update_post_meta($post_id, 'slider_photos', $_POST['slider_photos']);
+                }
+                else {
+                    delete_post_meta($post_id, $key);
+                }
+            }
+        }
+        elseif (!$_POST['slider_photos'] && $_POST['exist_slider_photos_field_check']) {
+            delete_post_meta($post_id, 'slider_photos');
+        }
+        return $post_id;
+    }
+    return false;
+}
+
 function miparti_uploadedPhoto_update($post_id) {
     //var_dump($_POST);
     if ($_POST['exist_field_check']) { // checking if this field is a field for uploading photos, since when removing in 'js' the components of this field with the 'uploadedPhoto' key, it is impossible to check this using this key. Therefore, an additional field with the key 'exist_field_check' is set for this check.

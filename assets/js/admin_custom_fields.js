@@ -1,7 +1,11 @@
 jQuery(function ($) {
 
-                        /******* Addable Photo Fields *******/
-    if ($('.photos_custom_admin_fields').is('#six_photos') && (jQuery('.photos_fields_item').length >= 6)) {
+                        /******* Addable Photos Fields *******/
+
+    // disable 'thumbnail'-panel for post-type 'about_us' in admin
+    if ($('#meta_box_sliders').length !== 0) {$('#postimagediv').css({'display' : 'none'})}
+
+    if ($('.photos_custom_admin_fields').is('#six_photos') && ($('.photos_fields_item').length >= 6)) {
         $('.photos_fields_item_add').css({'background': '#dbe3e2'});
     }
     const photosInAdmin = {
@@ -25,8 +29,16 @@ jQuery(function ($) {
                 let sendAttachmentToAdmin = wp.media.editor.send.attachment;
                 const buttonAdd = $(thisClass);
                 wp.media.editor.send.attachment = function(props, attachment) {
-                    let newItemHtml = `<div class="photos_fields_item"><img src="` + attachment.url + `" width="150" height="150" alt="Photos image in admin-bar" /><div class="photos_fields_item_delete">Удалить<span class="dashicons dashicons-trash"></span></div><input name="uploadedPhoto[]" type="hidden" value="` + attachment.url + `"></div>`;
+                    let newItemHtml = `<div class="photos_fields_item"><img src="` + attachment.url + `" width="150" height="150" alt="Photos image in admin-bar" /><div class="photos_fields_item_delete">Удалить<span class="dashicons dashicons-trash"></span></div><input `;
+                    if ($('#meta_box_sliders').length !== 0) {
+                        newItemHtml += `name="slider_photos[]"`;
+                    }
+                    else {
+                        newItemHtml += `name="uploadedPhoto[]"`;
+                    }
+                        newItemHtml +=  `type="hidden" value="` + attachment.url + `"></div>`;
                     $('.photos_fields_item_add_wrapper').before(newItemHtml);
+
                     if ($('.photos_custom_admin_fields').is('#six_photos') && ($('.photos_fields_item').length >= 6)) {
                         $('.photos_fields_item_add').css({'background': '#dbe3e2'});
                     }
@@ -68,11 +80,11 @@ jQuery(function ($) {
 
     // Disable to set fields in same time in Group-subscription and in Individual-subscription
     amountIndividualParticipant.on('keyup paste', clearingGroupFields);
-    groupCommonValue.not('.school_prices_visible input:first').on('keyup paste', clearingIndividualField);
+    groupCommonValue.not('.school_prices_visible input:first').on('keyup paste', clearingIndividualFields);
     function clearingGroupFields () {
         groupCommonValue.not('.school_prices_visible input:first').val(null)
     }
-    function clearingIndividualField () {
+    function clearingIndividualFields () {
         amountIndividualParticipant.val(null);
     }
 

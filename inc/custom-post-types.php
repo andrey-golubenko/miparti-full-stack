@@ -306,6 +306,33 @@ add_action( 'init', function (){
         'menu_position'      => null,
         'supports'            => ['title', 'thumbnail', 'revisions'],
     ) );
+    register_post_type('about_us', array(
+        'label'  => null,
+        'labels' => array(
+            'name'          => 'Фото о Нас', //основное название для типа записи
+            'singular_name' => 'Фото о Нас', //назван для одной записи
+            'add_new'       => 'Добавить Фото о Нас', // для добавления новой записи
+            'add_new_item'  => 'Добавление нового Фото о Нас', // заголовка у вновь создаваемой записи в админ-панели.
+            'edit_item'     => 'Редактирование Фото о Нас', // для редактирования типа записи
+            'view_item'     => 'Просмотр Фото о Нас', // для просмотра записи этого типа.
+            'search_items'  => 'Искать Фото', // для поиска по этим типам записи
+            'not_found'     => 'Не найдено', // если в результате поиска ничего не было найдено
+            'menu_name'     => 'Фото о Нас', // название меню
+            'all_items'     => 'Все Фото о Нас', // Все записи. По умолчанию равен menu_name
+        ),
+        'public'             => true,
+        'publicly_queryable' => true,
+        'show_ui'            => true,
+        'show_in_menu'       => true,
+        'query_var'          => true,
+        'rewrite'            => false,
+        'menu_icon'          => 'dashicons-buddicons-buddypress-logo',
+        'capability_type'    => 'post',
+        'has_archive'        => true,
+        'hierarchical'       => false,
+        'menu_position'      => null,
+        'supports'            => ['title', 'thumbnail', 'revisions'],
+    ) );
 
 });
 

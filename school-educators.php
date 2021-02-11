@@ -15,7 +15,7 @@
             while ($educators_query->have_posts()) :
                 $educators_query->the_post();
             ?>
-            <div class="educators_item ">
+            <div class="educators_item">
                 <div class="educators_item_image">
                     <img src="<?php echo get_the_post_thumbnail_url() ; ?>" alt="Educators photo">
                 </div>

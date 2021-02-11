@@ -20,12 +20,23 @@
     </div>
 
     <div class="about_slider container">
-        <div><img src="./img/new_img_svetlana_2.jpg" alt="photo about us"></div>
-        <div><img src="./img/new_img_alexander_2.jpg" alt="photo about us"></div>
-        <div><img src="./img/IMG_1495.JPG" alt="photo about us"></div>
-        <div><img src="./img/IMG_1496.JPG" alt="photo about us"></div>
-        <div><img src="./img/IMG_1101.JPG" alt="photo about us"></div>
-        <div><img src="./img/IMG_1160.JPG" alt="photo about us"></div>
+        <?php
+        $about_us_query = new WP_Query(array(
+            'post_type'     => 'about_us',
+            'post_per-page' => -1,
+            'order'         => 'ASC'
+        ));
+        while ($about_us_query->have_posts()) :
+            $about_us_query->the_post();
+            $slider_photos = get_post_meta(get_the_ID(), 'slider_photos', 1);
+            foreach ($slider_photos as $value){
+                echo  ' <div>
+                        <img src=" ' . $value . ' " alt="photo about us">
+                        </div> ' ;
+            }
+            endwhile;
+            wp_reset_postdata();
+        ?>
     </div>
     <div class="common_description container">
         <div class="common_description_item">

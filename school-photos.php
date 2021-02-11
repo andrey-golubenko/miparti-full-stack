@@ -50,12 +50,12 @@
                         <?php
                         $uploadedPhotos = get_post_meta(get_the_ID(), 'uploadedPhoto', 1);
                         foreach ($uploadedPhotos as $value) {
-                            echo '<div class="studio_photos_content_image">
-                                  <a href=" ' . $value . ' ">
-                                  <img src=" ' . $value . ' "  alt="">
-                            <span class="magnifying_glass">&#8981;</span>
-                        </a>
-                    </div>';
+                            echo ' <div class="studio_photos_content_image">
+                                   <a href=" ' . $value . ' ">
+                                   <img src=" ' . $value . ' "  alt="">
+                                   <span class="magnifying_glass">&#8981;</span>
+                                   </a>
+                                   </div> ' ;
                         }
                         ?>
                     </div>
