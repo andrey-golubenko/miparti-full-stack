@@ -9,74 +9,20 @@
 	     *
 		 *  */
 add_action( 'init', function (){
-	register_post_type('front_slider_left', array(
+	register_post_type('front_slider', array(
         'label'  => null,
 		'labels' => array(
-			'name'          => 'Фото Левой части Главной страницы', //основное название для типа записи
-			'singular_name' => 'Фото Левой части Главной страницы', //назван для одной записи
-			'add_new'       => 'Добавить новое Фото', // для добавления новой записи
+			'name'          => 'Фото Главной страницы', //основное название для типа записи
+			'singular_name' => 'Фото Главной страницы', //назван для одной записи
+			'add_new'       => 'Добавить новую подборку Фото', // для добавления новой записи
 			'add_new_item'  => 'Добавление нового фото', // заголовка у вновь создаваемой записи в админ-панели.
 			'edit_item'     => 'Редактирование фото', // для редактирования типа записи
-			'view_item'     => 'Просмотр фото Левой части Главной страницы', // для просмотра записи этого типа.
+			'view_item'     => 'Просмотр фото Главной страницы', // для просмотра записи этого типа.
 			'search_items'  => 'Искать Фото', // для поиска по этим типам записи
 			'not_found'     => 'Не найдено', // если в результате поиска ничего не было найдено
-			'menu_name'     => 'Фото Левой части Главной страницы', // название меню
-            'all_items'    => 'Все Фото Левой части Главной страницы', // Все записи. По умолчанию равен menu_name
+			'menu_name'     => 'Фото Главной страницы', // название меню
+            'all_items'    => 'Все Фото Главной страницы', // Все записи. По умолчанию равен menu_name
 		),
-		'public'             => true,
-		'publicly_queryable' => true,
-		'show_ui'            => true,
-		'show_in_menu'       => true,
-		'query_var'          => true,
-		'rewrite'            => false,
-		'menu_icon'          => 'dashicons-table-col-before',
-		'capability_type'    => 'post',
-		'has_archive'        => true,
-		'hierarchical'       => false,
-		'menu_position'      => null,
-		'supports'            => ['title', 'thumbnail', 'revisions'],
-	) );
-	register_post_type('front_slider_right', array(
-        'label'  => null,
-		'labels' => array(
-			'name'          => 'Фото Правой части Главной страницы', //основное название для типа записи
-			'singular_name' => 'Фото Правой части Главной страницы', //назван для одной записи
-			'add_new'       => 'Добавить новое Фото', // для добавления новой записи
-			'add_new_item'  => 'Добавление нового фото', // заголовка у вновь создаваемой записи в админ-панели.
-			'edit_item'     => 'Редактирование фото', // для редактирования типа записи
-			'view_item'     => 'Просмотр фото', // для просмотра записи этого типа.
-			'search_items'  => 'Искать фото', // для поиска по этим типам записи
-			'not_found'     => 'Не найдено', // если в результате поиска ничего не было найдено
-			'menu_name'     => 'Фото Правой части Главной страницы', // название меню
-            'all_items'     => 'Все Фото Правой части Главной страницы', // Все записи. По умолчанию равен menu_name
-        ),
-		'public'             => true,
-		'publicly_queryable' => true,
-		'show_ui'            => true,
-		'show_in_menu'       => true,
-		'query_var'          => true,
-		'rewrite'            => false,
-		'menu_icon'          => 'dashicons-table-col-after',
-		'capability_type'    => 'post',
-		'has_archive'        => true,
-		'hierarchical'       => false,
-		'menu_position'      => null,
-		'supports'            => ['title', 'thumbnail', 'revisions'],
-	) );
-	register_post_type('front_slider_center', array(
-        'label'  => null,
-		'labels' => array(
-			'name'          => 'Фото Мобильной Главной страницы', //основное название для типа записи
-			'singular_name' => 'Фото Мобильной Главной страницы', //назван для одной записи
-			'add_new'       => 'Добавить новое Фото', // для добавления новой записи
-			'add_new_item'  => 'Добавление нового фото', // заголовка у вновь создаваемой записи в админ-панели.
-			'edit_item'     => 'Редактирование фото', // для редактирования типа записи
-			'view_item'     => 'Просмотр фото', // для просмотра записи этого типа.
-			'search_items'  => 'Искать фото', // для поиска по этим типам записи
-			'not_found'     => 'Не найдено', // если в результате поиска ничего не было найдено
-			'menu_name'     => 'Фото Мобильной Главной страницы', // название меню
-            'all_items'     => 'Все Фото Мобильной Главной страницы', // Все записи. По умолчанию равен menu_name
-        ),
 		'public'             => true,
 		'publicly_queryable' => true,
 		'show_ui'            => true,
@@ -326,7 +272,7 @@ add_action( 'init', function (){
         'show_in_menu'       => true,
         'query_var'          => true,
         'rewrite'            => false,
-        'menu_icon'          => 'dashicons-buddicons-buddypress-logo',
+        'menu_icon'          => 'dashicons-flag',
         'capability_type'    => 'post',
         'has_archive'        => true,
         'hierarchical'       => false,

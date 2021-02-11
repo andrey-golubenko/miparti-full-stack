@@ -56,18 +56,13 @@
                 <section class="mobile_front_slider">
                     <div class="mobile_front_slider_center">
                         <?php
-                        $front_slider_center = new WP_Query (array(
-                            'post_type'     => 'front_slider_center',
-                            'post_per_page' => -1,
-                            'order'         => 'ASC'
-                        ));
-                        while ($front_slider_center->have_posts()) :
-                            $front_slider_center->the_post();
-                            ?>
-                            <div>
-                                <img style="height: 100vh; width: 100%; object-fit: cover; -o-object-fit: cover" src="<?php echo get_the_post_thumbnail_url(); ?>" alt="Dance-studio photo">
-                            </div>
-                        <?php endwhile; wp_reset_postdata(); ?>
+                        $front_slider_mobile = get_post_meta(576,'slider_photos', 1);
+                        foreach ($front_slider_mobile as $value){
+                            echo  ' <div>
+                                    <img src=" ' . $value . ' " alt="photo front page">
+                                    </div> ' ;
+                        }
+                        ?>
                     </div>
                 </section>
                 <div class="interactive_studio">
@@ -97,33 +92,23 @@
                 <section class="sliders">
                     <div class="slider_left">
                     <?php
-                        $front_slider_left = new WP_Query (array(
-                            'post_type'     => 'front_slider_left',
-                            'post_per_page' => -1,
-                            'order'         => 'ASC'
-                        ));
-                        while ($front_slider_left->have_posts()) :
-                            $front_slider_left->the_post();
+                        $front_slider_left = get_post_meta(572,'slider_photos', 1);
+                    foreach ($front_slider_left as $value){
+                        echo  ' <div>
+                                    <img src=" ' . $value . ' " alt="photo front page">
+                                    </div> ' ;
+                    }
                     ?>
-                        <div>
-                            <img style="height: 100vh; width: 100%; object-fit: cover; -o-object-fit: cover" src="<?php echo get_the_post_thumbnail_url(); ?>" alt="Dance-studio photo">
-                        </div>
-                    <?php endwhile; wp_reset_postdata(); ?>
                     </div>
                     <div class="slider_right">
                     <?php
-                        $front_slider_right = new WP_Query (array(
-                            'post_type'     => 'front_slider_right',
-                            'post_per_page' => -1,
-                            'order'         => 'ASC'
-                        ));
-                        while ($front_slider_right->have_posts()) :
-                            $front_slider_right->the_post();
+                        $front_slider_right = get_post_meta(574,'slider_photos', 1);
+                        foreach ($front_slider_right as $value){
+                            echo  ' <div>
+                                        <img src=" ' . $value . ' " alt="photo front page">
+                                        </div> ' ;
+                        }
                     ?>
-                        <div>
-                            <img style="height: 100vh; width: 100%; object-fit: cover; -o-object-fit: cover" src="<?php echo get_the_post_thumbnail_url(); ?>" alt="Dance-school photo">
-                        </div>
-                     <?php endwhile; wp_reset_postdata(); ?>
                     </div>
                 </section>
                 <section class="front_content">

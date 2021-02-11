@@ -3,7 +3,7 @@
 add_filter('admin_init', 'add_custom_meta_box', 10, 1);
 function add_custom_meta_box() {
 
-    add_meta_box('meta_box_sliders', 'Фотографии для слайдера', 'meta_box_sliders_photos', array('about_us'), 'normal', 'high');
+    add_meta_box('meta_box_sliders', 'Фотографии для слайдера', 'meta_box_sliders_photos', array('about_us', 'front_slider' ), 'normal', 'high');
 
     add_meta_box('meta_box_dance_staging_menu', 'Виды постановки танца', 'meta_box_dance_staging_menu', 'dance_staging', 'normal', 'high');
 
