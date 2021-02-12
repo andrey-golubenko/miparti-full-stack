@@ -48,7 +48,6 @@ function meta_box_sliders_photos($post) {
     <?php
 }
 
-
 // Custom fields func. in admin-panel for adding Photos in some post-types
 function meta_box_all_photos($post) {
     if (($post->post_type === 'photos_studio') || ($post->post_type === 'photos_school')) :
@@ -242,7 +241,7 @@ function meta_box_school_educators ($post) {
 
 }
 
-// включаем обновление полей при сохранении
+/*** включаем обновление полей при сохранении ***/
 add_action('save_post', 'miparti_sliders_photos_update', 0);
 add_action('save_post', 'miparti_uploadedPhoto_update', 0);
 add_action('save_post', 'miparti_video_description_update', 0);
@@ -250,7 +249,8 @@ add_action('save_post', 'miparti_dance_staging_update', 0);
 add_action('save_post', 'miparti_school_prices_update', 0);
 add_action('save_post', 'miparti_school_time_table_update', 0);
 add_action('save_post', 'miparti_school_educators_update', 0);
-/* Сохраняем данные, при сохранении поста */
+
+/*** Сохраняем данные, при сохранении поста ***/
 function miparti_sliders_photos_update($post_id) {
     //var_dump($_POST);
     if ($_POST['exist_slider_photos_field_check']) { // checking if this field is a field for uploading photos, since when removing in 'js' the components of this field with the 'uploadedPhoto' key, it is impossible to check this using this key. Therefore, an additional field with the key 'exist_field_check' is set for this check.
