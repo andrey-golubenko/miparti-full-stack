@@ -20,6 +20,9 @@ require get_template_directory() . '/inc/contact-forms.php';
 /* ПОДКЛЮЧАЕМ ФОРМУ ПОИСКА ПО САЙТУ И ФУНКЦИИ К НЕЙ  */
 require get_template_directory() . '/inc/search-group.php';
 
+/* ПОДКЛЮЧАЕМ КЛАСС ДЛЯ ВИДЖЕТА Последних Постов */
+require get_template_directory() . '/inc/class-miparti-recent-posts-widget.php';
+
 // Устанавливаем КОНСТАНТЫ для ПУТЕЙ располоэжения подключаемых файлов стилей и js (чтоб меньше писать), и других файлов из папки 'assets'
 define('MIPARTI_THEM_ROOT', get_template_directory_uri());
 define('MIPARTI_CSS_DIR', MIPARTI_THEM_ROOT . '/assets/css');
@@ -288,12 +291,22 @@ function miparti_register_widgets(){
         'id'            => "sidebar_single_blog",
         'description'   => 'Сайдбар для страници отображения одиночных постов',
         'class'         => '',
-        'before_widget' => '<div id="%1$s" class="sidebar-box ftco-animate %2$s">',
-        'after_widget'  => "</div>",
-        'before_title'  => '<h3>',
-        'after_title'   => "</h3>",
+        'before_widget' => '',
+        'after_widget'  => '',
+        'before_title'  => '',
+        'after_title'   => '',
     ) );
 }
+
+// РЕГИСТРАЦИЯ СВОЕГО ВИДЖЕТА ПОСЛЕДНИХ ПОСТОВ
+add_action( 'widgets_init', 'miparti_register_widget' );
+function miparti_register_widget() {
+    register_widget( 'Miparti_Widget_Recent_Posts' );//КЛАСС по которому работает виджет и кот. расположен в папке 'inc'.
+}
+
+
+
+
 
 
 

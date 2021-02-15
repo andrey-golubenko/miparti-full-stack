@@ -6,28 +6,14 @@
  *
  */
 ?>
-<div class="no-results not-found">
-	<header class="page-header">
-		<h3 class="page-title"><?php esc_html_e( 'Ничего не найдено' ); ?></h3>
-	</header><!-- .page-header -->
-	<div class="page-content">
+<div class="search_no_results">
+		<h3 class="search_no_results_heading"><?php esc_html_e( 'Ничего не найдено' ); ?></h3>
+	<div class="search_no_results_content container">
 		<?php
-		if ( is_home() && current_user_can( 'publish_posts' ) ) :
-			printf(
-				'<p>' . wp_kses(
-					/* translators: 1: link to WP admin new post page. */
-					__( 'Ready to publish your first post? <a href="%1$s">Get started here</a>.', 'andr' ),
-					array(
-						'a' => array(
-							'href' => array(),
-						),
-					)
-				) . '</p>',
-				esc_url( admin_url( 'post-new.php' ) )
-			);
-		elseif ( is_search() ) :
-			?>
-			<p><?php esc_html_e( 'Извините, но соответствий Вашим условиям поиска не найдено. Пожалуйста, попробуйте снова, применив другие ключевыми слова.'); ?></p>
+		if ( is_search() ) :
+		?>
+			<p><?php esc_html_e( 'Извините, но соответствий Вашим условиям поиска не найдено.'); ?></p>
+			<p><?php esc_html_e( 'Пожалуйста, попробуйте снова, применив другие ключевые слова.'); ?></p>
 			<?php
 			get_search_form();
 		else :
@@ -37,5 +23,5 @@
 			get_search_form();
 		endif;
 		?>
-	</div><!-- .page-content -->
-</div><!-- .no-results -->
+	</div>
+</div>

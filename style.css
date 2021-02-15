@@ -11162,16 +11162,34 @@ section.contacts_visual .contacts_visual_form form.signUp_form .signUp_form_item
   margin-top: 2.25rem;
 }
 
-.blog .search_result {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.search_no_results > h3.search_no_results_heading {
+  font: normal 2rem 'Lora';
+  color: #fff;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.search_no_results > .search_no_results_content {
   margin-bottom: 4rem;
 }
 
-.blog .search_result h3.search_result_heading {
-  font: normal 2rem 'Lora';
-  color: white;
+.search_no_results > .search_no_results_content > p {
+  font: normal 1.35rem/1.7 'Lora';
+  color: #fff;
+  text-align: left;
+
+}
+
+.search_no_results > .search_no_results_content > p:not(:first-child){
+  margin-bottom: 4rem;
+}
+
+
+@media (min-width: 768px) {
+  .search_no_results > .search_no_results_content > .single_news_sideBar_search {
+    width: 60%;
+    margin: 0 auto;
+  }
 }
 
 
@@ -11347,7 +11365,7 @@ section.contacts_visual .contacts_visual_form form.signUp_form .signUp_form_item
   }
 }
 
-.single_news_wrapper aside.single_news_sideBar .single_news_sideBar_search {
+.single_news_sideBar_search {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -11365,7 +11383,7 @@ section.contacts_visual .contacts_visual_form form.signUp_form .signUp_form_item
   width: 100%;
 }
 
-.single_news_wrapper aside.single_news_sideBar .single_news_sideBar_search form.search_form {
+.single_news_sideBar_search form.search_form {
   -webkit-flex-basis: 100%;
   -ms-flex-preferred-size: 100%;
   flex-basis: 100%;
@@ -11374,11 +11392,11 @@ section.contacts_visual .contacts_visual_form form.signUp_form .signUp_form_item
   flex-shrink: 0;
 }
 
-.single_news_wrapper aside.single_news_sideBar .single_news_sideBar_search form.search_form .search_form_item {
+.single_news_sideBar_search form.search_form .search_form_item {
   position: relative;
 }
 
-.single_news_wrapper aside.single_news_sideBar .single_news_sideBar_search form.search_form .search_form_item label.search_form_item_label span.spanBox {
+.single_news_sideBar_search form.search_form .search_form_item label.search_form_item_label span.spanBox {
   position: absolute;
   bottom: 30%;
   left: 4%;
@@ -11394,64 +11412,64 @@ section.contacts_visual .contacts_visual_form form.signUp_form .signUp_form_item
 }
 
 @media (min-width: 1024px) and (max-width: 1080px) {
-  .single_news_wrapper aside.single_news_sideBar .single_news_sideBar_search form.search_form .search_form_item label.search_form_item_label span.spanBox {
+  .single_news_sideBar_search form.search_form .search_form_item label.search_form_item_label span.spanBox {
     font-size: 1rem;
   }
 }
 
 @media (max-width: 413px) {
-  .single_news_wrapper aside.single_news_sideBar .single_news_sideBar_search form.search_form .search_form_item label.search_form_item_label span.spanBox {
+  .single_news_sideBar_search form.search_form .search_form_item label.search_form_item_label span.spanBox {
     font-size: .9rem;
   }
 }
 
 @media (max-width: 320px) {
-  .single_news_wrapper aside.single_news_sideBar .single_news_sideBar_search form.search_form .search_form_item label.search_form_item_label span.spanBox {
+  .single_news_sideBar_search form.search_form .search_form_item label.search_form_item_label span.spanBox {
     font-size: .73rem;
   }
 }
 
 @media (max-width: 275px) {
-  .single_news_wrapper aside.single_news_sideBar .single_news_sideBar_search form.search_form .search_form_item label.search_form_item_label span.spanBox {
+  .single_news_sideBar_search form.search_form .search_form_item label.search_form_item_label span.spanBox {
     white-space: pre-line;
   }
 }
 
-.single_news_wrapper aside.single_news_sideBar .single_news_sideBar_search form.search_form .search_form_item label.search_form_item_label input:-moz-placeholder-shown ~ span {
+.single_news_sideBar_search form.search_form .search_form_item label.search_form_item_label input:-moz-placeholder-shown ~ span {
   visibility: visible;
 }
 
-.single_news_wrapper aside.single_news_sideBar .single_news_sideBar_search form.search_form .search_form_item label.search_form_item_label input:-ms-input-placeholder ~ span {
+.single_news_sideBar_search form.search_form .search_form_item label.search_form_item_label input:-ms-input-placeholder ~ span {
   visibility: visible;
 }
 
-.single_news_wrapper aside.single_news_sideBar .single_news_sideBar_search form.search_form .search_form_item label.search_form_item_label input:placeholder-shown ~ span {
+.single_news_sideBar_search form.search_form .search_form_item label.search_form_item_label input:placeholder-shown ~ span {
   visibility: visible;
 }
 
-.single_news_wrapper aside.single_news_sideBar .single_news_sideBar_search form.search_form .search_form_item label.search_form_item_label input:-moz-placeholder-shown:focus ~ span, .single_news_wrapper aside.single_news_sideBar .single_news_sideBar_search form.search_form .search_form_item label.search_form_item_label input:not(:-moz-placeholder-shown) ~ span {
+.single_news_sideBar_search form.search_form .search_form_item label.search_form_item_label input:-moz-placeholder-shown:focus ~ span, .single_news_sideBar_search form.search_form .search_form_item label.search_form_item_label input:not(:-moz-placeholder-shown) ~ span {
   bottom: 130%;
   font-size: 1rem;
   opacity: 1;
   visibility: visible;
 }
 
-.single_news_wrapper aside.single_news_sideBar .single_news_sideBar_search form.search_form .search_form_item label.search_form_item_label input:-ms-input-placeholder:focus ~ span, .single_news_wrapper aside.single_news_sideBar .single_news_sideBar_search form.search_form .search_form_item label.search_form_item_label input:not(:-ms-input-placeholder) ~ span {
+.single_news_sideBar_search form.search_form .search_form_item label.search_form_item_label input:-ms-input-placeholder:focus ~ span, .single_news_sideBar_search form.search_form .search_form_item label.search_form_item_label input:not(:-ms-input-placeholder) ~ span {
   bottom: 130%;
   font-size: 1rem;
   opacity: 1;
   visibility: visible;
 }
 
-.single_news_wrapper aside.single_news_sideBar .single_news_sideBar_search form.search_form .search_form_item label.search_form_item_label input:placeholder-shown:focus ~ span,
-.single_news_wrapper aside.single_news_sideBar .single_news_sideBar_search form.search_form .search_form_item label.search_form_item_label input:not(:placeholder-shown) ~ span {
+.single_news_sideBar_search form.search_form .search_form_item label.search_form_item_label input:placeholder-shown:focus ~ span,
+.single_news_sideBar_search form.search_form .search_form_item label.search_form_item_label input:not(:placeholder-shown) ~ span {
   bottom: 130%;
   font-size: 1rem;
   opacity: 1;
   visibility: visible;
 }
 
-.single_news_wrapper aside.single_news_sideBar .single_news_sideBar_search form.search_form .search_form_item label.search_form_item_label > input.inputBox {
+.single_news_sideBar_search form.search_form .search_form_item label.search_form_item_label > input.inputBox {
   position: relative;
   z-index: 10;
   background-color: transparent;
@@ -11465,39 +11483,39 @@ section.contacts_visual .contacts_visual_form form.signUp_form .signUp_form_item
   cursor: text;
 }
 
-.single_news_wrapper aside.single_news_sideBar .single_news_sideBar_search form.search_form .search_form_item label.search_form_item_label > input.inputBox::-webkit-input-placeholder {
+.single_news_sideBar_search form.search_form .search_form_item label.search_form_item_label > input.inputBox::-webkit-input-placeholder {
   color: #eac15a;
 }
 
-.single_news_wrapper aside.single_news_sideBar .single_news_sideBar_search form.search_form .search_form_item label.search_form_item_label > input.inputBox::-moz-placeholder {
+.single_news_sideBar_search form.search_form .search_form_item label.search_form_item_label > input.inputBox::-moz-placeholder {
   color: #eac15a;
 }
 
-.single_news_wrapper aside.single_news_sideBar .single_news_sideBar_search form.search_form .search_form_item label.search_form_item_label > input.inputBox:-ms-input-placeholder {
+.single_news_sideBar_search form.search_form .search_form_item label.search_form_item_label > input.inputBox:-ms-input-placeholder {
   color: #eac15a;
 }
 
-.single_news_wrapper aside.single_news_sideBar .single_news_sideBar_search form.search_form .search_form_item label.search_form_item_label > input.inputBox::-ms-input-placeholder {
+.single_news_sideBar_search form.search_form .search_form_item label.search_form_item_label > input.inputBox::-ms-input-placeholder {
   color: #eac15a;
 }
 
-.single_news_wrapper aside.single_news_sideBar .single_news_sideBar_search form.search_form .search_form_item label.search_form_item_label > input.inputBox::placeholder {
+.single_news_sideBar_search form.search_form .search_form_item label.search_form_item_label > input.inputBox::placeholder {
   color: #eac15a;
 }
 
-.single_news_wrapper aside.single_news_sideBar .single_news_sideBar_search form.search_form .search_form_item label.search_form_item_label > input.inputBox:focus {
+.single_news_sideBar_search form.search_form .search_form_item label.search_form_item_label > input.inputBox:focus {
   border-radius: 10px;
   border: 0;
   -webkit-box-shadow: 0 0 10px 5px #eac15a;
   box-shadow: 0 0 10px 5px #eac15a;
 }
 
-.single_news_wrapper aside.single_news_sideBar .single_news_sideBar_search form.search_form .search_form_item label.search_form_item_label > input:invalid {
+.single_news_sideBar_search form.search_form .search_form_item label.search_form_item_label > input:invalid {
   -webkit-box-shadow: none;
   box-shadow: none;
 }
 
-.single_news_wrapper aside.single_news_sideBar .single_news_sideBar_search form.search_form .search_form_item span.search_glass {
+.single_news_sideBar_search form.search_form .search_form_item span.search_glass {
   position: absolute;
   top: 23%;
   right: 3%;

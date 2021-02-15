@@ -5,8 +5,6 @@
 ?>
 <?php get_header(); ?>
 <section class="blog">
-
-
 	<div class="blog_content">
 		<?php if ( have_posts() ) :
             $query_search = new WP_Query([

@@ -27,7 +27,6 @@ function widget_nav_template( $template, $class ){
 
 /** ФУНКЦИЯ для ПОДСВЕТКИ СЛОВ ПОИСКА в WordPress **/
 add_filter( 'the_content', 'kama_search_backlight' );
-add_filter( 'the_excerpt', 'kama_search_backlight' );
 add_filter( 'kama_excerpt', 'kama_search_backlight' );
 add_filter( 'the_title', 'kama_search_backlight' );
 function kama_search_backlight( $text ){
