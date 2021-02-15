@@ -81,16 +81,16 @@ jQuery(function ($) {
     const mediaQueryHoverMenu = window.matchMedia('(min-width: 1024px)');
     let menuHeight = 0;
     if (mediaQueryHoverMenu.matches) {
-        menuHeight = 90;
+        menuHeight = 80;
     }
     else {
-        menuHeight = 60;
+        menuHeight = 50;
     }
 
     // Fix MENU on a TOP
     $(window).scroll(function () {
-        const scrolled = $(this).scrollTop();
-        if(!$('.head_menu').hasClass('mobile_menu_open')) {
+        const scrolled = this.pageYOffset;
+        if(!componentMenu.hasClass('mobile_menu_open')) {
             if (scrolled > menuHeight){
                 componentMenu.addClass('fixing_menu');
             }

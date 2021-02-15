@@ -12,10 +12,13 @@ require get_template_directory() . '/inc/breadcrumbs-handler.php';
 require get_template_directory() . '/inc/customizer.php';
 
 /* ПОДКЛЮЧАЕМ  КАСТОМНЫЕ ПОЛЯ ДЛЯ ЗАПИСЕЙ - ФОТО И ВИДЕО */
-require get_template_directory() . '/inc/custom_fields.php';
+require get_template_directory() . '/inc/custom-fields.php';
 
 /* ПОДКЛЮЧАЕМ  ДВЕ ФОРМЫ ОБРАТНОЙ СВЯЗИ И ПОДПИСКИ И ИХ ОБРАБОТЧИКИ */
 require get_template_directory() . '/inc/contact-forms.php';
+
+/* ПОДКЛЮЧАЕМ ФОРМУ ПОИСКА ПО САЙТУ И ФУНКЦИИ К НЕЙ  */
+require get_template_directory() . '/inc/search-group.php';
 
 // Устанавливаем КОНСТАНТЫ для ПУТЕЙ располоэжения подключаемых файлов стилей и js (чтоб меньше писать), и других файлов из папки 'assets'
 define('MIPARTI_THEM_ROOT', get_template_directory_uri());
@@ -84,14 +87,7 @@ function miparti_media (){
         wp_enqueue_style('contact-forms', MIPARTI_CSS_DIR . '/contact-forms-ajax-request.css');
     }
 
-
-
-
-
     wp_enqueue_style('miparti-styles', get_stylesheet_uri());
-
-
-
 
     /** Оставляем JQ (джейквери) вшитую в WP. JQ и jQ-migrate, которые идут с вёрсткой удаляем, чтобы не было конфликта с плагином (jQ-form) при отправке писем из формы обратной связи. **/
     wp_enqueue_script( 'jquery');
@@ -101,8 +97,6 @@ function miparti_media (){
      * DIFFERENT STYLES FOR DIFFERENT PAGES
      *
      */
-
-
 
     wp_enqueue_script('miparti-libs', MIPARTI_JS_DIR . '/libs.min.js', [], null, true);
     if (is_page_template('studio.php')) {
@@ -118,14 +112,11 @@ function miparti_media (){
         );
     }
 
-
-
     if( is_singular() && comments_open() && (get_option('thread_comments') == 1) ) {
         wp_enqueue_script('comment-reply', '', ['jquery'], '', true);
     }
 
     wp_enqueue_script('miparti-main', MIPARTI_JS_DIR . '/main.js', [], null, true);
-
 
         /*        wp_enqueue_script( 'miparti-comments', MIPARTI_JS_DIR . '/comments.js', ['jquery'], null, true );*/
 
@@ -174,14 +165,11 @@ function miparti_after_setup (){
 }
 
 
-
 //УБИРАЕМ НАЗВАНИЕ САЙТА (кот. ф-ция дописывает через тире) из заголовка в header на остальных стрaницах (кроме Главной).
 add_filter( 'document_title_parts', function( $parts ){
     if( isset($parts['site']) ) unset($parts['site']);
     return $parts;
 });
-
-
 
 /**
  * Преобразование HEX в RGB (Для страницы 'school-timeTable' - Расписание : цвет группы)
@@ -235,12 +223,77 @@ function hexToRgb($hex, $opacity = false, $return_string = false) {
     return $rgb;
 }
 
+// ОБРЕЗКА ТЕКСТА (excerpt). Шоткоды вырезаются. Минимальное значение maxchar может быть 22.
+function kama_excerpt( $args = '' ){
+    global $post;
+    if( is_string($args) )
+        parse_str( $args, $args );
+    $rg = (object) array_merge( array(
+        'maxchar'     => 350,   // Макс. количество символов.
+        'text'        => '',    // Какой текст обрезать (по умолчанию post_excerpt, если нет post_content.
+        // Если в тексте есть `<!--more-->`, то `maxchar` игнорируется и берется
+        // все до <!--more--> вместе с HTML.
+        'autop'       => false,  // Заменить переносы строк на <p> и <br> или нет?
+        'save_tags'   => '',    // Теги, которые нужно оставить в тексте, например '<strong><b><a>'.
+        'more_text'   => '', //'Читать далее...', // Текст ссылки `Читать дальше`.
+        'ignore_more' => false, // нужно ли игнорировать <!--more--> в контенте
+    ), $args );
+
+    $rg = apply_filters( 'kama_excerpt_args', $rg );
+    if( ! $rg->text )
+        $rg->text = $post->post_excerpt ?: $post->post_content;
+    $text = $rg->text;
+    // убираем блочные шорткоды: [foo]some data[/foo]. Учитывает markdown
+    $text = preg_replace( '~\[([a-z0-9_-]+)[^\]]*\](?!\().*?\[/\1\]~is', '', $text );
+    // убираем шоткоды: [singlepic id=3]. Учитывает markdown
+    $text = preg_replace( '~\[/?[^\]]*\](?!\()~', '', $text );
+    $text = trim( $text );
+
+    // <!--more-->
+    if( ! $rg->ignore_more  &&  strpos( $text, '<!--more-->') ){
+        preg_match('/(.*)<!--more-->/s', $text, $mm );
+        $text = trim( $mm[1] );
+        $text_append = ' <a href="'. get_permalink( $post ) .'#more-'. $post->ID .'">'. $rg->more_text .'</a>';
+    }
+    // text, excerpt, content
+    else {
+        $text = trim( strip_tags($text, $rg->save_tags) );
+        // Обрезаем
+        if( mb_strlen($text) > $rg->maxchar ){
+            $text = mb_substr( $text, 0, $rg->maxchar );
+            $text = preg_replace( '~(.*)\s[^\s]*$~s', '\\1', $text ); // кил последнее слово, оно 99% неполное
+            $text .= '&nbsp;&nbsp;<a href="'. get_permalink($post->ID) .'"><b> . . . </b></a>';
+        }
+    }
+    // сохраняем переносы строк. Упрощенный аналог wpautop()
+    if( $rg->autop ){
+        $text = preg_replace(
+            array("/\r/", "/\n{2,}/", "/\n/",   '~</p><br ?/?>~'),
+            array('',     '</p><p>',  '<br />', '</p>'),
+            $text
+        );
+    }
+    $text = apply_filters( 'kama_excerpt', $text, $rg );
+    if( isset($text_append) )
+        $text .= $text_append;
+    return ( $rg->autop && $text ) ? "<p>$text</p>" : $text;
+}
 
 
-
-
-
-
+//РЕГИСТРАЦИЯ САЙДБАРА
+add_action( 'widgets_init', 'miparti_register_widgets' );
+function miparti_register_widgets(){
+    register_sidebar( array(
+        'name'          => sprintf(__('Sidebar %d'), 1 ),
+        'id'            => "sidebar_single_blog",
+        'description'   => 'Сайдбар для страници отображения одиночных постов',
+        'class'         => '',
+        'before_widget' => '<div id="%1$s" class="sidebar-box ftco-animate %2$s">',
+        'after_widget'  => "</div>",
+        'before_title'  => '<h3>',
+        'after_title'   => "</h3>",
+    ) );
+}
 
 
 
@@ -286,7 +339,7 @@ function remove_wp_version_strings( $src ) {
     }
     return $src;
 }
-// Отключим выводи ошибок на странице авторизации
+// Изменим вывод ошибок на странице авторизации
 add_filter('login_errors', 'login_obscure_func');
 function login_obscure_func(){
     return 'Ошибка: вы ввели неправильный логин или пароль.';

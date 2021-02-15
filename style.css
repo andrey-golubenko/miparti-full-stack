@@ -3019,6 +3019,10 @@ header .breadcrumbs .breadcrumbs_wrapper .breadcrumbs_items .breadcrumbs_items_s
   align-items: center;
 }
 
+header .breadcrumbs .breadcrumbs_wrapper .breadcrumbs_items .breadcrumbs_items_source .breadcrumbs_items_context > a {
+  color: white;
+}
+
 header .breadcrumbs .breadcrumbs_wrapper .breadcrumbs_items .breadcrumbs_items_source .breadcrumbs_items_context span.arrow_svg_wrapper {
   fill: #fff;
   margin: .5rem 0 0 .5rem;
@@ -3029,7 +3033,7 @@ header .breadcrumbs .breadcrumbs_wrapper .breadcrumbs_items .breadcrumbs_items_s
   height: 18px;
 }
 
-header .breadcrumbs .breadcrumbs_wrapper .breadcrumbs_items .breadcrumbs_items_source .breadcrumbs_items_context:hover {
+header .breadcrumbs .breadcrumbs_wrapper .breadcrumbs_items .breadcrumbs_items_source .breadcrumbs_items_context:hover, header .breadcrumbs .breadcrumbs_wrapper .breadcrumbs_items .breadcrumbs_items_source .breadcrumbs_items_context > a:hover {
   color: #eac15a;
 }
 
@@ -11155,7 +11159,21 @@ section.contacts_visual .contacts_visual_form form.signUp_form .signUp_form_item
 
 .blog .blog_content .blog_content_item .blog_content_item_heading {
   min-height: 70px;
+  margin-top: 2.25rem;
 }
+
+.blog .search_result {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 4rem;
+}
+
+.blog .search_result h3.search_result_heading {
+  font: normal 2rem 'Lora';
+  color: white;
+}
+
 
 .blog .blog_content .blog_content_item .blog_content_item_heading > h3 {
   display: -webkit-box;
@@ -11192,7 +11210,11 @@ section.contacts_visual .contacts_visual_form form.signUp_form .signUp_form_item
   border-bottom: 1px solid #eac15a;
 }
 
-.blog .blog_pagination ul.blog_pagination_page_numbers {
+.blog .blog_content .blog_content_item .blog_content_item_text > p > a {
+  color: #eac15a;
+}
+
+.blog .blog_pagination > ul {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -11212,7 +11234,7 @@ section.contacts_visual .contacts_visual_form form.signUp_form .signUp_form_item
   flex-wrap: wrap;
 }
 
-.blog .blog_pagination ul.blog_pagination_page_numbers > li {
+.blog .blog_pagination > ul > li {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -11225,16 +11247,16 @@ section.contacts_visual .contacts_visual_form form.signUp_form .signUp_form_item
   -webkit-align-items: center;
   -ms-flex-align: center;
   align-items: center;
-  margin: 0 3px 4px;
+  margin: 0 10px 4px;
 }
 
 @media (max-width: 768px) {
-  .blog .blog_pagination ul.blog_pagination_page_numbers > li {
+  .blog .blog_pagination > ul > li {
     margin: 0 1px 4px;
   }
 }
 
-.blog .blog_pagination ul.blog_pagination_page_numbers > li > a {
+.blog .blog_pagination ul > li > a.page-numbers {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -11250,25 +11272,24 @@ section.contacts_visual .contacts_visual_form form.signUp_form .signUp_form_item
   color: #eac15a;
   width: 50px;
   height: 50px;
-  line-height: 50px;
   border-radius: 50%;
   -webkit-box-shadow: 0 0 15px 3px #eac15a;
   box-shadow: 0 0 15px 3px #eac15a;
 }
 
 @media (max-width: 768px) {
-  .blog .blog_pagination ul.blog_pagination_page_numbers > li > a {
+  .blog .blog_pagination > ul > li > a.page-numbers {
     -webkit-box-shadow: 0 0 5px 1px #eac15a;
     box-shadow: 0 0 5px 1px #eac15a;
   }
 }
 
-.blog .blog_pagination ul.blog_pagination_page_numbers > li > a:hover {
+.blog .blog_pagination ul > li > a.page-numbers:hover {
   -webkit-box-shadow: 0 0 15px 3px #eac15a inset;
   box-shadow: 0 0 15px 3px #eac15a inset;
 }
 
-.blog .blog_pagination ul.blog_pagination_page_numbers > li.active_page_number > span {
+.blog .blog_pagination ul > li > span.page-numbers.current {
   background: #eac15a;
   color: #000;
   display: -webkit-box;
@@ -11431,6 +11452,8 @@ section.contacts_visual .contacts_visual_form form.signUp_form .signUp_form_item
 }
 
 .single_news_wrapper aside.single_news_sideBar .single_news_sideBar_search form.search_form .search_form_item label.search_form_item_label > input.inputBox {
+  position: relative;
+  z-index: 10;
   background-color: transparent;
   color: #eac15a;
   border: 1.3px solid #eac15a;

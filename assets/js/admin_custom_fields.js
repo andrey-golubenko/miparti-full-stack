@@ -29,15 +29,15 @@ jQuery(function ($) {
                 let sendAttachmentToAdmin = wp.media.editor.send.attachment;
                 const buttonAdd = $(thisClass);
                 wp.media.editor.send.attachment = function(props, attachment) {
-                    let newItemHtml = `<div class="photos_fields_item"><img src="` + attachment.url + `" width="150" height="150" alt="Photos image in admin-bar" /><div class="photos_fields_item_delete">Удалить<span class="dashicons dashicons-trash"></span></div><input `;
+                    let newItemContext = `<div class="photos_fields_item"><img src="` + attachment.url + `" width="150" height="150" alt="Photos image in admin-bar" /><div class="photos_fields_item_delete">Удалить<span class="dashicons dashicons-trash"></span></div><input `;
                     if ($('#meta_box_sliders').length !== 0) {
-                        newItemHtml += `name="slider_photos[]"`;
+                        newItemContext += `name="slider_photos[]"`;
                     }
                     else {
-                        newItemHtml += `name="uploadedPhoto[]"`;
+                        newItemContext += `name="uploadedPhoto[]"`;
                     }
-                        newItemHtml +=  `type="hidden" value="` + attachment.url + `"></div>`;
-                    $('.photos_fields_item_add_wrapper').before(newItemHtml);
+                        newItemContext +=  `type="hidden" value="` + attachment.url + `"></div>`;
+                    $('.photos_fields_item_add_wrapper').before(newItemContext);
 
                     if ($('.photos_custom_admin_fields').is('#six_photos') && ($('.photos_fields_item').length >= 6)) {
                         $('.photos_fields_item_add').css({'background': '#dbe3e2'});

@@ -9,9 +9,14 @@ function miparti_the_breadcrumb(){
                   </a>
               </span>';
 		if(is_single()){ // записи
+            if ($post->post_type === 'post') {
+                $blog_tittle = get_the_title(125);
+                $blog_permalink = home_url('blog');
+
+            }
 			echo '<span class="breadcrumbs_items_source">
-                      <span class="breadcrumbs_items_context"> ' . get_the_category_list(', ') . '
-                           <span class="arrow_svg_wrapper"><svg xmlns="http://www.w3.org/2000/svg" class="breadcrumbs_arrow" viewBox="0 0 24 24"><path d="M22 12l-20 12 7.289-12-7.289-12z"/></svg></span>
+                      <a href="' . $blog_permalink .  '">
+                      <span class="breadcrumbs_items_context">' . $blog_tittle . '<span class="arrow_svg_wrapper"><svg xmlns="http://www.w3.org/2000/svg" class="breadcrumbs_arrow" viewBox="0 0 24 24"><path d="M22 12l-20 12 7.289-12-7.289-12z"/></svg></span></a>
                       </span>
                   </span>';
 			echo '<span class="breadcrumbs_items_location">' . the_title() . '</span>';

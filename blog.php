@@ -8,74 +8,54 @@
 
         <section class="blog">
             <div class="blog_content">
+
+                <?php
+                //Определяем текущую страницу
+                $paged = get_query_var( 'paged' ) ? absint( get_query_var( 'paged' ) ) : 1;
+                $blog_query = new WP_Query(array(
+                    'post_type'     => 'post',
+                    'posts_per_page' => 6,
+                    'order'         => 'ASC',
+                    'paged' => $paged, // передаём текущую страницу сюда!
+                ));
+                while ($blog_query->have_posts()) :
+                    $blog_query->the_post();
+                ?>
+
                 <div class="blog_content_item">
                     <div class="blog_content_item_image">
-                        <a href="./single_blog.html"><img src="./img/photo_new_4.jpg" alt=""></a>
+                        <a href="<?php the_permalink() ; ?>">
+                            <img src="<?php echo get_the_post_thumbnail_url() ; ?>" alt="post image">
+                        </a>
                     </div>
                     <div class="blog_content_item_heading">
-                        <h3><a href="./single_blog.html">Новая статья</a></h3>
+                        <h3><a href="<?php the_permalink() ; ?>"><?php the_title() ; ?></a></h3>
                     </div>
                     <div class="blog_content_item_text">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, fugiat vel?</p>
+                        <p><?php echo kama_excerpt( array('maxchar'=>100) ); ?></p>
                     </div>
                 </div>
-                <div class="blog_content_item">
-                    <div class="blog_content_item_image">
-                        <a href="./single_blog.html"><img src="./img/photo_new_4.jpg" alt=""></a>
-                    </div>
-                    <div class="blog_content_item_heading">
-                        <h3><a href="./single_blog.html">Новая статья</a></h3>
-                    </div>
-                    <div class="blog_content_item_text">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, fugiat vel?</p>
-                    </div>
-                </div>
-                <div class="blog_content_item">
-                    <div class="blog_content_item_image">
-                        <a href="./single_blog.html"><img src="./img/photo_new_4.jpg" alt=""></a>
-                    </div>
-                    <div class="blog_content_item_heading">
-                        <h3><a href="./single_blog.html">Новая статья</a></h3>
-                    </div>
-                    <div class="blog_content_item_text">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, fugiat vel?</p>
-                    </div>
-                </div>
-                <div class="blog_content_item">
-                    <div class="blog_content_item_image">
-                        <a href="./single_blog.html"><img src="./img/photo_new_4.jpg" alt=""></a>
-                    </div>
-                    <div class="blog_content_item_heading">
-                        <h3><a href="./single_blog.html">Новая статья</a></h3>
-                    </div>
-                    <div class="blog_content_item_text">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, fugiat vel?</p>
-                    </div>
-                </div>
-                <div class="blog_content_item">
-                    <div class="blog_content_item_image">
-                        <a href="./single_blog.html"><img src="./img/photo_new_4.jpg" alt=""></a>
-                    </div>
-                    <div class="blog_content_item_heading">
-                        <h3><a href="./single_blog.html">Новая статья</a></h3>
-                    </div>
-                    <div class="blog_content_item_text">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, fugiat vel?</p>
-                    </div>
-                </div>
+                <?php
+                endwhile;
+                wp_reset_postdata();
+                ?>
             </div>
             <div class="blog_pagination container">
-                <ul class="blog_pagination_page_numbers">
-
-                    <li><a href="#">&#8249;</a></li>
-                    <li class="active_page_number"><span>1</span></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
-                    <li><a href="#">&#8250;</a></li>
-
-                </ul>
+                <?php
+                // пагинация для произвольного запроса
+                $big = 999999999; // уникальное число
+                echo paginate_links( array(
+                    'base'    => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ) /*. '#middle_blog'*/,
+                    'format'  => '?paged=%#%',
+                    'current' => max( 1, get_query_var('paged') ),
+                    'total'   => $blog_query->max_num_pages,
+                    'show_all' => true,
+                    'type' => 'list',
+                    'prev_next' => true,
+                    'prev_text' => '&#8249;',
+                    'next_text' => '&#8250;',
+                ) );
+                ?>
             </div>
         </section>
 
