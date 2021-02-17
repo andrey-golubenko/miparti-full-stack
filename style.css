@@ -11177,7 +11177,6 @@ section.contacts_visual .contacts_visual_form form.signUp_form .signUp_form_item
   font: normal 1.35rem/1.7 'Lora';
   color: #fff;
   text-align: left;
-
 }
 
 .search_no_results > .search_no_results_content > p:not(:first-child){
@@ -11186,12 +11185,41 @@ section.contacts_visual .contacts_visual_form form.signUp_form .signUp_form_item
 
 
 @media (min-width: 768px) {
-  .search_no_results > .search_no_results_content > .single_news_sideBar_search {
+  .search_no_results > .search_no_results_content > .single_news_sideBar_search,
+  .not_found_404 > .not_found_404_content > .single_news_sideBar_search {
     width: 60%;
     margin: 0 auto;
   }
 }
 
+.not_found_404 > .not_found_404_image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 4rem 0;
+}
+
+.not_found_404 > .not_found_404_image > svg#image_404 {
+  width: 50%;
+}
+
+.not_found_404 > .not_found_404_content {
+  margin-bottom: 3rem;
+}
+
+.not_found_404 > .not_found_404_content > h3 {
+  font: normal 2rem 'Lora';
+  color: #eac15a;
+  text-align: center;
+  margin: 5rem 0;
+}
+
+.not_found_404 > .not_found_404_content > h4 {
+  font: normal 1.35rem/1.7 'Lora';
+  color: #ccc;
+  text-align: left;
+  margin-left: 2.5rem;
+}
 
 .blog .blog_content .blog_content_item .blog_content_item_heading > h3 {
   display: -webkit-box;

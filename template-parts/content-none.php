@@ -6,7 +6,7 @@
  *
  */
 ?>
-<div class="search_no_results">
+<div class="search_no_results no_find">
 		<h3 class="search_no_results_heading"><?php esc_html_e( 'Ничего не найдено' ); ?></h3>
 	<div class="search_no_results_content container">
 		<?php

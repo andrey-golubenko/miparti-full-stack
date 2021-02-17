@@ -12,7 +12,7 @@
                 <div class="single_news_text">
                   <?php the_content() ; ?>
                 </div>
-                <div class="comments_form ">
+                <!--<div class="comments_form ">
                     <form class="signUp_form" style="background: url('./assets/images/bg_body.jpg') no-repeat top/cover; filter: brightness(150%);">
                         <p class="signUp_form_heading">Оставить комментарий</p>
                         <p class="signUp_form_note"><span>*</span> Обязательные для заполнения поля</p>
@@ -30,7 +30,7 @@
                         </div>
                     </form>
 
-                </div>
+                </div>-->
             </div>
         </div>
     </section>
