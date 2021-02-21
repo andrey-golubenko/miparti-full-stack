@@ -87,20 +87,19 @@ jQuery(function ($) {
         menuHeight = 50;
     }
 
-    // Fix MENU on a TOP
-    $(window).scroll(function () {
-        const scrolled = this.pageYOffset;
-        if(!componentMenu.hasClass('mobile_menu_open')) {
-            if (scrolled > menuHeight){
-                componentMenu.addClass('fixing_menu');
-            }
-            else {
-                componentMenu.removeClass('fixing_menu');
-            }
+    // Pix MENU on a TOP with passive event listener
+    const pinMenu = () => {
+        if (window.pageYOffset > menuHeight && !componentMenu.hasClass('mobile_menu_open')){
+            componentMenu.addClass('fixing_menu');
         }
-    });
+        else {
+            componentMenu.removeClass('fixing_menu');
+        }
+    };
+    pinMenu();
+    window.addEventListener('scroll', pinMenu, {passive: true});
 
-    // Hover For MENU and DROP-DOWN Sub-Menu only if screen size more than 1024px includes
+    // Hover For DROP-DOWN Sub-Menu in COMMON MENU only if screen size more than 1024px includes
     if (mediaQueryHoverMenu.matches) {
         $('.nav_menu ul li.nav_link a p, .nav_menu ul li.nav_link a .nav_link_pin').mouseenter(function (e) {
             const currLink = $(e.target.closest('li.nav_link'));

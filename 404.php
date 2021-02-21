@@ -42,10 +42,5 @@ get_header();
             get_search_form();
             ?>
         </div>
-
     </div>
-
-
-
-
 <?php get_footer();

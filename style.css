@@ -960,7 +960,7 @@ div#wrapper div.front_wrapper div.interactive_studio {
   animation: interactive_studio_move 2s ease-in-out .3s forwards;
 }
 
-div#wrapper div.front_wrapper div.interactive_studio .interactive_school_wrapper, div#wrapper div.front_wrapper div.interactive_studio .interactive_studio_wrapper {
+div#wrapper div.front_wrapper div.interactive_studio .interactive_school_inner, div#wrapper div.front_wrapper div.interactive_studio .interactive_studio_inner {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -980,7 +980,7 @@ div#wrapper div.front_wrapper div.interactive_studio .interactive_school_wrapper
   flex-direction: column;
 }
 
-div#wrapper div.front_wrapper div.interactive_studio .interactive_school_wrapper a.direction_item, div#wrapper div.front_wrapper div.interactive_studio .interactive_studio_wrapper a.direction_item {
+div#wrapper div.front_wrapper div.interactive_studio .interactive_school_inner a.direction_item, div#wrapper div.front_wrapper div.interactive_studio .interactive_studio_inner a.direction_item {
   display: inline-block;
   position: relative;
   left: -10%;
@@ -992,14 +992,14 @@ div#wrapper div.front_wrapper div.interactive_studio .interactive_school_wrapper
 }
 
 @media (min-width: 1024px) {
-  div#wrapper div.front_wrapper div.interactive_studio .interactive_school_wrapper a.direction_item:hover, div#wrapper div.front_wrapper div.interactive_studio .interactive_studio_wrapper a.direction_item:hover {
+  div#wrapper div.front_wrapper div.interactive_studio .interactive_school_inner a.direction_item:hover, div#wrapper div.front_wrapper div.interactive_studio .interactive_studio_inner a.direction_item:hover {
     padding: 3px 10px;
     border-radius: 100px;
     color: #FFE15D;
   }
 }
 
-div#wrapper div.front_wrapper div.interactive_studio .interactive_school_wrapper a.direction_item > p, div#wrapper div.front_wrapper div.interactive_studio .interactive_studio_wrapper a.direction_item > p {
+div#wrapper div.front_wrapper div.interactive_studio .interactive_school_inner a.direction_item > p, div#wrapper div.front_wrapper div.interactive_studio .interactive_studio_inner a.direction_item > p {
   display: inline-block;
   line-height: 1;
   text-shadow: -0   -1px 0 #000000,
@@ -1020,7 +1020,7 @@ div#wrapper div.front_wrapper div.interactive_studio .interactive_school_wrapper
   1px  1px 0 #000000;
 }
 
-div#wrapper div.front_wrapper div.interactive_studio .interactive_school_wrapper a.direction_item > hr, div#wrapper div.front_wrapper div.interactive_studio .interactive_studio_wrapper a.direction_item > hr {
+div#wrapper div.front_wrapper div.interactive_studio .interactive_school_inner a.direction_item > hr, div#wrapper div.front_wrapper div.interactive_studio .interactive_studio_inner a.direction_item > hr {
   background: #eac15a;
   border: 0;
   height: 2.2px;
@@ -1072,7 +1072,7 @@ div#wrapper div.front_wrapper div.interactive_school {
   animation: interactive_school_move 2s ease-in-out .3s forwards;
 }
 
-div#wrapper div.front_wrapper div.interactive_school .interactive_school_wrapper, div#wrapper div.front_wrapper div.interactive_school .interactive_studio_wrapper {
+div#wrapper div.front_wrapper div.interactive_school .interactive_school_inner, div#wrapper div.front_wrapper div.interactive_school .interactive_studio_inner {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1092,7 +1092,7 @@ div#wrapper div.front_wrapper div.interactive_school .interactive_school_wrapper
   flex-direction: column;
 }
 
-div#wrapper div.front_wrapper div.interactive_school .interactive_school_wrapper a.direction_item, div#wrapper div.front_wrapper div.interactive_school .interactive_studio_wrapper a.direction_item {
+div#wrapper div.front_wrapper div.interactive_school .interactive_school_inner a.direction_item, div#wrapper div.front_wrapper div.interactive_school .interactive_studio_inner a.direction_item {
   display: inline-block;
   position: relative;
   left: -10%;
@@ -1104,14 +1104,14 @@ div#wrapper div.front_wrapper div.interactive_school .interactive_school_wrapper
 }
 
 @media (min-width: 1024px) {
-  div#wrapper div.front_wrapper div.interactive_school .interactive_school_wrapper a.direction_item:hover, div#wrapper div.front_wrapper div.interactive_school .interactive_studio_wrapper a.direction_item:hover {
+  div#wrapper div.front_wrapper div.interactive_school .interactive_school_inner a.direction_item:hover, div#wrapper div.front_wrapper div.interactive_school .interactive_studio_inner a.direction_item:hover {
     padding: 3px 10px;
     border-radius: 100px;
     color: #FFE15D;
   }
 }
 
-div#wrapper div.front_wrapper div.interactive_school .interactive_school_wrapper a.direction_item > p, div#wrapper div.front_wrapper div.interactive_school .interactive_studio_wrapper a.direction_item > p {
+div#wrapper div.front_wrapper div.interactive_school .interactive_school_inner a.direction_item > p, div#wrapper div.front_wrapper div.interactive_school .interactive_studio_inner a.direction_item > p {
   display: inline-block;
   line-height: 1;
   text-shadow: -0   -1px 0 #000000,
@@ -1132,7 +1132,7 @@ div#wrapper div.front_wrapper div.interactive_school .interactive_school_wrapper
   1px  1px 0 #000000;
 }
 
-div#wrapper div.front_wrapper div.interactive_school .interactive_school_wrapper a.direction_item > hr, div#wrapper div.front_wrapper div.interactive_school .interactive_studio_wrapper a.direction_item > hr {
+div#wrapper div.front_wrapper div.interactive_school .interactive_school_inner a.direction_item > hr, div#wrapper div.front_wrapper div.interactive_school .interactive_studio_inner a.direction_item > hr {
   background: #eac15a;
   border: 0;
   height: 2.2px;
@@ -1159,7 +1159,7 @@ div#wrapper div.front_wrapper div.interactive_school .interactive_school_wrapper
   }
 }
 
-div#wrapper div.front_wrapper div.interactive_school .interactive_school_wrapper a.direction_item {
+div#wrapper div.front_wrapper div.interactive_school .interactive_school_inner a.direction_item {
   position: relative;
   left: 9%;
 }
@@ -1757,7 +1757,7 @@ div.mobile_front_wrapper div.interactive_studio {
   animation: interactive_studio_move 2s ease-in-out .3s forwards;
 }
 
-div.mobile_front_wrapper div.interactive_studio .interactive_school_wrapper, div.mobile_front_wrapper div.interactive_studio .interactive_studio_wrapper {
+div.mobile_front_wrapper div.interactive_studio .interactive_school_inner, div.mobile_front_wrapper div.interactive_studio .interactive_studio_inner {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1777,7 +1777,7 @@ div.mobile_front_wrapper div.interactive_studio .interactive_school_wrapper, div
   flex-direction: column;
 }
 
-div.mobile_front_wrapper div.interactive_studio .interactive_school_wrapper a.direction_item, div.mobile_front_wrapper div.interactive_studio .interactive_studio_wrapper a.direction_item {
+div.mobile_front_wrapper div.interactive_studio .interactive_school_inner a.direction_item, div.mobile_front_wrapper div.interactive_studio .interactive_studio_inner a.direction_item {
   display: inline-block;
   position: relative;
   left: -10%;
@@ -1789,14 +1789,14 @@ div.mobile_front_wrapper div.interactive_studio .interactive_school_wrapper a.di
 }
 
 @media (min-width: 1024px) {
-  div.mobile_front_wrapper div.interactive_studio .interactive_school_wrapper a.direction_item:hover, div.mobile_front_wrapper div.interactive_studio .interactive_studio_wrapper a.direction_item:hover {
+  div.mobile_front_wrapper div.interactive_studio .interactive_school_inner a.direction_item:hover, div.mobile_front_wrapper div.interactive_studio .interactive_studio_inner a.direction_item:hover {
     padding: 3px 10px;
     border-radius: 100px;
     color: #FFE15D;
   }
 }
 
-div.mobile_front_wrapper div.interactive_studio .interactive_school_wrapper a.direction_item > p, div.mobile_front_wrapper div.interactive_studio .interactive_studio_wrapper a.direction_item > p {
+div.mobile_front_wrapper div.interactive_studio .interactive_school_inner a.direction_item > p, div.mobile_front_wrapper div.interactive_studio .interactive_studio_inner a.direction_item > p {
   display: inline-block;
   line-height: 1;
   text-shadow: -0   -1px 0 #000000,
@@ -1817,7 +1817,7 @@ div.mobile_front_wrapper div.interactive_studio .interactive_school_wrapper a.di
   1px  1px 0 #000000;
 }
 
-div.mobile_front_wrapper div.interactive_studio .interactive_school_wrapper a.direction_item > hr, div.mobile_front_wrapper div.interactive_studio .interactive_studio_wrapper a.direction_item > hr {
+div.mobile_front_wrapper div.interactive_studio .interactive_school_inner a.direction_item > hr, div.mobile_front_wrapper div.interactive_studio .interactive_studio_inner a.direction_item > hr {
   background: #eac15a;
   border: 0;
   height: 2.2px;
@@ -1835,7 +1835,7 @@ div.mobile_front_wrapper div.interactive_studio .interactive_school_wrapper a.di
   }
 }
 
-div.mobile_front_wrapper div.interactive_studio .interactive_studio_wrapper a.direction_item {
+div.mobile_front_wrapper div.interactive_studio .interactive_studio_inner a.direction_item {
   display: inline-block;
   text-align: center;
   font-size: 1rem !important;
@@ -1843,18 +1843,18 @@ div.mobile_front_wrapper div.interactive_studio .interactive_studio_wrapper a.di
 }
 
 @media (min-width: 768px) {
-  div.mobile_front_wrapper div.interactive_studio .interactive_studio_wrapper a.direction_item {
+  div.mobile_front_wrapper div.interactive_studio .interactive_studio_inner a.direction_item {
     font-size: 1.9rem !important;
   }
 }
 
-div.mobile_front_wrapper div.interactive_studio .interactive_studio_wrapper a.direction_item > p {
+div.mobile_front_wrapper div.interactive_studio .interactive_studio_inner a.direction_item > p {
   display: inline;
   -webkit-filter: brightness(150%);
   filter: brightness(150%);
 }
 
-div.mobile_front_wrapper div.interactive_studio .interactive_studio_wrapper a.direction_item > hr {
+div.mobile_front_wrapper div.interactive_studio .interactive_studio_inner a.direction_item > hr {
   height: 2px;
   -webkit-filter: brightness(150%);
   filter: brightness(150%);
@@ -1888,7 +1888,7 @@ div.mobile_front_wrapper div.interactive_school {
   animation: interactive_school_move 2s ease-in-out .3s forwards;
 }
 
-div.mobile_front_wrapper div.interactive_school .interactive_school_wrapper, div.mobile_front_wrapper div.interactive_school .interactive_studio_wrapper {
+div.mobile_front_wrapper div.interactive_school .interactive_school_inner, div.mobile_front_wrapper div.interactive_school .interactive_studio_inner {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1908,7 +1908,7 @@ div.mobile_front_wrapper div.interactive_school .interactive_school_wrapper, div
   flex-direction: column;
 }
 
-div.mobile_front_wrapper div.interactive_school .interactive_school_wrapper a.direction_item, div.mobile_front_wrapper div.interactive_school .interactive_studio_wrapper a.direction_item {
+div.mobile_front_wrapper div.interactive_school .interactive_school_inner a.direction_item, div.mobile_front_wrapper div.interactive_school .interactive_studio_inner a.direction_item {
   display: inline-block;
   position: relative;
   left: -10%;
@@ -1920,14 +1920,14 @@ div.mobile_front_wrapper div.interactive_school .interactive_school_wrapper a.di
 }
 
 @media (min-width: 1024px) {
-  div.mobile_front_wrapper div.interactive_school .interactive_school_wrapper a.direction_item:hover, div.mobile_front_wrapper div.interactive_school .interactive_studio_wrapper a.direction_item:hover {
+  div.mobile_front_wrapper div.interactive_school .interactive_school_inner a.direction_item:hover, div.mobile_front_wrapper div.interactive_school .interactive_studio_inner a.direction_item:hover {
     padding: 3px 10px;
     border-radius: 100px;
     color: #FFE15D;
   }
 }
 
-div.mobile_front_wrapper div.interactive_school .interactive_school_wrapper a.direction_item > p, div.mobile_front_wrapper div.interactive_school .interactive_studio_wrapper a.direction_item > p {
+div.mobile_front_wrapper div.interactive_school .interactive_school_inner a.direction_item > p, div.mobile_front_wrapper div.interactive_school .interactive_studio_inner a.direction_item > p {
   display: inline-block;
   line-height: 1;
   text-shadow: -0   -1px 0 #000000,
@@ -1948,7 +1948,7 @@ div.mobile_front_wrapper div.interactive_school .interactive_school_wrapper a.di
   1px  1px 0 #000000;
 }
 
-div.mobile_front_wrapper div.interactive_school .interactive_school_wrapper a.direction_item > hr, div.mobile_front_wrapper div.interactive_school .interactive_studio_wrapper a.direction_item > hr {
+div.mobile_front_wrapper div.interactive_school .interactive_school_inner a.direction_item > hr, div.mobile_front_wrapper div.interactive_school .interactive_studio_inner a.direction_item > hr {
   background: #eac15a;
   border: 0;
   height: 2.2px;
@@ -1966,7 +1966,7 @@ div.mobile_front_wrapper div.interactive_school .interactive_school_wrapper a.di
   }
 }
 
-div.mobile_front_wrapper div.interactive_school .interactive_school_wrapper a.direction_item {
+div.mobile_front_wrapper div.interactive_school .interactive_school_inner a.direction_item {
   display: inline-block;
   text-align: center;
   font-size: 1rem !important;
@@ -1974,18 +1974,18 @@ div.mobile_front_wrapper div.interactive_school .interactive_school_wrapper a.di
 }
 
 @media (min-width: 768px) {
-  div.mobile_front_wrapper div.interactive_school .interactive_school_wrapper a.direction_item {
+  div.mobile_front_wrapper div.interactive_school .interactive_school_inner a.direction_item {
     font-size: 1.9rem !important;
   }
 }
 
-div.mobile_front_wrapper div.interactive_school .interactive_school_wrapper a.direction_item > p {
+div.mobile_front_wrapper div.interactive_school .interactive_school_inner a.direction_item > p {
   display: inline;
   -webkit-filter: brightness(150%);
   filter: brightness(150%);
 }
 
-div.mobile_front_wrapper div.interactive_school .interactive_school_wrapper a.direction_item > hr {
+div.mobile_front_wrapper div.interactive_school .interactive_school_inner a.direction_item > hr {
   height: 2px;
   -webkit-filter: brightness(150%);
   filter: brightness(150%);
@@ -3166,7 +3166,7 @@ footer .footer_wrapper .footer_wrapper_col .footer_wrapper_col_widget .footer_wr
   position: relative;
 }
 
-footer .footer_wrapper .footer_wrapper_col .footer_wrapper_col_widget .opening_hours > h4 {
+footer .footer_wrapper .footer_wrapper_col .footer_wrapper_col_widget .opening_hours > h3 {
   color: #eac15a;
   font-size: 1.25rem;
   font-style: italic;
@@ -11162,65 +11162,6 @@ section.contacts_visual .contacts_visual_form form.signUp_form .signUp_form_item
   margin-top: 2.25rem;
 }
 
-.search_no_results > h3.search_no_results_heading {
-  font: normal 2rem 'Lora';
-  color: #fff;
-  text-align: center;
-  margin-bottom: 3rem;
-}
-
-.search_no_results > .search_no_results_content {
-  margin-bottom: 4rem;
-}
-
-.search_no_results > .search_no_results_content > p {
-  font: normal 1.35rem/1.7 'Lora';
-  color: #fff;
-  text-align: left;
-}
-
-.search_no_results > .search_no_results_content > p:not(:first-child){
-  margin-bottom: 4rem;
-}
-
-
-@media (min-width: 768px) {
-  .search_no_results > .search_no_results_content > .single_news_sideBar_search,
-  .not_found_404 > .not_found_404_content > .single_news_sideBar_search {
-    width: 60%;
-    margin: 0 auto;
-  }
-}
-
-.not_found_404 > .not_found_404_image {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 4rem 0;
-}
-
-.not_found_404 > .not_found_404_image > svg#image_404 {
-  width: 50%;
-}
-
-.not_found_404 > .not_found_404_content {
-  margin-bottom: 3rem;
-}
-
-.not_found_404 > .not_found_404_content > h3 {
-  font: normal 2rem 'Lora';
-  color: #eac15a;
-  text-align: center;
-  margin: 5rem 0;
-}
-
-.not_found_404 > .not_found_404_content > h4 {
-  font: normal 1.35rem/1.7 'Lora';
-  color: #ccc;
-  text-align: left;
-  margin-left: 2.5rem;
-}
-
 .blog .blog_content .blog_content_item .blog_content_item_heading > h3 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -12337,4 +12278,65 @@ section.about .common_description .common_description_item .common_description_t
 
 section.about .common_description .common_description_item .common_description_text_full:first-letter {
   font: inherit;
+}
+
+/*** SEARCH-page and 404-page ***/
+
+
+.search_no_results > h3.search_no_results_heading {
+  font: normal 2rem 'Lora';
+  color: #fff;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.search_no_results > .search_no_results_content {
+  margin-bottom: 4rem;
+}
+
+.search_no_results > .search_no_results_content > p {
+  font: normal 1.35rem/1.7 'Lora';
+  color: #fff;
+  text-align: left;
+}
+
+.search_no_results > .search_no_results_content > p:not(:first-child){
+  margin-bottom: 4rem;
+}
+
+@media (min-width: 768px) {
+  .search_no_results > .search_no_results_content > .single_news_sideBar_search,
+  .not_found_404 > .not_found_404_content > .single_news_sideBar_search {
+    width: 60%;
+    margin: 0 auto;
+  }
+}
+
+.not_found_404 > .not_found_404_image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 4rem 0;
+}
+
+.not_found_404 > .not_found_404_image > svg#image_404 {
+  width: 50%;
+}
+
+.not_found_404 > .not_found_404_content {
+  margin-bottom: 3rem;
+}
+
+.not_found_404 > .not_found_404_content > h3 {
+  font: normal 2rem 'Lora';
+  color: #eac15a;
+  text-align: center;
+  margin: 5rem 0;
+}
+
+.not_found_404 > .not_found_404_content > h4 {
+  font: normal 1.35rem/1.7 'Lora';
+  color: #ccc;
+  text-align: left;
+  margin-left: 2.5rem;
 }

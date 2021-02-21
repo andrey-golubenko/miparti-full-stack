@@ -3,7 +3,7 @@
 <head>
     <meta <?php bloginfo('charset'); ?>>
     <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+          content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>MIPARTI</title>
     <?php wp_head(); ?>
@@ -66,7 +66,7 @@
                     </div>
                 </section>
                 <div class="interactive_studio">
-                    <div class="interactive_studio_wrapper">
+                    <div class="interactive_studio_inner">
                         <a class="direction_item" href="<?php echo home_url() . '/studio' ; ?>">
                             <p>ШОУ-БАЛЕТ</p>
                             <hr>
@@ -75,7 +75,7 @@
 
                 </div>
                 <div class="interactive_school">
-                    <div class="interactive_school_wrapper">
+                    <div class="interactive_school_inner">
                         <a class="direction_item" href="<?php echo home_url() . '/school' ; ?> ">
                             <p>ШКОЛА ТАНЦА</p>
                             <hr>
@@ -137,7 +137,7 @@
                     </div>
                 </section>
                 <div class="interactive_studio">
-                    <div class="interactive_studio_wrapper">
+                    <div class="interactive_studio_inner">
                         <a class="direction_item" href="<?php echo home_url() . '/studio' ; ?>">
                             <p>ШОУ-БАЛЕТ</p>
                             <hr>
@@ -148,7 +148,7 @@
                     </div>
                 </div>
                 <div class="interactive_school">
-                    <div class="interactive_school_wrapper">
+                    <div class="interactive_school_inner">
                         <a class="direction_item" href="<?php echo home_url() . '/school' ; ?>">
                             <p>ШКОЛА ТАНЦА</p>
                             <hr>
