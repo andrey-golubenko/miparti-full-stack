@@ -74,7 +74,6 @@ add_filter('show_admin_bar', '__return_false');
 add_action( 'admin_enqueue_scripts', function(){
     wp_enqueue_style('miparti-admin-custom-fields-styles', MIPARTI_CSS_DIR . '/admin_custom_fields.css');
     wp_enqueue_script('miparti-admin-custom-fields-scripts', MIPARTI_JS_DIR . '/admin_custom_fields.js', array('jquery'), false, true);
-
 }, 99 );
 /**** Подключаем СТИЛИ и СКРИПТЫ в ШАБЛОНЫ ****/
 add_action('wp_enqueue_scripts', 'miparti_media' );
@@ -92,12 +91,12 @@ function miparti_media (){
 
     wp_enqueue_style('miparti-styles', get_stylesheet_uri());
 
-    /** Оставляем JQ (джейквери) вшитую в WP. JQ и jQ-migrate, которые идут с вёрсткой удаляем, чтобы не было конфликта с плагином (jQ-form) при отправке писем из формы обратной связи. **/
+    /*** Оставляем JQ (джейквери) вшитую в WP. JQ и jQ-migrate ***/
     wp_enqueue_script( 'jquery');
 
     /*
      *
-     * DIFFERENT STYLES FOR DIFFERENT PAGES
+     * DIFFERENT SCRIPTS FOR DIFFERENT PAGES
      *
      */
 
@@ -115,13 +114,15 @@ function miparti_media (){
         );
     }
 
+    /*for comments
     if( is_singular() && comments_open() && (get_option('thread_comments') == 1) ) {
         wp_enqueue_script('comment-reply', '', ['jquery'], '', true);
-    }
+    }*/
 
     wp_enqueue_script('miparti-main', MIPARTI_JS_DIR . '/main.js', [], null, true);
 
-        /*        wp_enqueue_script( 'miparti-comments', MIPARTI_JS_DIR . '/comments.js', ['jquery'], null, true );*/
+    /*for comments
+    wp_enqueue_script( 'miparti-comments', MIPARTI_JS_DIR . '/comments.js', ['jquery'], null, true );*/
 
 
     //ОТЛЮЧАЕМ Скрипты из header  и ПЕРЕПОДКЛЮЧАЕМ ИХ В footer

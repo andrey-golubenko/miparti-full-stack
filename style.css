@@ -940,7 +940,7 @@ div#wrapper div.front_wrapper div.interactive_studio {
   z-index: 5;
   background: rgba(255, 255, 255, 0.5);
   width: 350px;
-  height: 450px;
+  min-height: 450px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1052,7 +1052,7 @@ div#wrapper div.front_wrapper div.interactive_school {
   z-index: 5;
   background: rgba(255, 255, 255, 0.5);
   width: 350px;
-  height: 450px;
+  min-height: 450px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1174,10 +1174,10 @@ div.mobile_front_wrapper {
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
 }
 
 div.mobile_front_wrapper section.mobile_front_menu {
@@ -1734,8 +1734,6 @@ div.mobile_front_wrapper div.interactive_studio {
   position: absolute;
   z-index: 5;
   background: rgba(255, 255, 255, 0.5);
-  width: 350px;
-  height: 450px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1750,7 +1748,7 @@ div.mobile_front_wrapper div.interactive_studio {
   align-items: center;
   left: -100%;
   width: 50%;
-  height: 55%;
+  height: 86%;
   -webkit-clip-path: polygon(0 0, 0% 100%, 100% 50%);
   clip-path: polygon(0 0, 0% 100%, 100% 50%);
   -webkit-animation: interactive_studio_move 2s ease-in-out .3s forwards;
@@ -1865,8 +1863,6 @@ div.mobile_front_wrapper div.interactive_school {
   position: absolute;
   z-index: 5;
   background: rgba(255, 255, 255, 0.5);
-  width: 350px;
-  height: 450px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1881,7 +1877,7 @@ div.mobile_front_wrapper div.interactive_school {
   align-items: center;
   right: -100%;
   width: 50%;
-  height: 55%;
+  height: 86%;
   -webkit-clip-path: polygon(100% 0, 0 50%, 100% 100%);
   clip-path: polygon(100% 0, 0 50%, 100% 100%);
   -webkit-animation: interactive_school_move 2s ease-in-out .3s forwards;
@@ -3521,7 +3517,7 @@ section.transforming_planets .transforming_planets_content {
   -ms-flex-align: center;
   align-items: center;
   width: 100%;
-  height: 600px;
+  padding: 222px 0;
   position: relative;
 }
 
@@ -3538,13 +3534,13 @@ section.transforming_planets .transforming_planets_content {
     -webkit-transform: scale(0.71) translateX(2rem);
     -ms-transform: scale(0.71) translateX(2rem);
     transform: scale(0.71) translateX(2rem);
-    height: 400px;
+   padding: 400px 0;
   }
 }
 
 @media (max-width: 767px) {
   section.transforming_planets .transforming_planets_content {
-    height: 1300px;
+   padding: 650px 0;
   }
 }
 
@@ -5890,15 +5886,7 @@ section.world_map .whole_map #indicator .indicator_inner .indicator_inner_countr
 }
 
 .studio_videos .videos_item {
-  margin: 0 4% 7rem;
-}
-
-.studio_videos .videos_item:last-child {
-  margin: 0 4% 2rem;
-}
-
-.studio_videos .videos_item:first-child {
-  margin: 5rem 4% 7rem;
+  margin: 4rem 2% 6rem;
 }
 
 @media (max-width: 767px) {
@@ -5953,7 +5941,7 @@ section.world_map .whole_map #indicator .indicator_inner .indicator_inner_countr
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  width: 59%;
+  width: 65%;
 }
 
 @media (max-width: 1124px) {
@@ -5974,7 +5962,7 @@ section.world_map .whole_map #indicator .indicator_inner .indicator_inner_countr
 }
 
 .studio_videos .videos_item .videos_item_wrapper .videos_item_content .videos_item_content_video {
-  width: 74%;
+  width: 73%;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -5995,7 +5983,7 @@ section.world_map .whole_map #indicator .indicator_inner .indicator_inner_countr
 
 .studio_videos .videos_item .videos_item_wrapper .videos_item_content .videos_item_content_video .videos_item_content_video_inner {
   width: 100%;
-  height: 335px;
+  min-height: 335px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -6171,7 +6159,7 @@ section.world_map .whole_map #indicator .indicator_inner .indicator_inner_countr
 }
 
 .studio_videos .videos_item .videos_item_wrapper .videos_item_content .videos_item_content_images {
-  width: 26%;
+  width: 27%;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -6244,7 +6232,7 @@ section.world_map .whole_map #indicator .indicator_inner .indicator_inner_countr
   }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
   .studio_videos .videos_item .videos_item_wrapper .videos_item_content .videos_item_content_images a.videos_item_content_images_single {
     margin: 0 .3rem .6rem;
   }
@@ -6287,11 +6275,10 @@ section.world_map .whole_map #indicator .indicator_inner .indicator_inner_countr
 .studio_videos .videos_item .videos_item_wrapper .videos_item_description {
   font: normal 1.3rem/1.5 'Lora';
   color: #fff;
-  margin: 0 3% 1rem;
   text-align: left;
-  margin: 0 0 0 3%;
+  margin: 0 0 0 1%;
   display: block;
-  width: 39%;
+  width: 34.5%;
 }
 
 @media (max-width: 479px) {
