@@ -6,6 +6,9 @@
           content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>MIPARTI</title>
+    <link rel="preload" href="<?php echo MIPARTI_THEM_ROOT . '/assets/fonts/Lora-Regular.woff2'?>" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="<?php echo MIPARTI_JS_DIR . '/modules/module_adaptive_slider.js'?>" as="script" crossorigin="anonymous">
+    <link rel="preload" href="<?php echo MIPARTI_JS_DIR . '/modules/module_video_item.js'?>" as="script" crossorigin="anonymous">
     <?php wp_head(); ?>
 </head>
 <body>
