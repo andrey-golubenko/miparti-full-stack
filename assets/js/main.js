@@ -160,6 +160,7 @@ jQuery(function ($) {
     const mobMenuMediaQuery = window.matchMedia('(max-width: 1023px)');
     if (mobMenuMediaQuery.matches){
         $('.nav_link_pin').click(function (e) {
+            e.stopPropagation(); // to disable triggering '<a>', the element clicked is in
             const currentMenuPoint = $(e.target.closest('li.nav_link'));
             const changeArrowClass = currentMenuPoint.find('.nav_link_pin');
             changeArrowClass.toggleClass('arrow_state_change');
@@ -489,10 +490,4 @@ jQuery(function ($) {
 
 /************************************************************************************/
 /************************************************************************************/
-
-
-
-
-
-
 });

@@ -107,23 +107,6 @@ input:focus::-webkit-input-placeholder {
   color: #ebedec;
 }
 
-/*@media*/
-/* @media (min-width: 1921px){} 													QHD \ UHD
-@media (min-width: 1600px) and (max-width: 1919px) {}	HD +
-@media (min-width: 1440px) and (max-width: 1599px) {}	macbook
-@media (min-width: 1360px) and (max-width: 1439px) {}	HD
-@media (min-width: 1280px) and (max-width: 1359px) {} IPAD2
-@media (min-width: 1024px) and (max-width: 1279px) {} IPAD
-@media (min-width: 896px) and (max-width: 1023px) {}	Ip Xs max horizontal
-@media (min-width: 812px) and (max-width: 895px) {}		Ip Xs horizontal
-@media (min-width: 768px) and (max-width: 811px) {}		Tablet
-@media (min-width: 736px) and (max-width: 767px) {}		Ip 6,7,8 Plus horizontal
-@media (min-width: 667px) and (max-width: 735px) {}		Ip 6,7,8 horizontal
-@media (min-width: 568px) and (max-width: 666px) {}		Ip 5 horizontal
-@media (min-width: 480px) and (max-width: 567px) {}		Ip 4 horizontal
-@media (min-width: 414px) and (max-width: 479px) {}		Ip 6,7,8
-@media (min-width: 320px) and (max-width: 413px) {}		Ip 4,5 */
-/*@media end*/
 /* Slider */
 .slick-slider {
   position: relative;
@@ -1413,10 +1396,6 @@ div.mobile_front_wrapper section.mobile_front_menu .head_menu nav.nav_menu > ul 
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-  -ms-flex-align: center;
-  align-items: center;
   height: 100%;
   -webkit-box-align: start;
   -webkit-align-items: flex-start;
@@ -1466,10 +1445,6 @@ div.mobile_front_wrapper section.mobile_front_menu .head_menu nav.nav_menu > ul 
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
   -webkit-box-align: center;
   -webkit-align-items: center;
   -ms-flex-align: center;
@@ -2024,9 +1999,7 @@ section.front_content > .btn_push_wrapper {
 }
 
 section.front_content > .btn_push_wrapper button.push {
-  background-color: transparent;
   color: #e6e6e6;
-  border: .5px solid grey;
   border-radius: 10px;
   padding: 10px 20px;
   font: .9rem 'Lora';
@@ -2067,7 +2040,6 @@ section.front_content > .btn_push_wrapper button.push {
   align-items: center;
   -webkit-backdrop-filter: blur(5px);
   backdrop-filter: blur(5px);
-  /* Размываем фон */
   background: rgba(255, 255, 255, 0.2);
   border: 1px solid grey;
 }
@@ -2148,7 +2120,6 @@ section.front_content > .front_nav_menu nav.front_nav_menu_content {
   clip-path: polygon(50% 100%, 0 0, 100% 0);
   -webkit-backdrop-filter: blur(4px);
   backdrop-filter: blur(4px);
-  /* Размываем фон */
   background: rgba(225, 225, 225, 0.4);
 }
 
@@ -3358,7 +3329,6 @@ section.transforming_planets .common_description .common_description_item .commo
   color: #fff;
   margin: 0 3% 1rem;
   text-align: left;
-  text-align: left;
 }
 
 @media (max-width: 479px) {
@@ -3390,10 +3360,7 @@ section.transforming_planets .common_description .common_description_item .commo
 }
 
 section.transforming_planets .common_description .common_description_item .common_description_text_readMore .common_description_text_note {
-  font: normal 1.3rem/1.5 'Lora';
-  color: #fff;
   margin: 0 3% 1rem;
-  text-align: left;
   font: italic 1.1rem 'Lora';
   color: #eac15a;
   margin-left: auto;
@@ -3561,9 +3528,8 @@ section.transforming_planets .transforming_planets_content div#content_spheres >
 section.transforming_planets .transforming_planets_content div#content_spheres > a .content_spheres_center_image {
   width: 100%;
   height: 100%;
-  border: 1px solid #eac15a;
+  border: 1px solid transparent;
   border-radius: 50%;
-  border-color: transparent;
   background: #000;
   -webkit-box-shadow: 0 0 70px 17px #eac15a;
   box-shadow: 0 0 70px 17px #eac15a;
@@ -5278,7 +5244,6 @@ section.world_map .common_description .common_description_item .common_descripti
   color: #fff;
   margin: 0 3% 1rem;
   text-align: left;
-  text-align: left;
 }
 
 @media (max-width: 479px) {
@@ -5310,10 +5275,7 @@ section.world_map .common_description .common_description_item .common_descripti
 }
 
 section.world_map .common_description .common_description_item .common_description_text_readMore .common_description_text_note {
-  font: normal 1.3rem/1.5 'Lora';
-  color: #fff;
   margin: 0 3% 1rem;
-  text-align: left;
   font: italic 1.1rem 'Lora';
   color: #eac15a;
   margin-left: auto;
@@ -5416,10 +5378,6 @@ section.world_map .common_description .common_description_item .open_full_text .
 }
 
 section.world_map .world_map_countries {
-  width: 150px;
-  min-height: 150px;
-  background: transparent;
-  position: absolute;
   z-index: 20;
   color: #000;
   border-radius: 10px;
@@ -5723,61 +5681,6 @@ section.world_map .whole_map #indicator .indicator_inner .indicator_inner_countr
   }
 }
 
-/*
-								/!* BIG_COUNTRIES *!/
-
-#russia:hover, #all_canada:hover, #all_usa:hover, #china:hover {
-	//fill: #4e6ab3 !important;
-	transform-origin: center;
-	transform-box:fill-box;
-	animation: charge_big 500ms ease;
-	transform: scale(1.5);
-}
-@keyframes charge_big {
-	0% {
-		transform: scale(1);
-	}
-	100% {
-		transform: scale(1.5);
-	}
-}
-
-								/!* MIDDLE_COUNTRIES *!/
-
-#egypt:hover, #india:hover {
-	//fill: $svg-hover-fill !important;
-	transform-origin: center;
-	transform-box:fill-box;
-	animation: charge_middle 500ms ease;
-	transform: scale(3);
-
-}
-@keyframes charge_middle {
-	0% {
-		transform: scale(1);
-	}
-	100% {
-		transform: scale(3);
-	}
-}
-
-								/!* LITTLE_COUNTRIES *!/
-
-#emirates:hover, #oman:hover, #turkey:hover, !*#vietnam:hover,*! #thailand:hover, #belgium:hover, #bulgaria:hover, #uk:hover, #hungary:hover, #germany:hover, #spain:hover, #all_italy:hover, #netherlands:hover, #poland:hover, #portugal:hover, #slovakia:hover, #ukraine:hover, #all_france:hover, #czech:hover, #all_bahamas:hover, #st_vincent_barbados:hover, #haiti_dominican_border:hover, #panama:hover, #ulster:hover {
-	//fill: $svg-hover-fill !important;
-	transform-origin: center;
-	transform-box:fill-box;
-	animation: charge_little 500ms ease;
-	transform: scale(4);
-}
-@keyframes charge_little {
-	0% {
-		transform: scale(1);
-	}
-	100% {
-		transform: scale(4);
-	}
-}*/
 #move_to_popup {
   display: -webkit-box;
   display: -webkit-flex;
@@ -5882,7 +5785,6 @@ section.world_map .whole_map #indicator .indicator_inner .indicator_inner_countr
 .studio_videos {
   display: block;
   margin-top: 3rem;
-  /*** ONE ITEM ***/
 }
 
 .studio_videos .videos_item {
@@ -5941,7 +5843,7 @@ section.world_map .whole_map #indicator .indicator_inner .indicator_inner_countr
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  width: 65%;
+  width: 58%;
 }
 
 @media (max-width: 1124px) {
@@ -6276,9 +6178,9 @@ section.world_map .whole_map #indicator .indicator_inner .indicator_inner_countr
   font: normal 1.3rem/1.5 'Lora';
   color: #fff;
   text-align: left;
-  margin: 0 0 0 1%;
+  margin: 0 0 0 2%;
   display: block;
-  width: 34.5%;
+  width: 38%;
 }
 
 @media (max-width: 479px) {
@@ -6355,7 +6257,6 @@ section.world_map .whole_map #indicator .indicator_inner .indicator_inner_countr
   color: #fff;
   margin: 0 3% 1rem;
   text-align: left;
-  text-align: left;
 }
 
 @media (max-width: 479px) {
@@ -6387,10 +6288,7 @@ section.world_map .whole_map #indicator .indicator_inner .indicator_inner_countr
 }
 
 .studio_videos .videos_item .videos_item_wrapper .videos_item_description .common_description .common_description_item .common_description_text_readMore .common_description_text_note {
-  font: normal 1.3rem/1.5 'Lora';
-  color: #fff;
   margin: 0 3% 1rem;
-  text-align: left;
   font: italic 1.1rem 'Lora';
   color: #eac15a;
   margin-left: auto;
@@ -6597,11 +6495,7 @@ section.world_map .whole_map #indicator .indicator_inner .indicator_inner_countr
 
 .studio_photos .studio_photos_albums h2[class*="studio_photos_link_"] .studio_photos_albums_description {
   font: normal 1.3rem/1.5 'Lora';
-  color: #fff;
-  margin: 0 3% 1rem;
-  text-align: left;
   display: block;
-  font-size: 1.3rem;
   font-style: italic;
   color: #eac15a;
   text-indent: 0;
@@ -6816,7 +6710,6 @@ section.world_map .whole_map #indicator .indicator_inner .indicator_inner_countr
 .planets .planets_content .planets_content_center > a img.planets_content_center_image {
   width: 100%;
   height: 100%;
-  border: 1px solid #eac15a;
   border-radius: 50%;
   border-color: transparent;
   background: #000;
@@ -6910,7 +6803,6 @@ section.world_map .whole_map #indicator .indicator_inner .indicator_inner_countr
   text-align: center;
   padding: 10px;
   border-radius: 15px;
-  opacity: 0;
   margin-right: 1rem;
   opacity: 1;
 }
@@ -6955,7 +6847,6 @@ section.world_map .whole_map #indicator .indicator_inner .indicator_inner_countr
   object-fit: cover;
   -webkit-box-shadow: 0 0 15px 5px #eac15a;
   box-shadow: 0 0 15px 5px #eac15a;
-  opacity: 0;
   opacity: 1;
 }
 
@@ -7092,7 +6983,6 @@ section.world_map .whole_map #indicator .indicator_inner .indicator_inner_countr
   text-align: center;
   padding: 10px;
   border-radius: 15px;
-  opacity: 0;
   margin-left: 1rem;
   opacity: 1;
 }
@@ -7141,7 +7031,6 @@ section.world_map .whole_map #indicator .indicator_inner .indicator_inner_countr
   object-fit: cover;
   -webkit-box-shadow: 0 0 15px 5px #eac15a;
   box-shadow: 0 0 15px 5px #eac15a;
-  opacity: 0;
   opacity: 1;
 }
 
@@ -7271,7 +7160,6 @@ section.world_map .whole_map #indicator .indicator_inner .indicator_inner_countr
   text-align: center;
   padding: 10px;
   border-radius: 15px;
-  opacity: 0;
   margin-right: 1rem;
   opacity: 1;
 }
@@ -7316,7 +7204,6 @@ section.world_map .whole_map #indicator .indicator_inner .indicator_inner_countr
   object-fit: cover;
   -webkit-box-shadow: 0 0 15px 5px #eac15a;
   box-shadow: 0 0 15px 5px #eac15a;
-  opacity: 0;
   opacity: 1;
 }
 
@@ -7433,7 +7320,6 @@ section.world_map .whole_map #indicator .indicator_inner .indicator_inner_countr
   text-align: center;
   padding: 10px;
   border-radius: 15px;
-  opacity: 0;
   margin-left: 1rem;
   opacity: 1;
 }
@@ -7482,7 +7368,6 @@ section.world_map .whole_map #indicator .indicator_inner .indicator_inner_countr
   object-fit: cover;
   -webkit-box-shadow: 0 0 15px 5px #eac15a;
   box-shadow: 0 0 15px 5px #eac15a;
-  opacity: 0;
   opacity: 1;
 }
 
@@ -7607,7 +7492,6 @@ section.world_map .whole_map #indicator .indicator_inner .indicator_inner_countr
   text-align: center;
   padding: 10px;
   border-radius: 15px;
-  opacity: 0;
   margin-right: 1rem;
   opacity: 1;
 }
@@ -7652,7 +7536,6 @@ section.world_map .whole_map #indicator .indicator_inner .indicator_inner_countr
   object-fit: cover;
   -webkit-box-shadow: 0 0 15px 5px #eac15a;
   box-shadow: 0 0 15px 5px #eac15a;
-  opacity: 0;
   opacity: 1;
 }
 
@@ -7790,7 +7673,6 @@ section.world_map .whole_map #indicator .indicator_inner .indicator_inner_countr
   text-align: center;
   padding: 10px;
   border-radius: 15px;
-  opacity: 0;
   margin-left: 1rem;
   opacity: 1;
 }
@@ -7839,7 +7721,6 @@ section.world_map .whole_map #indicator .indicator_inner .indicator_inner_countr
   object-fit: cover;
   -webkit-box-shadow: 0 0 15px 5px #eac15a;
   box-shadow: 0 0 15px 5px #eac15a;
-  opacity: 0;
   opacity: 1;
 }
 
@@ -7927,7 +7808,6 @@ section.world_map .whole_map #indicator .indicator_inner .indicator_inner_countr
   color: #fff;
   margin: 0 3% 1rem;
   text-align: left;
-  text-align: left;
 }
 
 @media (max-width: 479px) {
@@ -7959,10 +7839,7 @@ section.world_map .whole_map #indicator .indicator_inner .indicator_inner_countr
 }
 
 .common_description .common_description_item .common_description_text_readMore .common_description_text_note {
-  font: normal 1.3rem/1.5 'Lora';
-  color: #fff;
   margin: 0 3% 1rem;
-  text-align: left;
   font: italic 1.1rem 'Lora';
   color: #eac15a;
   margin-left: auto;
@@ -8490,7 +8367,6 @@ section.world_map .whole_map #indicator .indicator_inner .indicator_inner_countr
   color: #fff;
   margin: 0 3% 1rem;
   text-align: left;
-  text-align: left;
 }
 
 @media (max-width: 479px) {
@@ -8522,10 +8398,7 @@ section.world_map .whole_map #indicator .indicator_inner .indicator_inner_countr
 }
 
 .timetable .common_description .common_description_item .common_description_text_readMore .common_description_text_note {
-  font: normal 1.3rem/1.5 'Lora';
-  color: #fff;
   margin: 0 3% 1rem;
-  text-align: left;
   font: italic 1.1rem 'Lora';
   color: #eac15a;
   margin-left: auto;
@@ -9142,10 +9015,6 @@ section.prices .prices_inner {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
   -webkit-box-align: center;
   -webkit-align-items: center;
   -ms-flex-align: center;
@@ -9281,10 +9150,6 @@ section.prices .prices_inner .prices_inner_item .prices_inner_item_total {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
   -webkit-box-align: center;
   -webkit-align-items: center;
   -ms-flex-align: center;
@@ -10007,7 +9872,6 @@ section.dance_staging .videos_item .videos_item_wrapper .videos_item_content .vi
 section.dance_staging .videos_item .videos_item_wrapper .videos_item_description {
   font: normal 1.3rem/1.5 'Lora';
   color: #fff;
-  margin: 0 3% 1rem;
   text-align: left;
   margin: 0 0 0 3%;
   display: block;
@@ -10088,7 +9952,6 @@ section.dance_staging .videos_item .videos_item_wrapper .videos_item_description
   color: #fff;
   margin: 0 3% 1rem;
   text-align: left;
-  text-align: left;
 }
 
 @media (max-width: 479px) {
@@ -10120,10 +9983,7 @@ section.dance_staging .videos_item .videos_item_wrapper .videos_item_description
 }
 
 section.dance_staging .videos_item .videos_item_wrapper .videos_item_description .common_description .common_description_item .common_description_text_readMore .common_description_text_note {
-  font: normal 1.3rem/1.5 'Lora';
-  color: #fff;
   margin: 0 3% 1rem;
-  text-align: left;
   font: italic 1.1rem 'Lora';
   color: #eac15a;
   margin-left: auto;
@@ -10368,7 +10228,6 @@ section.educators .educators_item .educators_item_content .educators_item_descri
   color: #fff;
   margin: 0 3% 1rem;
   text-align: left;
-  text-align: left;
 }
 
 @media (max-width: 479px) {
@@ -10400,10 +10259,7 @@ section.educators .educators_item .educators_item_content .educators_item_descri
 }
 
 section.educators .educators_item .educators_item_content .educators_item_description .common_description .common_description_item .common_description_text_readMore .common_description_text_note {
-  font: normal 1.3rem/1.5 'Lora';
-  color: #fff;
   margin: 0 3% 1rem;
-  text-align: left;
   font: italic 1.1rem 'Lora';
   color: #eac15a;
   margin-left: auto;
@@ -11082,18 +10938,14 @@ section.contacts_visual .contacts_visual_form form.signUp_form .signUp_form_item
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-  -ms-flex-align: center;
-  align-items: center;
   -webkit-box-pack: space-evenly;
   -webkit-justify-content: space-evenly;
   -ms-flex-pack: space-evenly;
   justify-content: space-evenly;
+  -webkit-box-align: stretch;
+  -webkit-align-items: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
@@ -11101,6 +10953,19 @@ section.contacts_visual .contacts_visual_form form.signUp_form .signUp_form_item
 }
 
 .blog .blog_content .blog_content_item {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
   -webkit-flex-basis: 27%;
   -ms-flex-preferred-size: 27%;
   flex-basis: 27%;
@@ -11127,7 +10992,6 @@ section.contacts_visual .contacts_visual_form form.signUp_form .signUp_form_item
 
 .blog .blog_content .blog_content_item .blog_content_item_image {
   width: 100%;
-  height: 100%;
   margin-bottom: 1rem;
 }
 
@@ -11146,7 +11010,7 @@ section.contacts_visual .contacts_visual_form form.signUp_form .signUp_form_item
 
 .blog .blog_content .blog_content_item .blog_content_item_heading {
   min-height: 70px;
-  margin-top: 2.25rem;
+  margin-bottom: auto;
 }
 
 .blog .blog_content .blog_content_item .blog_content_item_heading > h3 {
@@ -11163,6 +11027,9 @@ section.contacts_visual .contacts_visual_form form.signUp_form .signUp_form_item
   -ms-flex-align: center;
   align-items: center;
   font: normal 1.5rem 'Lora';
+  text-align: center;
+  padding: 0 10%;
+  margin-bottom: 1rem;
 }
 
 .blog .blog_content .blog_content_item .blog_content_item_heading > h3 > a {
@@ -11181,7 +11048,6 @@ section.contacts_visual .contacts_visual_form form.signUp_form .signUp_form_item
   text-align: justify;
   text-indent: 30px;
   padding-bottom: 1.5rem;
-  border-bottom: 1px solid #eac15a;
 }
 
 .blog .blog_content .blog_content_item .blog_content_item_text > p > a {
@@ -11615,9 +11481,6 @@ section.contacts_visual .contacts_visual_form form.signUp_form .signUp_form_item
   -ms-flex-align: center;
   align-items: center;
   position: relative;
-  padding: 20px;
-  width: 50%;
-  height: 90vh;
   max-width: 600px;
   margin: 20px auto;
   -webkit-box-shadow: 0 0 20px 7px grey;
@@ -12114,7 +11977,6 @@ section.about .common_description .common_description_item .common_description_t
   color: #fff;
   margin: 0 3% 1rem;
   text-align: left;
-  text-align: left;
 }
 
 @media (max-width: 479px) {
@@ -12146,10 +12008,7 @@ section.about .common_description .common_description_item .common_description_t
 }
 
 section.about .common_description .common_description_item .common_description_text_readMore .common_description_text_note {
-  font: normal 1.3rem/1.5 'Lora';
-  color: #fff;
   margin: 0 3% 1rem;
-  text-align: left;
   font: italic 1.1rem 'Lora';
   color: #eac15a;
   margin-left: auto;
