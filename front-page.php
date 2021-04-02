@@ -8,9 +8,7 @@
     <title>MIPARTI</title>
     <link rel="preload" href="<?php echo MIPARTI_THEM_ROOT . '/assets/fonts/Lora-Regular.woff2'?>" as="font" type="font/woff2" crossorigin>
     <script type="module" src="<?php echo MIPARTI_JS_DIR . '/modules/front_page_module_preload.js'?>"></script>
-
     <?php wp_head(); ?>
-
 </head>
 <body style="background: #C7C7C7">
 <?php if (wp_is_mobile()) : ?>
@@ -186,7 +184,3 @@
 <?php wp_footer(); ?>
 </body>
 </html>
-
-
-
-
