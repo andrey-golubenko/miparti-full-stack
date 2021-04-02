@@ -4,19 +4,17 @@
  */
 ?>
 <?php get_header() ; ?>
-    <section class="studio_photos">
+    <section class="photos">
         <?php // if count of posts is more than four then we define id="more_than_four_posts" for init slider
         $count_photos_school_posts = wp_count_posts('photos_school')->publish;
         if ($count_photos_school_posts > 4 ) :
         ?>
-        <div class="studio_photos_albums" id="more_than_four_posts">
+        <div class="photos_albums" id="more_than_four_posts">
             <?php
             elseif ($count_photos_school_posts <= 4) :
             ?>
-            <div class="studio_photos_albums">
-                <?php
-                endif;
-                ?>
+            <div class="photos_albums">
+                <?php endif; ?>
                 <?php
                 $school_photo_albums = new WP_Query(array(
                     'post_type'     => 'photos_school',
@@ -26,15 +24,23 @@
                 while ($school_photo_albums->have_posts()) :
                     $school_photo_albums->the_post();
                     ?>
-                    <h2 class="studio_photos_link_">
-                        <img src="<?php echo get_the_post_thumbnail_url(); ?>" alt="Album preview">
-                        <span class="studio_photos_albums_description"><?php the_title();?></span>
+                    <h2 class="photos_link_">
+                        <img
+                        <?php
+                            if ($count_photos_school_posts > 4 ) :
+                        ?>
+                            data-lazy
+                        <?php else: ?>
+                            src
+                        <?php endif; ?>
+                            ="<?php echo get_the_post_thumbnail_url(get_the_ID(),'thumbnail'); ?>" alt="">
+                        <span class="photos_albums_description"><?php the_title();?></span>
                     </h2>
                 <?php
                 endwhile; wp_reset_postdata();
                 ?>
             </div>
-            <div class="studio_photos_content container">
+            <div class="photos_content container">
 
                 <?php
                 $school_photo_album_photos = new WP_Query(array(
@@ -46,15 +52,23 @@
                     $school_photo_album_photos->the_post();
                     ?>
 
-                    <div class="studio_photos_link_">
+                    <div class="photos_link_">
                         <?php
                         $uploadedPhotos = get_post_meta(get_the_ID(), 'uploadedPhoto', 1);
                         foreach ($uploadedPhotos as $value) {
-                            echo ' <div class="studio_photos_content_image">
-                                   <a href=" ' . $value . ' ">
-                                   <img src=" ' . $value . ' "  alt="">
+                            $image_source = explode(' ', $value);
+                            $image_source[3] = $image_source[3] ? $image_source[3] : $image_source[1];
+                            $image_source[2] = $image_source[2] ? $image_source[2] : ($image_source[1] ? $image_source[1] : $image_source[3]);
+                            $image_source[1] = $image_source[1] ? $image_source[1] : $image_source[2];
+                            // $image_source[0] - sizes.thumbnail.url
+                            // $image_source[1] - sizes.medium.url
+                            // $image_source[2] - sizes.large.url
+                            // $image_source[3] - sizes.full.url
+                            echo ' <div class="photos_content_image">
+                                    <a href="' . $image_source[2] . '">
+                                          <img src="' .  MIPARTI_IMG_DIR . '/img-placeholder.svg" data-src="' . $image_source[0] . '"  alt="">
                                    <span class="magnifying_glass">&#8981;</span>
-                                   </a>
+                                       </a>
                                    </div> ' ;
                         }
                         ?>

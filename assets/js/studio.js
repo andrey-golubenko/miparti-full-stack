@@ -1,13 +1,190 @@
-            /***     MAP with MouseSpeedTracker, popup & slider     ***/
-
-jQuery(function ($) {
+(function ($) {
 "use strict";
+
+
+
+    /************************************************************************************/
+    /******************** MENU for All-Pages (besides Front-Page) ***********************/
+    /************************************************************************************/
+
+    // Lazy-Load Images
+    // all images in HTML must have src=".../placeholder.svg" or src="" (empty) and data-src="./img_address.png"
+    function showImages() {
+        const images = document.querySelectorAll('[data-src]');
+        const clientHeight = document.documentElement.clientHeight;
+        for (let img of images) {
+            const coord = img.getBoundingClientRect();
+            let realSrc = img.dataset.src;
+            if (!realSrc) continue;
+            if (coord.top > -clientHeight &&
+                coord.top < clientHeight * 2 ||
+                coord.bottom > -clientHeight &&
+                coord.bottom < clientHeight * 2) {
+                img.src = realSrc;
+                img.dataset.src = '';
+            }
+        }
+    }
+    showImages();
+    document.addEventListener('scroll', showImages);
+
+
+    const componentMenu = $('.head_menu'); // All MENU
+    const mediaQueryHoverMenu = window.matchMedia('(min-width: 1024px)');
+    let menuHeight = 0;
+    if (mediaQueryHoverMenu.matches) {
+        menuHeight = 80;
+    }
+    else {
+        menuHeight = 50;
+    }
+
+     /* Pin MENU on a TOP with passive event listener */
+    const pinMenu = () => {
+        if (window.pageYOffset > menuHeight && !componentMenu.hasClass('mobile_menu_open')){
+            componentMenu.addClass('fixing_menu');
+        }
+        else {
+            componentMenu.removeClass('fixing_menu');
+        }
+    };
+    pinMenu();
+    window.addEventListener('scroll', pinMenu, {passive: true});
+
+    // Hover For DROP-DOWN Sub-Menu in COMMON MENU only if screen size more than 1024px includes
+    if (mediaQueryHoverMenu.matches) {
+        $('.nav_menu ul li.nav_link a p, .nav_menu ul li.nav_link a .nav_link_pin').mouseenter(function (e) {
+            const currLink = $(e.target.closest('li.nav_link'));
+            currLink.find('p:first').css({'color': '#eac15a'});
+            currLink.find('.underline').css({'left': '0'});
+            currLink.find('.nav_link_arrow_left').css({
+                'background-color': '#eac15a',
+                'transform-origin': 'center center',
+                'transform': 'rotate(-45deg)'
+            });
+            currLink.find('.nav_link_arrow_right').css({
+                'background-color': '#eac15a',
+                'transform-origin': 'center center',
+                'transform': 'rotate(45deg)'
+            });
+            currLink.find('ul.sub-menu').slideDown(500);
+        });
+        $('.nav_menu ul li.nav_link').mouseleave(function (e) {
+            const currLink = $(e.target.closest('li.nav_link'));
+            currLink.find('p').not('.menu_current_item p').css({'color':'#fff'});
+            currLink.find('.underline').css({'left':'-500%'});
+            currLink.find('.nav_link_arrow_left').css({
+                'background-color': '#fff',
+                'transform-origin': 'center center',
+                'transform': 'rotate(45deg)'
+            });
+            currLink.find('.nav_link_arrow_right').css({
+                'background-color': '#fff',
+                'transform-origin': 'center center',
+                'transform': 'rotate(-45deg)'
+            });
+            $('ul.sub-menu').slideUp(500);
+        });
+
+        const frontMenuActiveItem = $('.front_nav_menu_content ul li.nav_link a');
+        frontMenuActiveItem.mouseenter(function (e) {
+            const currLink = $(e.target.closest('li.nav_link'));
+            currLink.find('.underline').css({'left': '0'});
+        });
+        frontMenuActiveItem.mouseleave(function (e) {
+            const currLink = $(e.target.closest('li.nav_link'));
+            currLink.find('.underline').css({'left':'-500%'});
+        });
+
+
+    }
+
+
+
+    /************************************************************************************/
+    /************************************************************************************/
+
+
+    /************************************************************************************/
+    /***************************************** MOBILE MENU ******************************/
+    /************************************************************************************/
+
+
+    //Show sub-menu FOR MOBILE Menu
+    const mobMenuMediaQuery = window.matchMedia('(max-width: 1023px)');
+    if (mobMenuMediaQuery.matches){
+        $('.nav_link_pin').click(function (e) {
+            e.stopPropagation(); // to disable triggering '<a>', the element clicked is in
+            const currentMenuPoint = $(e.target.closest('li.nav_link'));
+            const changeArrowClass = currentMenuPoint.find('.nav_link_pin');
+            changeArrowClass.toggleClass('arrow_state_change');
+            currentMenuPoint.find('ul.sub-menu').slideToggle();
+            e.preventDefault();
+        });
+    }
+
+    // Add Open-class FOR MOBILE Menu
+    $('.head_menu_icon').click(function () {
+        componentMenu.toggleClass('mobile_menu_open');
+    });
+
+
+
+
+    /************************************************************************************/
+    /************************************************************************************/
+
+// Button UP
+    $('footer').append('<div class="up_btn"></div>');
+    $(window).scroll(function() {
+        if ($(this).scrollTop() > 200) {
+            $('.up_btn').css({ 'bottom': '-120px', 'right': '-120px'});
+        } else {
+            $('.up_btn').css({ 'bottom': '-220px', 'right': '-220px'});
+        }
+    });
+    $('.up_btn').on('click',function() {
+        $('html, body').animate({ scrollTop: 0 }, 500);
+        return false;
+    });
+
+
+    const docRoot = $('html, body'); // Variable for ALL ScrollS to AnchorS
+
+
+    // Open full description-text (in section description)
+    $('.common_description').click(function (e) {
+        const curTarget = $(e.target).attr('class');
+        const curItem = $(e.target.closest('.common_description_item'));
+        const changeClass = curItem.find('.common_description_text_readMore');
+        const changeText = curItem.find('.common_description_text_note');
+        if (curTarget !== 'arrow-text-left' && curTarget !== 'arrow-text-right' && curTarget !== 'common_description_text_open' ) { return false; }
+        curItem.find('.common_description_text_full').slideToggle();
+        changeClass.toggleClass('open_full_text');
+        if (changeClass.is('.open_full_text')) {
+            changeText.text('Свернуть . . .');
+        }
+        else {
+            changeText.text('Читать делее . . .');
+        }
+    });
+
+    /************************************************************************************/
+    /************************************************************************************/
+
+
+
+
+
+
+    /***     MAP with MouseSpeedTracker, popup & slider     ***/
+
 /************************************************************************************/
 /************************************* PLANETS  *************************************/
 /************************************************************************************/
 
 // Appearance Transforming planets, during Scroll
-    const planetsContent = $('.transforming_planets_content');
+    const planetsContent = $('.moving_planets_content');
     // Moving planets is available only if screen-size is < 768px and central-planet is Invisible
     const studioPlanetsMediaQuery = window.matchMedia('(min-width: 768px)');
     const centerIsInvisible = $('#content_spheres').offset().top > document.documentElement.clientHeight; // true, if offset.top of central-planet is more than viewport.height of browser window
@@ -25,7 +202,6 @@ jQuery(function ($) {
     }
 
     // Scroll from transforming_planets to world_map
-    const docRoot = $('html, body');
     $('.move_to_map, .content_spheres_bottom_right_tooltip').click(function (e) {
         e.preventDefault();
         docRoot.animate({scrollTop: $('#anchor_from_earth').offset().top}, 800);
@@ -345,7 +521,7 @@ jQuery(function ($) {
             const innerRoundCountries = `
                 <div class="indicator_inner">
                     <a class="round-countries-ajax-popup" href="${siteRootUrl}/miparti/${countries_obj[key].slider_page}">
-                        <img src="${siteRootUrl}/miparti/wp-content/themes/miparti/assets/images/flags/${countries_obj[key].image_name}" alt="Country Image" class="indicator_inner_image">
+                        <img data-lazy="${siteRootUrl}/miparti/wp-content/themes/miparti/assets/images/flags/${countries_obj[key].image_name}" alt="" class="indicator_inner_image">
                     </a>
                     <p class="indicator_inner_country">Мы ${countries_obj[key].ru_name}</p>
                 </div>`;
@@ -366,9 +542,7 @@ jQuery(function ($) {
             over( _actionPointX, _actionPointY) {
                 $('#svg_map path').not(countries_obj[key].selector_name).css('fill', '#000');
 
-               //console.log(window.location);
-               //console.log(`${siteRootUrl}/miparti/${countries_obj[key].slider_page}`);
-                $('.inner-ajax-popup').attr(`href`, `${siteRootUrl}/miparti/${countries_obj[key].slider_page}`).html(`<div class="indicator_inner"><img src="${siteRootUrl}/miparti/wp-content/themes/miparti/assets/images/flags/${countries_obj[key].image_name}" alt="Country Image" class="indicator_inner_image"><p class="indicator_inner_country">Мы ${countries_obj[key].ru_name}</p></div>`);
+                $('.inner-ajax-popup').attr(`href`, `${siteRootUrl}/miparti/${countries_obj[key].slider_page}`).html(`<div class="indicator_inner"><img src="${siteRootUrl}/miparti/wp-content/themes/miparti/assets/images/flags/${countries_obj[key].image_name}" alt="" class="indicator_inner_image"><p class="indicator_inner_country">Мы ${countries_obj[key].ru_name}</p></div>`);
                 this.addedHeight = (key === 'all_portugal' || key === 'all_vietnam' || key === 'all_barbados') ? 30 : 0;// тернарный опер-ор (отдел. усл-я для Португалии, Вьетнама, Барбадоса из-за их формы на карте)
                 $('#indicator').css({'top': _actionPointY - this.addedHeight + 'px', 'left': _actionPointX + 3 + 'px'}).fadeToggle(300);
             },
@@ -426,17 +600,64 @@ $(document).ajaxComplete(function (event, request, settings) {
         accessibility: false,
         arrows: true,
         pauseOnHover: false,
+        lazyLoad: 'ondemand'
     })
 });
 
                 /*** ЕСЛИ МОБИЛЬНОЕ УСТРОЙСТВО - Продолжение (Инициализация Слайдера), только после инициализации на эллементах PO-PUP ***/
 
-    import('./modules/module_adaptive_slider.js')
-        .then(module => {
-        module.adaptiveSlider('.world_map_countries');
-    });
+    // "ExDynamic import" of Init Adaptive-Slider
+    const sliderMediaQueryTablet = window.matchMedia('(max-width: 1023px)');
+    const sliderMediaQueryMobile_L = window.matchMedia('(max-width: 900px)');
+    const sliderMediaQueryMobile_M = window.matchMedia('(max-width: 690px)');
+    const sliderMediaQueryMobile_S = window.matchMedia('(max-width: 470px)');
 
+    const studioPhotosFourAlbums = document.querySelector('#more_than_four_posts'); // for pages 'studio_photos' & 'school_photos' for init slider, when count of albums is more then 4 (four)
 
+    const initialItem =  $('.world_map_countries');
+
+    if (sliderMediaQueryTablet.matches || studioPhotosFourAlbums) {
+        if (sliderMediaQueryMobile_L.matches) {
+            if (sliderMediaQueryMobile_M.matches) {
+                if (sliderMediaQueryMobile_S.matches) {
+                    initialItem.slick({
+                        infinite: true,
+                        speed: 700,
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                        lazyLoad: 'ondemand'
+                    });
+                }
+                else {
+                    initialItem.slick({
+                        infinite: true,
+                        speed: 700,
+                        slidesToShow: 2,
+                        slidesToScroll: 2,
+                        lazyLoad: 'ondemand'
+                    });
+                }
+            }
+            else {
+                initialItem.slick({
+                    infinite: true,
+                    speed: 800,
+                    slidesToShow: 3,
+                    slidesToScroll: 3,
+                    lazyLoad: 'ondemand'
+                });
+            }
+        }
+        else {
+            initialItem.slick({
+                infinite: true,
+                speed: 1000,
+                slidesToShow: 4,
+                slidesToScroll: 4,
+                lazyLoad: 'ondemand'
+            });
+        }
+    }
 
                             /*** END OF MAP ***/
-});
+})(jQuery);

@@ -6,7 +6,7 @@
 
 <?php get_header(); ?>
 
-        <section class="transforming_planets">
+        <section class="moving_planets">
 
             <div class="common_description container">
                 <div class="common_description_item">
@@ -29,30 +29,30 @@
                 </div>
             </div>
 
-            <div class="transforming_planets_content running">
+            <div class="moving_planets_content running">
                 <div id="content_spheres">
                     <a href="<?php echo home_url(); ?>">
-                        <img class="content_spheres_center_image" src="<?php echo MIPARTI_IMG_DIR . '/miparti_planets.png' ; ?>" alt="logo-image">
+                        <img src="<?php echo MIPARTI_IMG_DIR . '/img-placeholder.svg'?>" class="content_spheres_center_image" data-src="<?php echo MIPARTI_IMG_DIR . '/miparti_planets.png' ; ?>" alt="">
                     </a>
                     <ul id="content_lines">
                         <li class="content_lines_top_left">
                             <a class="content_spheres_top_left_link" href="<?php echo get_page_link(137); ?>">
                                 <p class="content_spheres_top_left_tooltip">Райдер</p>
-                                <img src="<?php echo wp_get_attachment_url(get_theme_mod('studio_spheres_rider')); ?>" alt="Preview Image" >                             </a>
+                                <img src="<?php echo MIPARTI_IMG_DIR . '/img-placeholder.svg'?>" data-src="<?php echo wp_get_attachment_image_url(get_theme_mod('studio_spheres_rider'), 'thumbnail'); ?>" alt="" >                             </a>
                             <span id="layerBall_top_left"></span>
                             <span class="moving_ray_top_left"></span>
                         </li>
                         <li class="content_lines_top_right">
                             <a class="content_spheres_top_right_link" href="<?php echo get_page_link(133); ?>">
                                 <p class="content_spheres_top_right_tooltip">Фото</p>
-                                <img src="<?php echo wp_get_attachment_url(get_theme_mod('studio_spheres_photos')) ; ?>" alt="Preview Image" >
+                                <img src="<?php echo MIPARTI_IMG_DIR . '/img-placeholder.svg'?>" data-src="<?php echo wp_get_attachment_image_url(get_theme_mod('studio_spheres_photos'), 'thumbnail') ; ?>" alt="" >
                             </a>
                             <span id="layerBall_top_right"></span>
                             <span class="moving_ray_top_right"></span>
                         </li>
                         <li class="content_lines_bottom_left">
                             <a class="content_spheres_bottom_left_link" href="<?php echo get_page_link(135); ?>">
-                                <img src="<?php echo wp_get_attachment_url(get_theme_mod('studio_spheres_videos')) ; ?>" alt="Preview Image">
+                                <img src="<?php echo MIPARTI_IMG_DIR . '/img-placeholder.svg'?>" data-src="<?php echo wp_get_attachment_image_url(get_theme_mod('studio_spheres_videos'), 'thumbnail') ; ?>" alt="">
                                 <p class="content_spheres_bottom_left_tooltip">Видео</p>
                             </a>
                             <span id="layerBall_bottom_left"></span>

@@ -6,14 +6,15 @@
           content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>MIPARTI</title>
-    <link rel="preload" href="<?php echo MIPARTI_THEM_ROOT . '/assets/fonts/Lora-Regular.woff2'?>" as="font" type="font/woff2" crossorigin="anonymous">
-    <link rel="preload" href="<?php echo MIPARTI_JS_DIR . '/modules/module_adaptive_slider.js'?>" as="script" crossorigin="anonymous">
-    <link rel="preload" href="<?php echo MIPARTI_JS_DIR . '/modules/module_video_item.js'?>" as="script" crossorigin="anonymous">
+    <link rel="preload" href="<?php echo MIPARTI_THEM_ROOT . '/assets/fonts/Lora-Regular.woff2'?>" as="font" type="font/woff2" crossorigin>
+    <script type="module" src="<?php echo MIPARTI_JS_DIR . '/modules/front_page_module_preload.js'?>"></script>
+
     <?php wp_head(); ?>
+
 </head>
-<body>
+<body style="background: #C7C7C7">
 <?php if (wp_is_mobile()) : ?>
-    <div id="wrapper">
+    <div id="wrapper" >
         <main id="main">
             <div class="mobile_front_wrapper">
                 <section class="mobile_front_menu">
@@ -31,7 +32,8 @@
                             </a>
                             <div class="logo">
                                 <a href="<?php echo home_url() ; ?>">
-                                    <img class="logo_image" src="<?php echo MIPARTI_IMG_DIR . '/miparti_logo_plus.png' ; ?>" alt="Miparti Company">
+                                    <img style="width: auto;
+    height: 50px;" class="logo_image" src="<?php echo MIPARTI_IMG_DIR . '/miparti_logo_plus.png' ; ?>" alt="">
                                 </a>
                             </div>
                             <div class="head_menu_icon">
@@ -59,10 +61,18 @@
                 <section class="mobile_front_slider">
                     <div class="mobile_front_slider_center">
                         <?php
-                        $front_slider_mobile = get_post_meta(576,'slider_photos', 1);
+                        $front_slider_mobile = get_post_meta(576,'slider_photos', 1) ? get_post_meta(576,'slider_photos', 1) : [];
                         foreach ($front_slider_mobile as $value){
+                            $image_source = explode(' ', $value);
+                            $image_source[3] = $image_source[3] ? $image_source[3] : $image_source[1];
+                            $image_source[2] = $image_source[2] ? $image_source[2] : ($image_source[1] ? $image_source[1] : $image_source[3]);
+                            $image_source[1] = $image_source[1] ? $image_source[1] : $image_source[2];
+                            // $image_source[0] - sizes.thumbnail.url
+                            // $image_source[1] - sizes.medium.url
+                            // $image_source[2] - sizes.large.url
+                            // $image_source[3] - sizes.full.url
                             echo  ' <div>
-                                    <img src=" ' . $value . ' " alt="photo front page">
+                                        <img data-lazy="' . $image_source[1] . '"  alt="">
                                     </div> ' ;
                         }
                         ?>
@@ -95,28 +105,36 @@
                 <section class="sliders">
                     <div class="slider_left">
                     <?php
-                        $front_slider_left = get_post_meta(572,'slider_photos', 1);
-                    foreach ($front_slider_left as $value){
+                        $front_slider_left = get_post_meta(572,'slider_photos', 1) ? get_post_meta(572,'slider_photos', 1) : [] ;
+                    foreach ($front_slider_left as $value) {
+                        $image_source = explode(' ', $value);
+                        $image_source[3] = $image_source[3] ? $image_source[3] : $image_source[1];
+                        $image_source[2] = $image_source[2] ? $image_source[2] : ($image_source[1] ? $image_source[1] : $image_source[3]);
+                        $image_source[1] = $image_source[1] ? $image_source[1] : $image_source[2];
                         echo  ' <div>
-                                    <img src=" ' . $value . ' " alt="photo front page">
-                                    </div> ' ;
+                                    <img data-lazy="' . $image_source[1] . '"  alt="">
+                                </div> ' ;
                     }
                     ?>
                     </div>
                     <div class="slider_right">
                     <?php
-                        $front_slider_right = get_post_meta(574,'slider_photos', 1);
-                        foreach ($front_slider_right as $value){
-                            echo  ' <div>
-                                        <img src=" ' . $value . ' " alt="photo front page">
-                                        </div> ' ;
+                        $front_slider_right = get_post_meta(574,'slider_photos', 1) ? get_post_meta(574,'slider_photos', 1) : [];
+                    foreach ($front_slider_right as $value){
+                        $image_source = explode(' ', $value);
+                        $image_source[3] = $image_source[3] ? $image_source[3] : $image_source[1];
+                        $image_source[2] = $image_source[2] ? $image_source[2] : ($image_source[1] ? $image_source[1] : $image_source[3]);
+                        $image_source[1] = $image_source[1] ? $image_source[1] : $image_source[2];
+                        echo  ' <div>
+                                    <img data-lazy="' . $image_source[1] . '"  alt="">
+                                </div> ' ;
                         }
                     ?>
                     </div>
                 </section>
                 <section class="front_content">
                     <div class="clipboard" style="background: url(<?php echo MIPARTI_IMG_DIR . '/bg_body.jpg' ?>) center/cover;">
-                        <img src="<?php echo MIPARTI_IMG_DIR . ' /miparti_logo_plus.png' ?>" alt="Miparti logotype">
+                        <img src="<?php echo MIPARTI_IMG_DIR . ' /miparti_logo_plus.png' ?>" alt="">
                     </div>
                     <div class="btn_push_wrapper">
                         <button class="push btn_menu_active">

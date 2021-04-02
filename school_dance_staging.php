@@ -70,9 +70,17 @@
                                     <?php
                                     $uploaded_videos = get_post_meta(get_the_ID(), 'uploadedPhoto', 1) ? get_post_meta(get_the_ID(), 'uploadedPhoto', 1) : []; // подавление ошибки отсутсвия массива в foreach - подстановка пустого масива
                                     foreach ($uploaded_videos as $key => $value) {
+                                        $image_source = explode(' ', $value);
+                                        $image_source[3] = $image_source[3] ? $image_source[3] : $image_source[1];
+                                        $image_source[2] = $image_source[2] ? $image_source[2] : ($image_source[1] ? $image_source[1] : $image_source[3]);
+                                        $image_source[1] = $image_source[1] ? $image_source[1] : $image_source[2];
+                                        // $image_source[0] - sizes.thumbnail.url
+                                        // $image_source[1] - sizes.medium.url
+                                        // $image_source[2] - sizes.large.url
+                                        // $image_source[3] - sizes.full.url
                                         if ($key <= 2) {
-                                            echo '<a href=" ' . $value . ' " class="videos_item_content_images_single mobile_move_to_bottom">
-                                    <img src=" ' . $value . ' " alt="">
+                                            echo '<a href="' . $image_source[2] . '" class="videos_item_content_images_single mobile_move_to_bottom">
+                                    <img src="' .  MIPARTI_IMG_DIR . '/img-placeholder.svg" data-src="' . $image_source[0] . '" alt="">
                                     <span class="magnifying_glass">&#8981;</span>
                                 </a>';
                                         }
@@ -83,9 +91,13 @@
                             <div class="videos_item_content_images" id="side_images_<?php echo get_the_ID(); ?>">
                                 <?php
                                 foreach ($uploaded_videos as $key => $value) {
+                                    $image_source = explode(' ', $value);
+                                    $image_source[3] = $image_source[3] ? $image_source[3] : $image_source[1];
+                                    $image_source[2] = $image_source[2] ? $image_source[2] : ($image_source[1] ? $image_source[1] : $image_source[3]);
+                                    $image_source[1] = $image_source[1] ? $image_source[1] : $image_source[2];
                                     if ($key > 2) {
-                                        echo '<a href=" ' . $value . ' " class="videos_item_content_images_single mobile_move_to_bottom">
-                                    <img src=" ' . $value . ' " alt="">
+                                        echo '<a href="' . $image_source[2] . '" class="videos_item_content_images_single mobile_move_to_bottom">
+                                    <img src="' .  MIPARTI_IMG_DIR . '/img-placeholder.svg" data-src="' . $image_source[0] . '" alt="">
                                     <span class="magnifying_glass">&#8981;</span>
                                 </a>';
                                     }
@@ -132,9 +144,5 @@
                 endwhile;
                 wp_reset_postdata();
             ?>
-
-
-
-
         </section>
 <?php get_footer(); ?>

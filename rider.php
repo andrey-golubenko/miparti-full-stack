@@ -6,7 +6,7 @@
 <?php get_header() ; ?>
     <section class="rider">
         <div class="rider_image container">
-            <img src="<?php echo MIPARTI_IMG_DIR . '/rider.jpg' ?>" alt="rider image">
+            <img src="<?php echo MIPARTI_IMG_DIR . '/rider.jpg' ?>" alt="">
         </div>
         <div class="rider_content container">
             <div class="rider_content_item">

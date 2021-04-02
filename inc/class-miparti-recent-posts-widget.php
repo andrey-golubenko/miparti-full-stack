@@ -78,7 +78,7 @@ class Miparti_Widget_Recent_Posts extends WP_Widget {
 				?>
                 <div class="resentEntries_item">
                     <a href="<?php the_permalink( $recent_post->ID ); ?>" class="resentEntries_item_image">
-                        <img src="<?php echo get_the_post_thumbnail_url($recent_post->ID); ?>" alt="post image">
+                        <img src="<?php echo get_the_post_thumbnail_url($recent_post->ID); ?>" alt="">
                     </a>
                     <h3 class="resentEntries_item_text">
                         <a href="<?php the_permalink( $recent_post->ID ); ?>"><?php echo $title; ?></a>

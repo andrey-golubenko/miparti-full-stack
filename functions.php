@@ -8,13 +8,10 @@ require get_template_directory() . '/inc/menu.php';
 /* ПОДКЛЮЧАЕМ  BREADCRUMBS ОБРАБОТЧИК */
 require get_template_directory() . '/inc/breadcrumbs-handler.php';
 
-/* ПОДКЛЮЧАЕМ  КАСТОМАЙЗЕР */
-require get_template_directory() . '/inc/customizer.php';
-
 /* ПОДКЛЮЧАЕМ  КАСТОМНЫЕ ПОЛЯ ДЛЯ ЗАПИСЕЙ - ФОТО И ВИДЕО */
 require get_template_directory() . '/inc/custom-fields.php';
 
-/* ПОДКЛЮЧАЕМ  ДВЕ ФОРМЫ ОБРАТНОЙ СВЯЗИ И ПОДПИСКИ И ИХ ОБРАБОТЧИКИ */
+/* ПОДКЛЮЧАЕМ ФОРМЫ ОБРАТНОЙ СВЯЗИ И ПОДПИСКИ И ИХ ОБРАБОТЧИКИ */
 require get_template_directory() . '/inc/contact-forms.php';
 
 /* ПОДКЛЮЧАЕМ ФОРМУ ПОИСКА ПО САЙТУ И ФУНКЦИИ К НЕЙ  */
@@ -22,6 +19,10 @@ require get_template_directory() . '/inc/search-group.php';
 
 /* ПОДКЛЮЧАЕМ КЛАСС ДЛЯ ВИДЖЕТА Последних Постов */
 require get_template_directory() . '/inc/class-miparti-recent-posts-widget.php';
+
+/* ПОДКЛЮЧАЕМ  КАСТОМАЙЗЕР */
+require get_template_directory() . '/inc/customizer.php';
+
 
 // Устанавливаем КОНСТАНТЫ для ПУТЕЙ располоэжения подключаемых файлов стилей и js (чтоб меньше писать), и других файлов из папки 'assets'
 define('MIPARTI_THEM_ROOT', get_template_directory_uri());
@@ -79,31 +80,63 @@ add_action( 'admin_enqueue_scripts', function(){
 add_action('wp_enqueue_scripts', 'miparti_media' );
 function miparti_media (){
 
-    /*
-     *
-     * DIFFERENT STYLES FOR DIFFERENT PAGES
-     *
-     */
-
+    /*** DIFFERENT STYLES FOR DIFFERENT PAGES ***/
+    if (wp_is_mobile()  && is_front_page()) {
+        wp_enqueue_style('mobile-front-styles', MIPARTI_CSS_DIR . '/mobile-front-page.min.css');
+    }
+    elseif (is_front_page()) {
+        wp_enqueue_style('front-styles', MIPARTI_CSS_DIR . '/front-page.min.css');
+    }
+    elseif (is_page_template('studio.php')){
+        wp_enqueue_style('studio-styles', MIPARTI_CSS_DIR . '/studio.min.css');
+    }
+    elseif (is_page_template('school.php')){
+        wp_enqueue_style('school-styles', MIPARTI_CSS_DIR . '/school.min.css');
+    }
+    elseif (is_page_template('about.php')){
+        wp_enqueue_style('about-styles', MIPARTI_CSS_DIR . '/about.min.css');
+    }
+    else {
+        wp_enqueue_style('miparti-styles', get_stylesheet_uri());
+    }
     if (is_page_template(array('school-prices.php', 'school-timeTable.php', 'contacts.php' ) ) ) {
         wp_enqueue_style('contact-forms', MIPARTI_CSS_DIR . '/contact-forms-ajax-request.css');
     }
 
-    wp_enqueue_style('miparti-styles', get_stylesheet_uri());
-
-    /*** Оставляем JQ (джейквери) вшитую в WP. JQ и jQ-migrate ***/
+    /*** DIFFERENT SCRIPTS FOR DIFFERENT PAGES ***/
+    // Оставляем JQ (джейквери) вшитую в WP. JQ и jQ-migrate
     wp_enqueue_script( 'jquery');
 
-    /*
-     *
-     * DIFFERENT SCRIPTS FOR DIFFERENT PAGES
-     *
-     */
-
-    wp_enqueue_script('miparti-libs', MIPARTI_JS_DIR . '/libs.min.js', [], null, true);
-    if (is_page_template('studio.php')) {
-        wp_enqueue_script('world-map', MIPARTI_JS_DIR . '/world_map.js', [], null, true);
+    if (is_front_page() || is_page_template('about.php')) {
+        wp_enqueue_script('slick-slider', MIPARTI_JS_DIR . '/slick-slider.min.js', [], null, true);
+        if (is_front_page()){
+            wp_enqueue_script('front-page', MIPARTI_JS_DIR . '/front-page.min.js', [], null, true);
+        }
+        if (is_page_template('about.php')){
+            wp_enqueue_script('about', MIPARTI_JS_DIR . '/about.min.js', [], null, true);
+        }
     }
+
+    if (   !is_front_page()
+        && !is_page_template('school.php')
+        && !is_page_template('about.php')
+        && !is_page_template('blog.php')
+        && !is_page_template('contacts.php')
+        && !is_page_template('rider.php')
+        && !is_page_template('school-educators.php')) {
+        wp_enqueue_script('miparti-libs', MIPARTI_JS_DIR . '/libs.min.js', [], null, true);
+        if ( !is_page_template('studio.php') ) {
+            wp_enqueue_script('miparti-main', MIPARTI_JS_DIR . '/main.min.js', [], null, true);
+        }
+    }
+
+    if (is_page_template('studio.php')) {
+        wp_enqueue_script('studio', MIPARTI_JS_DIR . '/studio.min.js', [], null, true);
+    }
+    if (is_page_template('school.php')) {
+        wp_enqueue_script('school', MIPARTI_JS_DIR . '/school.min.js', [], null, true);
+    }
+
     if (is_page_template(array('school-prices.php', 'school-timeTable.php', 'contacts.php' ) ) ){
         wp_enqueue_script('miparti-contact-forms', MIPARTI_JS_DIR . '/contact-forms.js', [], null, true);
         wp_localize_script('miparti-contact-forms', 'subscribe_object',
@@ -114,17 +147,6 @@ function miparti_media (){
         );
     }
 
-    /*for comments
-    if( is_singular() && comments_open() && (get_option('thread_comments') == 1) ) {
-        wp_enqueue_script('comment-reply', '', ['jquery'], '', true);
-    }*/
-
-    wp_enqueue_script('miparti-main', MIPARTI_JS_DIR . '/main.js', [], null, true);
-
-    /*for comments
-    wp_enqueue_script( 'miparti-comments', MIPARTI_JS_DIR . '/comments.js', ['jquery'], null, true );*/
-
-
     //ОТЛЮЧАЕМ Скрипты из header  и ПЕРЕПОДКЛЮЧАЕМ ИХ В footer
     remove_action('wp_head', 'wp_print_scripts');
     remove_action('wp_head', 'wp_print_head_scripts', 9);
@@ -132,14 +154,12 @@ function miparti_media (){
     add_action('wp_footer', 'wp_print_scripts', 5);
     add_action('wp_footer', 'wp_enqueue_scripts', 5);
     add_action('wp_footer', 'wp_print_head_scripts', 5);
-};
-
-
+}
 
 //ДОБОВЛЯЕМ ко ВСЕМ или НЕКОТОРЫМ подключенным СКРИПТАМ отрибут 'deffer' и/или 'async'.
 add_filter( 'script_loader_tag', function ( $tag, $handle, $src ){
     //Ко многим подключонным скриптам
-    $handlers = ['miparti-main', 'world-map', 'miparti-libs', 'jquery-migrate', 'wp-embed', 'comment-reply', 'miparti-admin', 'miparti-contact-forms'];
+    $handlers = ['front-page', 'slick-slider', 'miparti-main', 'studio', 'school', 'about', 'miparti-libs', 'jquery-migrate', 'wp-embed', 'miparti-admin', 'miparti-contact-forms'];
     foreach($handlers as $defer_script){
         if( $defer_script === $handle){
             return str_replace( ' src', ' defer src', $tag );
@@ -147,6 +167,7 @@ add_filter( 'script_loader_tag', function ( $tag, $handle, $src ){
     }
     return $tag;
 }, 10, 3 );
+
 // REMOVE EMOJI ICONS (УДАЛИТЬ ИКОНКИ эмоджи ИЗ АДМИНКИ)
 remove_action('wp_head', 'print_emoji_detection_script', 7);
 remove_action('wp_print_styles', 'print_emoji_styles');
@@ -163,11 +184,10 @@ function miparti_after_setup (){
     add_theme_support('title-tag');//самостоят. генерация тега title в header
     add_theme_support('post-thumbnails');//возможность установки картинок во всех типах постов
     set_post_thumbnail_size(740, 400);//размеры картинок для Больш постов
-    add_image_size( 'miparti-small-recent-post', 96, 100, true ); //размеры картинок для Малых постов в САЙДБАРЕ
+    add_image_size( 'miparti-small-recent-post', 100, 100, true ); //размеры картинок для Малых постов в САЙДБАРЕ
     add_theme_support('html5', array( 'search_form', 'comment-form', 'comment-list', 'gallery', 'caption') ); //Включает поддержку html5 разметки для списка комментариев, формы комментариев, формы поиска, галереи, фигур и т.д. Где нужно включить разметку указывается во втором параметре.
     add_theme_support('post-formats', [ 'aside', 'image', 'video', 'gallery' ]);//Указывает формат посту
 }
-
 
 //УБИРАЕМ НАЗВАНИЕ САЙТА (кот. ф-ция дописывает через тире) из заголовка в header на остальных стрaницах (кроме Главной).
 add_filter( 'document_title_parts', function( $parts ){
@@ -283,7 +303,6 @@ function kama_excerpt( $args = '' ){
     return ( $rg->autop && $text ) ? "<p>$text</p>" : $text;
 }
 
-
 //РЕГИСТРАЦИЯ САЙДБАРА
 add_action( 'widgets_init', 'miparti_register_widgets' );
 function miparti_register_widgets(){
@@ -305,17 +324,7 @@ function miparti_register_widget() {
     register_widget( 'Miparti_Widget_Recent_Posts' );//КЛАСС по которому работает виджет и кот. расположен в папке 'inc'.
 }
 
-
-
-
-
-
-
-
-
-
 ## Отключает новый редактор блоков в WordPress (Гутенберг).
-## ver: 1.0
 if( 'disable_gutenberg' ){
     add_filter( 'use_block_editor_for_post_type', '__return_false', 100 );
     // отключим подключение базовых css стилей для блоков
@@ -327,7 +336,7 @@ if( 'disable_gutenberg' ){
         add_action( 'edit_form_after_title', [ 'WP_Privacy_Policy_Content', 'notice' ] );
     } );
 }
-## Удаление файлов license.txt и readme.html для защиты
+## Удаление из файлов license.txt и readme.html для защиты
 if( is_admin() && ! defined('DOING_AJAX') ){
     $license_file = ABSPATH .'/license.txt';
     $readme_file = ABSPATH .'/readme.html';
@@ -360,5 +369,3 @@ function login_obscure_func(){
 }
 ## ЗАКРОЕМ возможность публикации через xmlrpc.php (через почту)
 add_filter('xmlrpc_enabled', '__return_false');
-
-

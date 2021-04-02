@@ -17,7 +17,7 @@
             ?>
             <div class="educators_item">
                 <div class="educators_item_image">
-                    <img src="<?php echo get_the_post_thumbnail_url() ; ?>" alt="Educators photo">
+                    <img src="<?php echo get_the_post_thumbnail_url() ; ?>" alt="">
                 </div>
                 <div class="educators_item_content">
                     <div class="educators_item_description">

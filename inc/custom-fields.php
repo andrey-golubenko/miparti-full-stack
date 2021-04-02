@@ -29,9 +29,14 @@ function meta_box_sliders_photos($post) {
         $slider_photos_array = get_post_meta(get_the_ID(), 'slider_photos',1);
         if (is_array($slider_photos_array)) {
             foreach ($slider_photos_array as $photo_value) {
+                $image_source = explode(' ', $photo_value);
                 ?>
                 <div class="photos_fields_item">
-                    <img src="<?php echo $photo_value; ?>" width="150" height="150" alt="Photos image in admin-bar"/>
+                    <picture>
+                        <source srcset="<?php echo $image_source[0] ?>" media="(max-width: 1440px)">
+                        <source srcset="<?php echo $image_source[1] ?>" media="(max-width: 2000px)">
+                        <img src="<?php echo $image_source[2] ?>"  alt="">
+                    </picture>
                     <div class="photos_fields_item_delete">Удалить<span class="dashicons dashicons-trash"></span></div>
                     <input name="slider_photos[]" type="hidden" value="<?php echo $photo_value; ?>">
                 </div>
@@ -40,11 +45,11 @@ function meta_box_sliders_photos($post) {
         }
         ?>
         <input name="exist_slider_photos_field_check" type="hidden" value="<?php echo true; ?>">
-        <div class="photos_fields_item_add_wrapper">
-            <div class="photos_fields_item_add">Добавить новую<span class="dashicons dashicons-plus-alt"></span></div>
-        </div>
     </div>
-            <input type="hidden" name="slider_photos_nonce" value="<?php echo wp_create_nonce(__FILE__); ?>" />
+    <div class="photos_fields_item_add_wrapper">
+            <div class="photos_fields_item_add">Добавить новую<span class="dashicons dashicons-plus-alt"></span></div>
+    </div>
+    <input type="hidden" name="slider_photos_nonce" value="<?php echo wp_create_nonce(__FILE__); ?>" />
     <?php
 }
 
@@ -63,10 +68,16 @@ function meta_box_all_photos($post) {
         $content_array = get_post_meta(get_the_ID(), 'uploadedPhoto',1);
         if (is_array($content_array)) {
             foreach ($content_array as $value) {
+                $image_source = explode(' ', $value);
+
                 ?>
                 <div class="photos_fields_item">
-                    <img src="<?php echo $value; ?>" width="150" height="150" alt="Photos image in admin-bar"/>
-                    <div class="photos_fields_item_delete">Удалить<span class="dashicons dashicons-trash"></span></div>
+                    <picture>
+                            <source srcset="<?php echo $image_source[0] ?>" media="(max-width: 1440px)">
+                            <source srcset="<?php echo $image_source[1] ?>" media="(max-width: 2000px)">
+                            <img src="<?php echo $image_source[2] ?>"  alt="">
+                    </picture>
+                <div class="photos_fields_item_delete">Удалить<span class="dashicons dashicons-trash"></span></div>
                     <input name="uploadedPhoto[]" type="hidden" value="<?php echo $value; ?>">
                 </div>
                 <?php
@@ -74,11 +85,12 @@ function meta_box_all_photos($post) {
         }
         ?>
         <input name="exist_field_check" type="hidden" value="<?php echo true; ?>">
+
+    </div>
         <div class="photos_fields_item_add_wrapper">
             <div class="photos_fields_item_add">Добавить новую<span class="dashicons dashicons-plus-alt"></span></div>
         </div>
-    </div>
-            <input type="hidden" name="extra_fields_nonce" value="<?php echo wp_create_nonce(__FILE__); ?>" />
+        <input type="hidden" name="extra_fields_nonce" value="<?php echo wp_create_nonce(__FILE__); ?>" />
     <?php
 }
 

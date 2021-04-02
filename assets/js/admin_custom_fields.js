@@ -1,65 +1,73 @@
-jQuery(function ($) {
+(function ($) {
 
                         /******* Addable Photos Fields *******/
 
-    // disable 'thumbnail'-panel for post-type 'about_us' in admin
-    if ($('#meta_box_sliders').length !== 0) {$('#postimagediv').css({'display' : 'none'})}
+    const adminSliderBox = $('#meta_box_sliders');
+    const adminPhotosBox = $('.photos_custom_admin_fields');
+    const photosFieldsItem = $('.photos_fields_item');
+    const buttonAddImage = $('.photos_fields_item_add');
 
-    if ($('.photos_custom_admin_fields').is('#six_photos') && ($('.photos_fields_item').length >= 6)) {
-        $('.photos_fields_item_add').css({'background': '#dbe3e2'});
+
+    // disable 'thumbnail'-panel for post-type 'about_us' in admin
+    if (adminSliderBox.length !== 0) {$('#postimagediv').css({'display' : 'none'})}
+    if (adminPhotosBox.is('#six_photos') && (photosFieldsItem.length >= 6)) {
+        buttonAddImage.css({'background': '#dbe3e2'});
     }
+
     const photosInAdmin = {
-        EVENTS: function() {
+        imagesEventsCall: function() {
             // delete slide images
             $(document).on('click', '.photos_fields_item_delete', function(event) {
-                photosInAdmin.UPLOAD_IMG.delete_img(this);
-                return false;
-                });
-            // add slide images
-            $(document).on('click', '.photos_fields_item_add', function(event) {
-                if ($('.photos_custom_admin_fields').is('#six_photos') && ($('.photos_fields_item').length >= 6)){
-                    return false;
-                }
-                photosInAdmin.UPLOAD_IMG.add_new(this);
+                photosInAdmin.imagesEvents.deleteImage(this);
                 return false;
             });
-            },
-        UPLOAD_IMG: {
-            add_new: function(thisClass) {
+            // add slide images
+            $(document).on('click', '.photos_fields_item_add', function(event) {
+                if (adminPhotosBox.is('#six_photos') && (photosFieldsItem.length >= 6)){
+                    return false;
+                }
+                photosInAdmin.imagesEvents.addNewImage(this);
+                return false;
+            });
+        },
+        imagesEvents: {
+            addNewImage: function(thisClass) {
                 let sendAttachmentToAdmin = wp.media.editor.send.attachment;
                 const buttonAdd = $(thisClass);
                 wp.media.editor.send.attachment = function(props, attachment) {
-                     let newItemContext = `<div class="photos_fields_item"><img src="` + attachment.url + `" width="150" height="150" alt="Photos image in admin-bar" /><div class="photos_fields_item_delete">Удалить<span class="dashicons dashicons-trash"></span></div><input `;
-                    if ($('#meta_box_sliders').length !== 0) {
+                    let sizeLarge = (attachment.sizes && attachment.sizes.large && attachment.sizes.large.url) ? attachment.sizes.large.url : '';
+                    let sizeMedium = (attachment.sizes && attachment.sizes.medium && attachment.sizes.medium.url) ? attachment.sizes.medium.url : '';
+                    let newItemContext = `<div class="photos_fields_item"><img src="` + attachment.sizes.thumbnail.url + `" width="150" height="150" alt="Photos image in admin-bar" /><div class="photos_fields_item_delete">Удалить<span class="dashicons dashicons-trash"></span></div><input `;
+                    if (adminSliderBox.length !== 0) {
                         newItemContext += `name="slider_photos[]"`;
                     }
                     else {
                         newItemContext += `name="uploadedPhoto[]"`;
                     }
-                        newItemContext +=  `type="hidden" value="` + attachment.url + `"></div>`;
-                    $('.photos_fields_item_add_wrapper').before(newItemContext);
-                    console.log(attachment);
-                    console.log(props);
+                    newItemContext +=  `type="hidden" value="` + attachment.sizes.thumbnail.url + ` ` + sizeMedium + ` ` + sizeLarge + ` ` + attachment.sizes.full.url + `"></div>`;
 
-                    if ($('.photos_custom_admin_fields').is('#six_photos') && ($('.photos_fields_item').length >= 6)) {
-                        $('.photos_fields_item_add').css({'background': '#dbe3e2'});
+                    adminPhotosBox.append(newItemContext);
+
+                    if (adminPhotosBox.is('#six_photos') && (photosFieldsItem.length >= 6)) {
+                        buttonAddImage.css({'background': '#dbe3e2'});
                     }
                     wp.media.editor.send.attachment = sendAttachmentToAdmin;
                 };
                 wp.media.editor.open(buttonAdd);
                 return false;
             },
-            delete_img: function(thisClass) {
+            deleteImage: function(thisClass) {
                 $(thisClass).parent().remove();
-                if ($('.photos_custom_admin_fields').is('#six_photos') && ($('.photos_fields_item').length < 6)) {
-                    $('.photos_fields_item_add').css({'background': '#16a085'});
+                if (adminPhotosBox.is('#six_photos') && (photosFieldsItem.length < 6)) {
+                    buttonAddImage.css({'background': '#16a085'});
                 }
             }
         }
     };
     $(document).ready(function() {
-        photosInAdmin.EVENTS();
+        photosInAdmin.imagesEventsCall();
     });
+
 
                    /******* Selectable Type of Lessons for school_prices *******/
 
@@ -91,7 +99,7 @@ jQuery(function ($) {
     }
 
     // Choice of the subscription type
-    groupLessonsBtn.click(function (e) {
+    groupLessonsBtn.click(function () {
         if (groupLessonsBtn.hasClass('active_lesson_type')){
             return;
         }
@@ -100,7 +108,7 @@ jQuery(function ($) {
         individualLessonsBtn.removeClass('active_lesson_type');
         groupLessonsBtn.addClass('active_lesson_type');
     });
-    individualLessonsBtn.click(function (e) {
+    individualLessonsBtn.click(function () {
         if (individualLessonsBtn.hasClass('active_lesson_type')){
             return;
         }
@@ -109,6 +117,4 @@ jQuery(function ($) {
         groupLessonsBtn.removeClass('active_lesson_type');
         individualLessonsBtn.addClass('active_lesson_type');
     });
-
-
-});
+})(jQuery);

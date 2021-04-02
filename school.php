@@ -9,13 +9,13 @@
             <div class="planets_content">
                 <div class="planets_content_center">
                     <a href="<?php echo home_url() ; ?>">
-                        <img class="planets_content_center_image" src="<?php echo MIPARTI_IMG_DIR . '/miparti_planets.png' ; ?>" alt="logo-image">
+                        <img src="<?php echo MIPARTI_IMG_DIR . '/img-placeholder.svg'?>" class="planets_content_center_image" data-src="<?php echo MIPARTI_IMG_DIR . '/miparti_planets.png' ; ?>" alt="">
                     </a>
                     <ul id="planets_content_lines">
                         <li class="planets_content_lines_top_left">
                             <a class="planets_content_top_left_link" href="<?php echo get_page_link(142); ?>">
                                 <p class="planets_content_top_left_tooltip">Видео</p>
-                                <img src="<?php echo wp_get_attachment_url(get_theme_mod('school_spheres_videos')) ; ?>" alt="Preview Image" >                             </a>
+                                <img src="<?php echo MIPARTI_IMG_DIR . '/img-placeholder.svg'?>" data-src="<?php echo wp_get_attachment_image_url(get_theme_mod('school_spheres_videos'), 'thumbnail') ; ?>" alt="" >                             </a>
                             <span class="shining_road">
                             <span class="moving_ray_top_left"></span>
                         </span>
@@ -23,7 +23,7 @@
 
                         <li class="planets_content_lines_top_right">
                             <a class="planets_content_top_right_link" href="<?php echo get_page_link(140); ?>">
-                                <img src="<?php echo wp_get_attachment_url(get_theme_mod('school_spheres_photos')); ?>" alt="Preview Image">
+                                <img src="<?php echo MIPARTI_IMG_DIR . '/img-placeholder.svg'?>" data-src="<?php echo wp_get_attachment_image_url(get_theme_mod('school_spheres_photos'), 'thumbnail'); ?>" alt="">
                                 <p class="planets_content_top_right_tooltip">Фото</p>
 
                             </a>
@@ -36,7 +36,7 @@
                             <a class="planets_content_center_left_link" href="<?php echo get_page_link(146); ?>">
                                 <p class="planets_content_center_left_tooltip">                                    Расписание
                                 </p>
-                                <img src="<?php echo wp_get_attachment_url(get_theme_mod('school_spheres_timeTable')); ?>" alt="Preview Image">
+                                <img src="<?php echo MIPARTI_IMG_DIR . '/img-placeholder.svg'?>" data-src="<?php echo wp_get_attachment_image_url(get_theme_mod('school_spheres_timeTable'), 'thumbnail'); ?>" alt="">
                             </a>
                             <span class="shining_road">
                             <span class="moving_ray_top_left"></span>
@@ -45,7 +45,7 @@
 
                         <li class="planets_content_lines_center_right">
                             <a class="planets_content_center_right_link" href="<?php echo get_page_link(144); ?>">
-                                <img src="<?php echo wp_get_attachment_url(get_theme_mod('school_spheres_prices')); ?>" alt="Preview Image">
+                                <img src="<?php echo MIPARTI_IMG_DIR . '/img-placeholder.svg'?>" data-src="<?php echo wp_get_attachment_image_url(get_theme_mod('school_spheres_prices'), 'thumbnail'); ?>" alt="">
                                 <p class="planets_content_center_right_tooltip">                                        Абонементы
                                 </p>
                             </a>
@@ -59,7 +59,7 @@
                                 <p class="planets_content_bottom_left_tooltip">
                                     Постановка&nbsp;танца
                                 </p>
-                                <img src="<?php echo wp_get_attachment_url(get_theme_mod('school_spheres_danceStaging')); ?>" alt="Preview Image" >                             </a>
+                                <img src="<?php echo MIPARTI_IMG_DIR . '/img-placeholder.svg'?>" data-src="<?php echo wp_get_attachment_image_url(get_theme_mod('school_spheres_danceStaging'), 'thumbnail'); ?>" alt="">                             </a>
                             <span class="shining_road">
                             <span class="moving_ray_top_left"></span>
                         </span>
@@ -67,14 +67,14 @@
 
                         <li class="planets_content_lines_bottom_right">
                             <a class="planets_content_bottom_right_link" href="<?php echo get_page_link(148); ?>">
-                                <img src="<?php echo wp_get_attachment_url(get_theme_mod('school_spheres_educators')); ?>" alt="Preview Image">
+                                <img src="<?php echo MIPARTI_IMG_DIR . '/img-placeholder.svg'?>" data-src="<?php echo wp_get_attachment_image_url(get_theme_mod('school_spheres_educators'), 'thumbnail'); ?>" alt="">
                                 <p class="planets_content_bottom_right_tooltip">
                                     Педагоги
                                 </p>
                             </a>
                             <span class="shining_road">
-                            <span class="moving_ray_top_left"></span>
-                        </span>
+                                <span class="moving_ray_top_left"></span>
+                            </span>
                         </li>
 
                     </ul>

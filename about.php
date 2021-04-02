@@ -30,8 +30,16 @@
             $about_us_query->the_post();
             $slider_photos = get_post_meta(get_the_ID(), 'slider_photos', 1);
             foreach ($slider_photos as $value){
+                $image_source = explode(' ', $value);
+                $image_source[3] = $image_source[3] ? $image_source[3] : $image_source[1];
+                $image_source[2] = $image_source[2] ? $image_source[2] : ($image_source[1] ? $image_source[1] : $image_source[3]);
+                $image_source[1] = $image_source[1] ? $image_source[1] : $image_source[2];
+                // $image_source[0] - sizes.thumbnail.url
+                // $image_source[1] - sizes.medium.url
+                // $image_source[2] - sizes.large.url
+                // $image_source[3] - sizes.full.url
                 echo  ' <div>
-                        <img src=" ' . $value . ' " alt="photo about us">
+                            <img data-lazy="' . $image_source[1] . '"  alt="">
                         </div> ' ;
             }
             endwhile;

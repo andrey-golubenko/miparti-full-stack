@@ -4,8 +4,7 @@
 
 add_action( 'customize_register', 'miparti_spheres' );
 function miparti_spheres($wp_customize) {
-    /*ЛОГОТИПы КАСТОМНЫе ДВа.*/
-//Вывод в админ. панель изображений для ШАРОВ для страниц "Шоу-Балет" и "Школа Танца".
+//Вывод в админ. панель изображений ШАРОВ для страниц "Шоу-Балет" и "Школа Танца".
 
     /*** ПАНЕЛЬ - Шоу-Балет и Школа Танца ***/
     $wp_customize->add_panel('all_spheres', array(
@@ -148,3 +147,4 @@ function miparti_spheres($wp_customize) {
     ) ) );
 
 }
+

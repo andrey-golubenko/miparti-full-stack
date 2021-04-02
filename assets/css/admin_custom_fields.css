@@ -65,7 +65,7 @@
      background: #c0392b;
  }
 
-.photos_fields_item > img {
+.photos_fields_item > picture, .photos_fields_item > img, .photos_fields_item > picture > img {
     width: 150px;
     height: 150px;
     object-fit: cover;

@@ -1,81 +1,47 @@
-jQuery(function ($) {
+(function ($) {
     'use strict';
 
+    const docRoot = $('html, body'); // Variable for ALL ScrollS to AnchorS
 
-/************************************************************************************/
-/*************************************** FRONT-PAGE *********************************/
-/************************************************************************************/
+/******* COMMON SCRIPTS for All-Pages (besides Front-Page) *******/
 
-// Sliders (left and right from FRONT-PAGE)
-    $('.slider_left').slick({
-        infinite: true,
-        fade: true,
-        cssEase: 'linear',
-        easing: 'linear',
-        autoplay: true,
-        autoplaySpeed: 5555,
-        accessibility: false,
-        arrows: false,
-        pauseOnHover: false,
-        lazyLoad: 'ondemand'
-    });
+    // Lazy-Load Images
+    // all images in HTML must have src=".../placeholder.svg" or src="" (empty) and data-src="./img_address.png"
+    function showImages() {
+        const images = document.querySelectorAll('[data-src]');
+        const clientHeight = document.documentElement.clientHeight;
+        for (let img of images) {
+            const coord = img.getBoundingClientRect();
+            let realSrc = img.dataset.src;
+            if (!realSrc) continue;
+            if (coord.top > -clientHeight &&
+                coord.top < clientHeight * 2 ||
+                coord.bottom > -clientHeight &&
+                coord.bottom < clientHeight * 2) {
+                img.src = realSrc;
+                img.dataset.src = '';
+            }
+        }
+    }
+        showImages();
+    document.addEventListener('scroll', showImages);
 
-    $('.slider_right').slick({
-        infinite: true,
-        fade: true,
-        cssEase: 'linear',
-        autoplay: true,
-        autoplaySpeed: 5555,
-        accessibility: false,
-        arrows: false,
-        pauseOnHover: false,
-        lazyLoad: 'ondemand',
-    });
-
-    // Sliders (From MOBILE-FRONT-PAGE)
-    $('.mobile_front_slider_center').slick({
-        infinite: true,
-        fade: true,
-        cssEase: 'linear',
-        easing: 'linear',
-        autoplay: true,
-        mobileFirst: true,
-        pauseOnFocus: false,
-        autoplaySpeed: 5555,
-        accessibility: false,
-        arrows: false,
-        pauseOnHover: false,
-        lazyLoad: 'ondemand'
-    });
-
-
-/************************************************************************************/
-/************************************************************************************/
-
-
-/************************************************************************************/
-/******************** MENU for All-Pages (besides Front-Page) ***********************/
-/************************************************************************************/
-
-    // MENU button (from front-page)
-    const frontMenuBtnPush = $('button.push');
-    $('.push').click(function () {
-        //переключение между показать и спрятать само меню
-        $('nav.front_nav_menu_content').slideToggle().css({'display' : 'flex'});
-        if (frontMenuBtnPush.hasClass("btn_menu_active")) {
-            $('span.btn_push_text').fadeOut(100);
-            setTimeout(() => {
-                $('.btn_cover_text').fadeIn(100)
-            }, 200);
-            frontMenuBtnPush.removeClass('btn_menu_active')
+// Button UP
+    $('footer').append('<div class="up_btn"></div>');
+    $(window).scroll(function() {
+        if ($(this).scrollTop() > 200) {
+            $('.up_btn').css({ 'bottom': '-120px', 'right': '-120px'});
         } else {
-            $('.btn_cover_text').fadeOut(100);
-            setTimeout(() => {
-                $('.btn_push_text').fadeIn(100)
-            }, 200);
-            frontMenuBtnPush.addClass('btn_menu_active');
+            $('.up_btn').css({ 'bottom': '-220px', 'right': '-220px'});
         }
     });
+    $('.up_btn').on('click',function() {
+        $('html, body').animate({ scrollTop: 0 }, 500);
+        return false;
+    });
+
+
+/*********** MENU for All-Pages (besides Front-Page) **********/
 
     const componentMenu = $('.head_menu'); // All MENU
     const mediaQueryHoverMenu = window.matchMedia('(min-width: 1024px)');
@@ -87,7 +53,7 @@ jQuery(function ($) {
         menuHeight = 50;
     }
 
-    // Pix MENU on a TOP with passive event listener
+    // Pin MENU on a TOP with passive event listener
     const pinMenu = () => {
         if (window.pageYOffset > menuHeight && !componentMenu.hasClass('mobile_menu_open')){
             componentMenu.addClass('fixing_menu');
@@ -99,7 +65,7 @@ jQuery(function ($) {
     pinMenu();
     window.addEventListener('scroll', pinMenu, {passive: true});
 
-    // Hover For DROP-DOWN Sub-Menu in COMMON MENU only if screen size more than 1024px includes
+    // Hover For DROP-DOWN Sub-Menu in COMMON MENU only if screen size more than 1024px includes and also FOR Front-Page
     if (mediaQueryHoverMenu.matches) {
         $('.nav_menu ul li.nav_link a p, .nav_menu ul li.nav_link a .nav_link_pin').mouseenter(function (e) {
             const currLink = $(e.target.closest('li.nav_link'));
@@ -133,7 +99,7 @@ jQuery(function ($) {
                   });
             $('ul.sub-menu').slideUp(500);
         });
-
+        // For Front-Page
         const frontMenuActiveItem = $('.front_nav_menu_content ul li.nav_link a');
         frontMenuActiveItem.mouseenter(function (e) {
             const currLink = $(e.target.closest('li.nav_link'));
@@ -143,18 +109,9 @@ jQuery(function ($) {
             const currLink = $(e.target.closest('li.nav_link'));
             currLink.find('.underline').css({'left':'-500%'});
         });
-
-
     }
 
-/************************************************************************************/
-/************************************************************************************/
-
-
-/************************************************************************************/
-/***************************************** MOBILE MENU ******************************/
-/************************************************************************************/
-
+/*************** MOBILE MENU ***************/
 
     //Show sub-menu FOR MOBILE Menu
     const mobMenuMediaQuery = window.matchMedia('(max-width: 1023px)');
@@ -176,28 +133,6 @@ jQuery(function ($) {
 
 
 
-
-/************************************************************************************/
-/************************************************************************************/
-
-// Button UP
-    $('footer').append('<div class="up_btn"></div>');
-    $(window).scroll(function() {
-        if ($(this).scrollTop() > 200) {
-            $('.up_btn').css({ 'bottom': '-120px', 'right': '-120px'});
-        } else {
-            $('.up_btn').css({ 'bottom': '-220px', 'right': '-220px'});
-        }
-    });
-    $('.up_btn').on('click',function() {
-        $('html, body').animate({ scrollTop: 0 }, 500);
-        return false;
-    });
-
-
-    const docRoot = $('html, body'); // Variable for ALL ScrollS to AnchorS
-
-
     // Open full description-text (in section description)
     $('.common_description').click(function (e) {
         const curTarget = $(e.target).attr('class');
@@ -215,13 +150,7 @@ jQuery(function ($) {
         }
     });
 
-/************************************************************************************/
-/************************************************************************************/
-
-
-/************************************************************************************/
-/****************************************** VIDEO ITEM ******************************/
-/************************************************************************************/
+/*************************** VIDEO ITEM *******************/
 
     // magnific-popup Iframe - video YouTube in iframe
     $('.popup-youtube').magnificPopup({
@@ -242,7 +171,6 @@ jQuery(function ($) {
         closeBtnInside: false,
     });
 
-
     // magnific-popup Image - Gallery
     $('div[id$="_bottom_images"]').each(function () {
         const videoItemId = parseInt($(this).attr('id'));
@@ -262,27 +190,27 @@ jQuery(function ($) {
             },
             zoom: {
                 enabled: true,
-                duration: 300 // don't foget to change the duration also in CSS
+                duration: 300
             }
         });
     });
 
+    // Replacing images in mobile video-item
+    const videoItemMediaQuery = window.matchMedia('(max-width: 768px)');
+    const grandFatherWrappers = document.querySelectorAll('.videos_item_content');
+    if (videoItemMediaQuery.matches) {
+        for (let bundle of grandFatherWrappers) {
+            let movingImageItems = bundle.querySelectorAll('.videos_item_content_images_single');
+            let imageItemsNewPlace = bundle.lastElementChild;
+            for (let imageItem of movingImageItems) {
+                imageItemsNewPlace.prepend(imageItem);
+            }
+        }
+    }
+/***************** PHOTO-Albums TABS ********************/
 
-    import('./modules/module_video_item.js')
-        .then(module => {
-            module.replacingItems();
-            });
-
-/************************************************************************************/
-/************************************************************************************/
-
-
-/************************************************************************************/
-/********************************** PHOTO-Albums TABS *******************************/
-/************************************************************************************/
-
-    const photo_albums = $('h2[class*="studio_photos_link_"]');
-    const photo_images = $('div[class*="studio_photos_link_"]');
+    const photo_albums = $('h2[class*="photos_link_"]');
+    const photo_images = $('div[class*="photos_link_"]');
 
     // Change attributes in 'albums' (li) & photo-images (tab-content) - (div)
     for (let i = 0; photo_albums.length > i; i++) {
@@ -325,35 +253,77 @@ jQuery(function ($) {
       Photo-Tabs __ONLY AFTER Initialization Photo Tabs__
       If init this __BEFORE Init. Slider-on-Albums-List __ then will destroy 'click' on Photo-Tabs ***/
 
-    $('.studio_photos_albums h2').click(function(){
+    $('.photos_albums h2').click(function(){
         const clickedClass = this.className.slice(0, 21);
-        $('div[class*="studio_photos_link_"]').hide();
+        $('div[class*="photos_link_"]').hide();
         $('div.' + clickedClass).fadeIn(500);
-        $('.studio_photos_albums h2').removeClass('active_studio_photos_tab');
-        $(this).addClass('active_studio_photos_tab');
+        $('.photos_albums h2').removeClass('active_photos_tab');
+        $(this).addClass('active_photos_tab');
     });
-    $('h2.studio_photos_link_0').click();
+    $('h2.photos_link_0').click();
 
 /*** IF without DYNAMIC IMPORT of Init Adaptive-Slider then
      Initialization Slider-on-Albums-List __ONLY BEFORE Initialization Photo-Tabs__
      If init this __AFTER Init. Photo-Tabs __ then will destroy 'click' on Photo-Tabs ***/
 
-    // Dynamic import of Init Adaptive-Slider
-    import('./modules/module_adaptive_slider.js')
-        .then(module => {
-            module.adaptiveSlider('.studio_photos_albums');
+    // "ExDynamic import" of Init Adaptive-Slider
+    const sliderMediaQueryTablet = window.matchMedia('(max-width: 1023px)');
+    const sliderMediaQueryMobile_L = window.matchMedia('(max-width: 900px)');
+    const sliderMediaQueryMobile_M = window.matchMedia('(max-width: 690px)');
+    const sliderMediaQueryMobile_S = window.matchMedia('(max-width: 470px)');
+
+    const studioPhotosFourAlbums = document.querySelector('#more_than_four_posts'); // for pages 'photos' & 'school_photos' for init slider, when count of albums is more then 4 (four)
+
+    const initialElement = $('.photos_albums');
+
+    if (sliderMediaQueryTablet.matches || studioPhotosFourAlbums) {
+        if (sliderMediaQueryMobile_L.matches) {
+            if (sliderMediaQueryMobile_M.matches) {
+                if (sliderMediaQueryMobile_S.matches) {
+                    initialElement.slick({
+                        infinite: true,
+                        speed: 700,
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                        lazyLoad: 'ondemand'
+                    });
+                }
+                else {
+                    initialElement.slick({
+                        infinite: true,
+                        speed: 700,
+                        slidesToShow: 2,
+                        slidesToScroll: 2,
+                        lazyLoad: 'ondemand'
+                    });
+                }
+            }
+            else {
+                initialElement.slick({
+                    infinite: true,
+                    speed: 800,
+                    slidesToShow: 3,
+                    slidesToScroll: 3,
+                    lazyLoad: 'ondemand'
+                });
+            }
+        }
+        else {
+            initialElement.slick({
+                infinite: true,
+                speed: 1000,
+                slidesToShow: 4,
+                slidesToScroll: 4,
+                lazyLoad: 'ondemand'
             });
+        }
+    }
 
-/************************************************************************************/
-/************************************************************************************/
 
-
-/************************************************************************************/
-/************************************** TIME-TABLE **********************************/
-/************************************************************************************/
+/********************* TIME-TABLE ***********************/
 
     /*
-     * Inite Slick-Slider (SS) in this way because of the SS destroy any others
+     * Init Slick-Slider (SS) in this way because of the SS destroy any others
      * eventListeners on sliders items, when SS in mode - 'Responsive Display' ChangE
      * its settings according to breakpoints of window size
     */
@@ -456,38 +426,13 @@ jQuery(function ($) {
     timeTableMediaQueryPhone.addListener(handleTimeTablePhone);
     handleTimeTablePhone(timeTableMediaQueryPhone);
 
-/************************************************************************************/
-/************************************************************************************/
 
-
-/************************************************************************************/
-/************************** DANCE_STAGING - scrolling to anchor *********************/
-/************************************************************************************/
+/************* DANCE_STAGING - scrolling to anchor ***********/
 
     // Scroll from dance_staging 'menu' items to corresponding video items
-    $('.dance_staging_description_pin').click( function (e) {
+    $('.dance_staging_description_pin').click(function (e) {
         const anchorScrollFrom = parseInt($(e.currentTarget).attr('id'));
         const anchorScrollTo = `#scroll_anchor_to_${anchorScrollFrom}`;
         docRoot.animate({scrollTop: $(anchorScrollTo).offset().top - '80'}, 800);
     });
-
-/************************************************************************************/
-/************************************************************************************/
-
-
-/************************************************************************************/
-/************************************ ABOUT - slider ********************************/
-/************************************************************************************/
-
-    $('.about_slider').slick({
-        autoplay: true,
-        infinite: true,
-        autoplaySpeed: 2000,
-        speed: 1000,
-        accessibility: false,
-    });
-
-
-/************************************************************************************/
-/************************************************************************************/
-});
+})(jQuery);
