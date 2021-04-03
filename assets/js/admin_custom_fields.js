@@ -4,13 +4,12 @@
 
     const adminSliderBox = $('#meta_box_sliders');
     const adminPhotosBox = $('.photos_custom_admin_fields');
-    const photosFieldsItem = $('.photos_fields_item');
     const buttonAddImage = $('.photos_fields_item_add');
 
 
     // disable 'thumbnail'-panel for post-type 'about_us' in admin
     if (adminSliderBox.length !== 0) {$('#postimagediv').css({'display' : 'none'})}
-    if (adminPhotosBox.is('#six_photos') && (photosFieldsItem.length >= 6)) {
+    if (adminPhotosBox.is('#six_photos') && ($('.photos_fields_item').length >= 6)) {
         buttonAddImage.css({'background': '#dbe3e2'});
     }
 
@@ -23,7 +22,7 @@
             });
             // add slide images
             $(document).on('click', '.photos_fields_item_add', function(event) {
-                if (adminPhotosBox.is('#six_photos') && (photosFieldsItem.length >= 6)){
+                if (adminPhotosBox.is('#six_photos') && ($('.photos_fields_item').length >= 6)){
                     return false;
                 }
                 photosInAdmin.imagesEvents.addNewImage(this);
@@ -48,7 +47,7 @@
 
                     adminPhotosBox.append(newItemContext);
 
-                    if (adminPhotosBox.is('#six_photos') && (photosFieldsItem.length >= 6)) {
+                    if (adminPhotosBox.is('#six_photos') && ($('.photos_fields_item').length >= 6)) {
                         buttonAddImage.css({'background': '#dbe3e2'});
                     }
                     wp.media.editor.send.attachment = sendAttachmentToAdmin;
@@ -58,7 +57,8 @@
             },
             deleteImage: function(thisClass) {
                 $(thisClass).parent().remove();
-                if (adminPhotosBox.is('#six_photos') && (photosFieldsItem.length < 6)) {
+
+                if (adminPhotosBox.is('#six_photos') && ($('.photos_fields_item').length < 6)) {
                     buttonAddImage.css({'background': '#16a085'});
                 }
             }

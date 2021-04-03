@@ -16,15 +16,18 @@
             ));
             while ($studio_videos_items->have_posts()) :
                 $studio_videos_items->the_post();
-            $youTube_url = esc_html(get_post_meta(get_the_ID(), 'youTube_url', 1));
-            if ($youTube_url != '') :
         ?>
         <div class="videos_item">
             <div class="videos_item_wrapper ">
                 <div class="videos_item_content">
                     <div class="videos_item_content_video" >
                         <div class="videos_item_content_video_inner" style="background: url(<?php echo get_the_post_thumbnail_url(); ?>) no-repeat center/cover;">
+                        <?php
+                        $youTube_url = esc_html(get_post_meta(get_the_ID(), 'youTube_url', 1));
+                        if ($youTube_url != '') :
+                        ?>
                             <a class="popup-youtube" rel="nofollow" href="<?php echo $youTube_url; ?>"><span></span></a>
+                        <?php endif; ?>
                         </div>
                         <div class="videos_item_content_video_images" id="<?php echo get_the_ID(); ?>_bottom_images">
                         <?php
@@ -81,9 +84,10 @@
                                 }
                                 ?>
                             </div>
+                            <?php
+                                $invisible_video_text = esc_html(get_post_meta(get_the_ID(), 'invisible_description', 1));                             if (!empty($invisible_video_text)) :                                   ?>
                             <div class="common_description_text_full">
                                 <?php
-                                $invisible_video_text = esc_html(get_post_meta(get_the_ID(), 'invisible_description', 1));
                                 $invisible_paragraphs = explode(PHP_EOL,$invisible_video_text); // use PHP constant 'PHP_EOL' like line-break-delimiter
                                 foreach ($invisible_paragraphs as $invisible_item) {
                                     echo '<p>' . $invisible_item . '</p>';
@@ -97,6 +101,7 @@
                                     <span class="arrow-text-right"></span>
                                 </div>
                             </div>
+                            <?php endif; ?>
                         </div>
                     </div>
                     <?php endif; ?>
@@ -104,7 +109,6 @@
             </div>
         </div>
         <?php
-            endif;
             endwhile;
             wp_reset_postdata(); ?>
     </section>

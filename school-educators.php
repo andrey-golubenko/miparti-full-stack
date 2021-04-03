@@ -33,7 +33,8 @@
                                 <p class="common_description_text">
                                     <?php echo $post->visible_description ; ?>
                                 </p>
-                                <p class="common_description_text_full">
+                            <?php if (!empty($post->invisible_description)) : ?>
+                    <p class="common_description_text_full">
                                     <?php echo $post->invisible_description ; ?>
                                 </p>
                                 <div class="common_description_text_readMore">
@@ -43,6 +44,7 @@
                                         <span class="arrow-text-right"></span>
                                     </div>
                                 </div>
+                                    <?php endif; ?>
                             </div>
                         </div>
                         <ul class="educators_common_description_social">
