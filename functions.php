@@ -80,64 +80,41 @@ add_action( 'admin_enqueue_scripts', function(){
 add_action('wp_enqueue_scripts', 'miparti_media' );
 function miparti_media (){
 
-    /*** DIFFERENT STYLES FOR DIFFERENT PAGES ***/
     if (wp_is_mobile()  && is_front_page()) {
         wp_enqueue_style('mobile-front-styles', MIPARTI_CSS_DIR . '/mobile-front-page.min.css');
+        wp_enqueue_script( 'jquery');
+        wp_enqueue_script('slick-slider', MIPARTI_JS_DIR . '/slick-slider.min.js', [], null, true);
+        wp_enqueue_script('front-page', MIPARTI_JS_DIR . '/front-page.min.js', [], null, true);
     }
     elseif (is_front_page()) {
         wp_enqueue_style('front-styles', MIPARTI_CSS_DIR . '/front-page.min.css');
+        wp_enqueue_script( 'jquery');
+        wp_enqueue_script('slick-slider', MIPARTI_JS_DIR . '/slick-slider.min.js', [], null, true);
+        wp_enqueue_script('front-page', MIPARTI_JS_DIR . '/front-page.min.js', [], null, true);
     }
     elseif (is_page_template('studio.php')){
         wp_enqueue_style('studio-styles', MIPARTI_CSS_DIR . '/studio.min.css');
+        wp_enqueue_script( 'jquery');
+        wp_enqueue_script('miparti-libs', MIPARTI_JS_DIR . '/libs.min.js', [], null, true);
+        wp_enqueue_script('studio', MIPARTI_JS_DIR . '/studio.min.js', [], null, true);
     }
     elseif (is_page_template('school.php')){
         wp_enqueue_style('school-styles', MIPARTI_CSS_DIR . '/school.min.css');
+        wp_enqueue_script( 'jquery');
+        wp_enqueue_script('school', MIPARTI_JS_DIR . '/school.min.js', [], null, true);
     }
     elseif (is_page_template('about.php')){
         wp_enqueue_style('about-styles', MIPARTI_CSS_DIR . '/about.min.css');
-    }
-    else {
-        wp_enqueue_style('miparti-styles', get_stylesheet_uri());
-    }
-    if (is_page_template(array('school-prices.php', 'school-timeTable.php', 'contacts.php' ) ) ) {
-        wp_enqueue_style('contact-forms', MIPARTI_CSS_DIR . '/contact-forms-ajax-request.css');
-    }
-
-    /*** DIFFERENT SCRIPTS FOR DIFFERENT PAGES ***/
-    // Оставляем JQ (джейквери) вшитую в WP. JQ и jQ-migrate
-    wp_enqueue_script( 'jquery');
-
-    if (is_front_page() || is_page_template('about.php')) {
+        wp_enqueue_script( 'jquery');
         wp_enqueue_script('slick-slider', MIPARTI_JS_DIR . '/slick-slider.min.js', [], null, true);
-        if (is_front_page()){
-            wp_enqueue_script('front-page', MIPARTI_JS_DIR . '/front-page.min.js', [], null, true);
-        }
-        if (is_page_template('about.php')){
-            wp_enqueue_script('about', MIPARTI_JS_DIR . '/about.min.js', [], null, true);
-        }
+        wp_enqueue_script('about', MIPARTI_JS_DIR . '/about.min.js', [], null, true);
     }
-
-    if (   !is_front_page()
-        && !is_page_template('school.php')
-        && !is_page_template('about.php')
-        && !is_page_template('blog.php')
-        && !is_page_template('contacts.php')
-        && !is_page_template('rider.php')
-        && !is_page_template('school-educators.php')) {
+    elseif (is_page_template(array('school-prices.php', 'school-timeTable.php', 'contacts.php' ) ) ){
+        wp_enqueue_style('contact-forms', MIPARTI_CSS_DIR . '/contact-forms-ajax-request.css');
+        wp_enqueue_style('miparti-styles', get_stylesheet_uri());
+        wp_enqueue_script( 'jquery');
         wp_enqueue_script('miparti-libs', MIPARTI_JS_DIR . '/libs.min.js', [], null, true);
-        if ( !is_page_template('studio.php') ) {
-            wp_enqueue_script('miparti-main', MIPARTI_JS_DIR . '/main.min.js', [], null, true);
-        }
-    }
-
-    if (is_page_template('studio.php')) {
-        wp_enqueue_script('studio', MIPARTI_JS_DIR . '/studio.min.js', [], null, true);
-    }
-    if (is_page_template('school.php')) {
-        wp_enqueue_script('school', MIPARTI_JS_DIR . '/school.min.js', [], null, true);
-    }
-
-    if (is_page_template(array('school-prices.php', 'school-timeTable.php', 'contacts.php' ) ) ){
+        wp_enqueue_script('miparti-main', MIPARTI_JS_DIR . '/main.min.js', [], null, true);
         wp_enqueue_script('miparti-contact-forms', MIPARTI_JS_DIR . '/contact-forms.js', [], null, true);
         wp_localize_script('miparti-contact-forms', 'subscribe_object',
             array(
@@ -146,6 +123,13 @@ function miparti_media (){
             )
         );
     }
+    else {
+        wp_enqueue_style('miparti-styles', get_stylesheet_uri());
+        wp_enqueue_script( 'jquery');
+        wp_enqueue_script('miparti-libs', MIPARTI_JS_DIR . '/libs.min.js', [], null, true);
+        wp_enqueue_script('miparti-main', MIPARTI_JS_DIR . '/main.min.js', [], null, true);
+    }
+    /*** DIFFERENT STYLES FOR DIFFERENT PAGES ***/
 
     //ОТЛЮЧАЕМ Скрипты из header  и ПЕРЕПОДКЛЮЧАЕМ ИХ В footer
     remove_action('wp_head', 'wp_print_scripts');

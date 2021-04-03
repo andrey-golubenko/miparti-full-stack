@@ -102,7 +102,7 @@ function meta_box_videos_url_and_description ($post) {
         <p class="miparti_video_tooltip"> Введите URL-адрес видео с серсива 'YouTube': </p>
         <p class="miparti_video_tooltip_detail">(для этого на сайте "YouTube", над выбранным видео, найти адресную строку браузера, где полностью скопировать URL-адрес, начиная с https://www.youtube.com/watch?v= . . . и так далее до конца строки)</p>
         <input type="text" class="miparti_video_url" placeholder="Пример: https://www.youtube.com/watch?v= . . . и так далее" name="miparti_video[youTube_url]" value="<?php echo esc_url(get_post_meta($post->ID, 'youTube_url', 1)); ?>" />
-        <p class="miparti_video_tooltip">Введите Видомое описание видео:</p>
+        <p class="miparti_video_tooltip">Введите Видимое описание видео:</p>
         <textarea type="text" class="miparti_video_description" name="miparti_video[visible_description]" rows="7"><?php echo esc_textarea(get_post_meta($post->ID, 'visible_description', 1)); ?>
         </textarea>
         <p class="miparti_video_tooltip">Введите Скрытое описание видео:</p>

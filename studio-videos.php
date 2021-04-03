@@ -16,13 +16,15 @@
             ));
             while ($studio_videos_items->have_posts()) :
                 $studio_videos_items->the_post();
+            $youTube_url = esc_html(get_post_meta(get_the_ID(), 'youTube_url', 1));
+            if ($youTube_url != '') :
         ?>
         <div class="videos_item">
             <div class="videos_item_wrapper ">
                 <div class="videos_item_content">
                     <div class="videos_item_content_video" >
                         <div class="videos_item_content_video_inner" style="background: url(<?php echo get_the_post_thumbnail_url(); ?>) no-repeat center/cover;">
-                            <a class="popup-youtube" rel="nofollow" href="<?php echo esc_url(get_post_meta($post->ID, 'youTube_url', 1)); ?>"><span></span></a>
+                            <a class="popup-youtube" rel="nofollow" href="<?php echo $youTube_url; ?>"><span></span></a>
                         </div>
                         <div class="videos_item_content_video_images" id="<?php echo get_the_ID(); ?>_bottom_images">
                         <?php
@@ -65,11 +67,14 @@
                 </div>
                 <div class="videos_item_description">
                     <h3><?php the_title() ?></h3>
+                    <?php
+                        $visible_video_text = esc_html(get_post_meta(get_the_ID(), 'visible_description', 1));
+                        if (!empty($visible_video_text)) :
+                    ?>
                     <div class="common_description">
                         <div class="common_description_item">
                             <div class="common_description_text">
                                 <?php
-                                $visible_video_text = esc_html(get_post_meta(get_the_ID(), 'visible_description', 1));
                                 $visible_paragraphs = explode(PHP_EOL,$visible_video_text);
                                 foreach ($visible_paragraphs as $visible_item) {
                                     echo '<p>' . $visible_item . '</p>';
@@ -94,10 +99,14 @@
                             </div>
                         </div>
                     </div>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>
-        <?php endwhile; wp_reset_postdata(); ?>
+        <?php
+            endif;
+            endwhile;
+            wp_reset_postdata(); ?>
     </section>
 
 <?php get_footer() ; ?>
