@@ -1842,7 +1842,7 @@ footer .footer_wrapper .footer_wrapper_col .footer_wrapper_col_widget .footer_wr
     position: relative;
 }
 
-footer .footer_wrapper .footer_wrapper_col .footer_wrapper_col_widget .opening_hours > h4 {
+footer .footer_wrapper .footer_wrapper_col .footer_wrapper_col_widget .opening_hours > h3 {
     color: #eac15a;
     font-size: 1.25rem;
     font-style: italic;

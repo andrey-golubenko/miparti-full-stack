@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, maximum-scale=5.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>MIPARTI</title>
+    <title><?php bloginfo('name'); ?></title>
     <link rel="preload" href="<?php echo MIPARTI_THEM_ROOT . '/assets/fonts/Lora-Regular.woff2'?>" as="font" type="font/woff2" crossorigin>
     <?php if (is_page_template('studio.php')) : ?>
         <script type="module" src="<?php echo MIPARTI_JS_DIR . '/modules/studio_module_preload.js'?>"></script>

@@ -3730,7 +3730,7 @@ footer .footer_wrapper .footer_wrapper_col .footer_wrapper_col_widget .footer_wr
     position: relative;
 }
 
-footer .footer_wrapper .footer_wrapper_col .footer_wrapper_col_widget .opening_hours > h4 {
+footer .footer_wrapper .footer_wrapper_col .footer_wrapper_col_widget .opening_hours > h3 {
     color: #eac15a;
     font-size: 1.25rem;
     font-style: italic;
@@ -5997,7 +5997,7 @@ section.contacts_visual .contacts_visual_form form.signUp_form .signUp_form_item
     color: #eac15a;
 }
 
-.blog .blog_pagination ul.blog_pagination_page_numbers {
+.blog .blog_pagination ul.page-numbers {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -6013,7 +6013,7 @@ section.contacts_visual .contacts_visual_form form.signUp_form .signUp_form_item
     flex-wrap: wrap;
 }
 
-.blog .blog_pagination ul.blog_pagination_page_numbers > li {
+.blog .blog_pagination ul.page-numbers > li {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -6027,12 +6027,12 @@ section.contacts_visual .contacts_visual_form form.signUp_form .signUp_form_item
 }
 
 @media (max-width: 768px) {
-    .blog .blog_pagination ul.blog_pagination_page_numbers > li {
+    .blog .blog_pagination ul.page-numbers > li {
         margin: 0 1px 4px;
     }
 }
 
-.blog .blog_pagination ul.blog_pagination_page_numbers > li > a {
+.blog .blog_pagination ul.page-numbers > li > a {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -6052,18 +6052,18 @@ section.contacts_visual .contacts_visual_form form.signUp_form .signUp_form_item
 }
 
 @media (max-width: 768px) {
-    .blog .blog_pagination ul.blog_pagination_page_numbers > li > a {
+    .blog .blog_pagination ul.page-numbers > li > a {
         -webkit-box-shadow: 0 0 5px 1px #eac15a;
         box-shadow: 0 0 5px 1px #eac15a;
     }
 }
 
-.blog .blog_pagination ul.blog_pagination_page_numbers > li > a:hover {
+.blog .blog_pagination ul.page-numbers > li > a:hover {
     -webkit-box-shadow: 0 0 15px 3px #eac15a inset;
     box-shadow: 0 0 15px 3px #eac15a inset;
 }
 
-.blog .blog_pagination ul.blog_pagination_page_numbers > li.active_page_number > span {
+.blog .blog_pagination ul.page-numbers > li > span[aria-current="page"] {
     background: #eac15a;
     color: #000;
     display: -webkit-box;

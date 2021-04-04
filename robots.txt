@@ -1,0 +1,67 @@
+User-agent: *                  # Создаем секцию правил для роботов. * значит для всех
+							   # роботов. Чтобы указать секцию правил для отдельного
+							   # робота, вместо * укажите его имя: GoogleBot, Yandex.
+Disallow: /cgi-bin             # Стандартная папка на хостинге.
+Disallow: /wp-admin/           # Закрываем админку.
+Disallow: /wp/                 # Каталог куда установлено ядро WP. Обычно ядро
+							   # лежит рядом с wp-content и правило можно удалить.
+Disallow: /?                   # Все параметры запроса на главной.
+Disallow: *?s=                 # Поиск.
+Disallow: *&s=                 # Поиск.
+Disallow: /search              # Поиск.
+Disallow: /author/             # Архив автора.
+Disallow: */embed              # Все встраивания.
+Disallow: */page/              # Все виды пагинации.
+Disallow: */xmlrpc.php         # Файл WordPress API
+Disallow: *utm*=               # Ссылки с utm-метками
+Disallow: *openstat=           # Ссылки с метками openstat
+Disallow: */russia             # Запрещаем страницы с фото стран для "Шоу-балет" :
+Disallow: */canada
+Disallow: */usa
+Disallow: */bahamas
+Disallow: */dominican
+Disallow: */panama
+Disallow: */barbados
+Disallow: */uk
+Disallow: */france
+Disallow: */italy
+Disallow: */spain
+Disallow: */portugal
+Disallow: */germany
+Disallow: */belgium
+Disallow: */netherlands
+Disallow: */czech
+Disallow: */poland
+Disallow: */ukraine
+Disallow: */hungary
+Disallow: */slovakia
+Disallow: */bulgaria
+Disallow: */egypt
+Disallow: */turkey
+Disallow: */oman
+Disallow: */emirates
+Disallow: */india
+Disallow: */china
+Disallow: */vietnam
+Disallow: */thailand
+Disallow: /wp-                 # Все связанное с WP - это: /wp-content /wp-admin
+							   # /wp-includes /wp-json wp-login.php wp-register.php.
+Allow:    */wp-*/*ajax*.php    # AJAX запросы: */admin-ajax.php */front-ajaxs.php
+Allow:    */wp-sitemap         # карта сайта (главная и вложенные)
+Allow:    */uploads            # открываем uploads
+Allow:    */wp-*/*.js          # внутри /wp- (/*/ - для приоритета)
+Allow:    */wp-*/*.css         # внутри /wp- (/*/ - для приоритета)
+Allow:    */wp-*/*.png         # картинки в плагинах, cache папке и т.д.
+Allow:    */wp-*/*.jpg         # картинки в плагинах, cache папке и т.д.
+Allow:    */wp-*/*.jpeg        # картинки в плагинах, cache папке и т.д.
+Allow:    */wp-*/*.gif         # картинки в плагинах, cache папке и т.д.
+Allow:    */wp-*/*.svg         # картинки в плагинах, cache папке и т.д.
+Allow:    */wp-*/*.webp        # файлы в плагинах, cache папке и т.д.
+Allow:    */wp-*/*.pdf         # файлы в плагинах, cache папке и т.д.
+							   # Секция правил закончена
+
+# Одина или несколько ссылок на карту сайта (файл Sitemap). Это независимая
+# директива и дублировать её для каждого User-agent не нужно. Так например
+# Google XML Sitemap создает 2 карты сайта:
+Sitemap: http://example.com/wp-sitemap.xml
+Sitemap: http://example.com/wp-sitemap.xml.gz
