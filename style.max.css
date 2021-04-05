@@ -1175,6 +1175,10 @@ section.videos .videos_item .videos_item_wrapper .videos_item_description, secti
     width: 38%;
 }
 
+section.dance_staging .videos_item .videos_item_wrapper .videos_item_description {
+    padding-top: 2.5rem;
+}
+
 @media (max-width: 1124px) {
     section.videos .videos_item .videos_item_wrapper .videos_item_description, section.dance_staging .videos_item .videos_item_wrapper .videos_item_description {
         width: 100%;

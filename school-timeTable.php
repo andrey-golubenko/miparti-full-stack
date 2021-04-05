@@ -5,15 +5,11 @@
 ?>
 <?php get_header() ; ?>
         <section class="timetable">
-
             <div class="timetable_table">
-
                 <div class="timetable_table_day">
-
                     <div class="timetable_table_heading">
                         <h3 class="week_day">Понедельник</h3>
                     </div>
-
                     <?php
                     $monday_query = new WP_Query(array(
                         'post_type'      => 'school_time_table',
@@ -52,14 +48,10 @@
                     wp_reset_postdata();
                     ?>
                 </div>
-
-
                 <div class="timetable_table_day">
-
                     <div class="timetable_table_heading">
                         <h3 class="week_day">Вторник</h3>
                     </div>
-
                     <?php
                     $tuesday_query = new WP_Query(array(
                         'post_type'      => 'school_time_table',
@@ -97,14 +89,10 @@
                     wp_reset_postdata();
                     ?>
                 </div>
-
-
                 <div class="timetable_table_day">
-
                     <div class="timetable_table_heading">
                         <h3 class="week_day">Среда</h3>
                     </div>
-
                     <?php
                     $wednesday_query = new WP_Query(array(
                         'post_type'      => 'school_time_table',
@@ -137,19 +125,15 @@
                                 <?php endif; ?>
                             </div>
                         </div>
-
                     <?php
                     endwhile;
                     wp_reset_postdata();
                     ?>
                 </div>
-
                 <div class="timetable_table_day">
-
                     <div class="timetable_table_heading">
                         <h3 class="week_day">Четверг</h3>
                     </div>
-
                     <?php
                     $thursday_query = new WP_Query(array(
                         'post_type'      => 'school_time_table',
@@ -176,7 +160,7 @@
                         ?>
                         <div class="timetable_table_item_text" style="background-color: <?php echo hexToRgb($team_color_thursday, .4, true) ; ?> ">
                             <time class="post_id_<?php echo get_the_ID() ; ?> get_for_form" datetime="<?php echo $thursday_day ; ?>"><?php echo $thursday_day ; ?></time>
-                            <p class="get_for_form"><?php the_title() ; ?> </p>
+                            <p class="get_for_form"><?php the_title() ; ?></p>
                         <?php else: ?>
                         <div class="timetable_table_item_text">
                         <?php endif; ?>
@@ -187,13 +171,10 @@
                     wp_reset_postdata();
                     ?>
                 </div>
-
                 <div class="timetable_table_day">
-
                     <div class="timetable_table_heading">
                         <h3 class="week_day">Пятница</h3>
                     </div>
-
                     <?php
                     $friday_query = new WP_Query(array(
                         'post_type'      => 'school_time_table',
@@ -231,9 +212,7 @@
                     wp_reset_postdata();
                     ?>
                 </div>
-
                 <div class="timetable_table_day">
-
                     <div class="timetable_table_heading">
                         <h3 class="week_day">Суббота</h3>
                     </div>
@@ -276,8 +255,6 @@
                     ?>
                 </div>
             </div>
-
-
             <div id="form-popup" class="signUp mfp-hide" style="background: url(<?php echo MIPARTI_IMG_DIR . '/bg_body.jpg' ?>) no-repeat top/cover; filter: brightness(150%);">
                 <form class="signUp_form" id="add_subscribe">
                     <p class="signUp_form_heading">Предварительная регистрация</p>
@@ -291,24 +268,44 @@
                     <div class="signUp_form_item">
                         <label class="signUp_form_item_label" for="subscribe_email"><input type="email" name="subscribe_email" id="subscribe_email" class="inputBox"  placeholder="&nbsp;" /><span class="spanBox">Ваш e-mail : </span></label>
                     </div>
-
                     <input type="checkbox" name="subscribe_anticheck" id="subscribe_anticheck" style="display: none !important;" value="true" checked="checked"/>
                     <input type="text" name="subscribe_submitted" id="subscribe_submitted" value="" style="display: none !important;"/>
-
                     <div class="signUp_form_item">
                         <input type="submit" id="submit_subscribe" value="Записаться">
                     </div>
                 </form>
             </div>
-
-
             <div class="common_description container">
                 <div class="common_description_item">
                     <p class="common_description_text">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum deleniti deserunt illo omnis, optio sunt voluptatibus. Beatae blanditiis numquam rerum!
+                        Мы работаем с 09.00 до 22.00 каждый день, кроме выхожных и праздничных дней.
+                    </p>
+                    <p class="common_description_text">
+                        Пропущенные занятия в месячном абонементе НЕ возмещаются.
+                    </p>
+                    <p class="common_description_text">
+                        Однако есть возможность отработать пропущенные занятия.
                     </p>
                     <p class="common_description_text_full">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias blanditiis cum ipsa magni nam nemo nostrum, officiis quae quaerat quam reiciendis, reprehenderit sint, totam unde vero. Dignissimos impedit rerum temporibus.
+                        При приобретении абонемента на два месяца:
+                    </p>
+                    <p class="common_description_text_full">
+                        - с частотой занятий два раза в неделю – 1 занятие;
+                    </p>
+                    <p class="common_description_text_full">
+                        - с частотой занятий три раза в неделю – 2 занятия
+                    </p>
+                    <p class="common_description_text_full">
+                        При приобретении абонемента на три месяца:
+                    </p>
+                    <p class="common_description_text_full">
+                        - с частотой занятий два раза в неделю – 3 занятия
+                    </p>
+                    <p class="common_description_text_full">
+                        - с частотой занятий три раза в неделю – 3 занятия
+                    </p>
+                    <p class="common_description_text_full">
+                        Данные занятия добавляются в конец абонемента.
                     </p>
                     <div class="common_description_text_readMore">
                         <p class="common_description_text_note">Читать далее . . .</p>
@@ -319,7 +316,5 @@
                     </div>
                 </div>
             </div>
-
         </section>
-
 <?php get_footer() ; ?>

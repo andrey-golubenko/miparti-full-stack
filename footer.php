@@ -20,8 +20,8 @@
                         <div class="opening_hours">
                             <h3>Дни работы :</h3>
                             <p class="holidays">
-                                <span>Понедельник – Пятница : <br>с 9.00 до 20.00</span><br><br>
-                                <span>Суббота : с 9.00 до 17.00</span>
+                                <span>Понедельник – Пятница : <br>с 9.00 до 22.00</span><br><br>
+                                <span>Суббота : с 9.00 до 18.00</span>
                             </p>
                             <h3>Выходные :</h3>
                             <p class="holidays">
