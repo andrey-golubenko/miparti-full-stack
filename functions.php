@@ -23,12 +23,12 @@ require get_template_directory() . '/inc/class-miparti-recent-posts-widget.php';
 /* ПОДКЛЮЧАЕМ  КАСТОМАЙЗЕР */
 require get_template_directory() . '/inc/customizer.php';
 
-
-// Устанавливаем КОНСТАНТЫ для ПУТЕЙ располоэжения подключаемых файлов стилей и js (чтоб меньше писать), и других файлов из папки 'assets'
+// Устанавливаем КОНСТАНТЫ для ПУТЕЙ расположения подключаемых файлов стилей и js, других файлов из папки 'assets', а так же иные константы
 define('MIPARTI_THEM_ROOT', get_template_directory_uri());
 define('MIPARTI_CSS_DIR', MIPARTI_THEM_ROOT . '/assets/css');
 define('MIPARTI_JS_DIR', MIPARTI_THEM_ROOT . '/assets/js');
 define('MIPARTI_IMG_DIR', MIPARTI_THEM_ROOT . '/assets/images');
+define('HOME_URL_ORIGIN', home_url());
 
 //РАЗРЕШАЕМ ЗАГРУЗКУ ЗАПРЕЩЁННОГО ФОРМАТА ИЗОБРАЖЕНИЙ
 add_filter( 'upload_mimes', 'upload_allow_types' );
@@ -73,12 +73,13 @@ add_filter('show_admin_bar', '__return_false');
 
 /*** ПОДКЛЮЧАЕМ СКРИПТЫ и СТИЛИ  Кастомных Полей в АДМИНКУ ***/
 add_action( 'admin_enqueue_scripts', function(){
-    wp_enqueue_style('miparti-admin-custom-fields-styles', MIPARTI_CSS_DIR . '/admin_custom_fields.css');
-    wp_enqueue_script('miparti-admin-custom-fields-scripts', MIPARTI_JS_DIR . '/admin_custom_fields.js', array('jquery'), false, true);
+    wp_enqueue_style('miparti-admin-custom-fields-styles', MIPARTI_CSS_DIR . '/admin-custom-fields.css');
+    wp_enqueue_script('miparti-admin-custom-fields-scripts', MIPARTI_JS_DIR . '/admin-custom-fields.js', array('jquery'), false, true);
 }, 99 );
 /**** Подключаем СТИЛИ и СКРИПТЫ в ШАБЛОНЫ ****/
 add_action('wp_enqueue_scripts', 'miparti_media' );
 function miparti_media (){
+    /*** DIFFERENT STYLES and SCRIPTS FOR DIFFERENT PAGES ***/
 
     if (wp_is_mobile()  && is_front_page()) {
         wp_enqueue_style('mobile-front-styles', MIPARTI_CSS_DIR . '/mobile-front-page.min.css');
@@ -129,7 +130,6 @@ function miparti_media (){
         wp_enqueue_script('miparti-libs', MIPARTI_JS_DIR . '/libs.min.js', [], null, true);
         wp_enqueue_script('miparti-main', MIPARTI_JS_DIR . '/main.min.js', [], null, true);
     }
-    /*** DIFFERENT STYLES FOR DIFFERENT PAGES ***/
 
     //ОТЛЮЧАЕМ Скрипты из header  и ПЕРЕПОДКЛЮЧАЕМ ИХ В footer
     remove_action('wp_head', 'wp_print_scripts');
@@ -167,7 +167,7 @@ function miparti_after_setup (){
     ]);         //регстрация меню
     add_theme_support('title-tag');//самостоят. генерация тега title в header
     add_theme_support('post-thumbnails');//возможность установки картинок во всех типах постов
-    set_post_thumbnail_size(740, 400);//размеры картинок для Больш постов
+    //set_post_thumbnail_size(740, 400);//размеры картинок для Больш постов
     add_image_size( 'miparti-small-recent-post', 100, 100, true ); //размеры картинок для Малых постов в САЙДБАРЕ
     add_theme_support('html5', array( 'search_form', 'comment-form', 'comment-list', 'gallery', 'caption') ); //Включает поддержку html5 разметки для списка комментариев, формы комментариев, формы поиска, галереи, фигур и т.д. Где нужно включить разметку указывается во втором параметре.
     add_theme_support('post-formats', [ 'aside', 'image', 'video', 'gallery' ]);//Указывает формат посту

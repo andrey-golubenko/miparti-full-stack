@@ -2,7 +2,7 @@
 
 /* ОБРАБОТКА скрипта ФОРМЫ-подписки */
 
-if (wp_doing_ajax()) { // подключаем хуки, только по время AJAX запроса
+if (wp_doing_ajax()) { // подключаем хуки, только во время AJAX запроса
     add_action( 'wp_ajax_subscribe_action', 'ajax_action_callback' );
     add_action( 'wp_ajax_nopriv_subscribe_action', 'ajax_action_callback' );
 }
@@ -43,7 +43,7 @@ function ajax_action_callback() {
 // В поле темы письма, пишем сообщение по умолчанию
     $telegram_message = "Хочу записаться " . sanitize_text_field( $_POST['computedData'] ) . "%0A" . "Пожалуйста, свяжитесь со мной.";
 
-    $email_message = "Хочу записаться на " . sanitize_text_field( $_POST['computedData'] ) . " Пожалуйста, свяжитесь со мной.";
+    $email_message = "Хочу записаться " . sanitize_text_field( $_POST['computedData'] ) . " Пожалуйста, свяжитесь со мной.";
 
 // В поле темы письма, пишем сообщение по умолчанию
     $subscribe_subject = 'Хочу записаться на занятие !';

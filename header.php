@@ -21,7 +21,7 @@
     <header>
         <div class="head_menu">
             <div class="logo_and_icons_wrapper">
-                <a href="<?php echo home_url() . '/about' ; ?>">
+                <a href="<?php echo HOME_URL_ORIGIN . '/about' ; ?>">
                     <div class="link_about">
                         <p class="link_about_text">О НАС</p>
                         <div class="link_about_icons">
@@ -32,7 +32,7 @@
                     </div>
                 </a>
                 <div class="logo">
-                    <a href="<?php echo home_url(); ?>">
+                    <a href="<?php echo HOME_URL_ORIGIN; ?>">
                         <img class="logo_image" src="<?php echo MIPARTI_IMG_DIR . '/miparti_logo_plus.png' ; ?>" alt="">
                     </a>
                 </div>

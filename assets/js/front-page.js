@@ -11,8 +11,8 @@
         autoplaySpeed: 5555,
         accessibility: false,
         arrows: false,
-        pauseOnHover: false,
-        lazyLoad: 'ondemand'
+        lazyLoad: 'ondemand',
+        pauseOnHover: false
     });
 
     $('.slider_right').slick({
@@ -23,8 +23,8 @@
         autoplaySpeed: 5555,
         accessibility: false,
         arrows: false,
-        pauseOnHover: false,
         lazyLoad: 'ondemand',
+        pauseOnHover: false,
     });
 
 // Sliders (From MOBILE-FRONT-PAGE)
@@ -39,8 +39,8 @@
         autoplaySpeed: 5555,
         accessibility: false,
         arrows: false,
-        pauseOnHover: false,
-        lazyLoad: 'ondemand'
+        lazyLoad: 'ondemand',
+        pauseOnHover: false
     });
 
 // MENU button (from front-page)

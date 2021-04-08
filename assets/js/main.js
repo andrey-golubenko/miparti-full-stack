@@ -257,6 +257,7 @@
         const clickedClass = this.className.slice(0, 21);
         $('div[class*="photos_link_"]').hide();
         $('div.' + clickedClass).fadeIn(500);
+        $('.photos_content').css({'opacity' : 1});
         $('.photos_albums h2').removeClass('active_photos_tab');
         $(this).addClass('active_photos_tab');
     });
@@ -267,6 +268,7 @@
      If init this __AFTER Init. Photo-Tabs __ then will destroy 'click' on Photo-Tabs ***/
 
     // "ExDynamic import" of Init Adaptive-Slider
+    const repayPhotos=()=>{$('.slick-arrow').click(function(){$('.photos_content').animate({opacity:.1})});};
     const sliderMediaQueryTablet = window.matchMedia('(max-width: 1023px)');
     const sliderMediaQueryMobile_L = window.matchMedia('(max-width: 900px)');
     const sliderMediaQueryMobile_M = window.matchMedia('(max-width: 690px)');
@@ -287,6 +289,7 @@
                         slidesToScroll: 1,
                         lazyLoad: 'ondemand'
                     });
+                    repayPhotos();
                 }
                 else {
                     initialElement.slick({
@@ -296,6 +299,7 @@
                         slidesToScroll: 2,
                         lazyLoad: 'ondemand'
                     });
+                    repayPhotos();
                 }
             }
             else {
@@ -306,6 +310,7 @@
                     slidesToScroll: 3,
                     lazyLoad: 'ondemand'
                 });
+                repayPhotos()
             }
         }
         else {
@@ -316,6 +321,7 @@
                 slidesToScroll: 4,
                 lazyLoad: 'ondemand'
             });
+            repayPhotos()
         }
     }
 

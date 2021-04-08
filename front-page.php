@@ -18,7 +18,7 @@
                 <section class="mobile_front_menu">
                     <div class="head_menu">
                         <div class="logo_and_icons_wrapper">
-                            <a href="<?php echo home_url() . '/about' ; ?>">
+                            <a href="<?php echo HOME_URL_ORIGIN . '/about' ; ?>">
                                 <div class="link_about">
                                     <p class="link_about_text">О НАС</p>
                                     <div class="link_about_icons">
@@ -29,7 +29,7 @@
                                 </div>
                             </a>
                             <div class="logo">
-                                <a href="<?php echo home_url() ; ?>">
+                                <a href="<?php echo HOME_URL_ORIGIN ; ?>">
                                     <img style="width: auto;
     height: 50px;" class="logo_image" src="<?php echo MIPARTI_IMG_DIR . '/miparti_logo_plus.png' ; ?>" alt="">
                                 </a>
@@ -78,7 +78,7 @@
                 </section>
                 <div class="interactive_studio">
                     <div class="interactive_studio_inner">
-                        <a class="direction_item" href="<?php echo home_url() . '/studio' ; ?>">
+                        <a class="direction_item" href="<?php echo HOME_URL_ORIGIN . '/studio' ; ?>">
                             <p>ШОУ-БАЛЕТ</p>
                             <hr>
                         </a>
@@ -87,7 +87,7 @@
                 </div>
                 <div class="interactive_school">
                     <div class="interactive_school_inner">
-                        <a class="direction_item" href="<?php echo home_url() . '/school' ; ?> ">
+                        <a class="direction_item" href="<?php echo HOME_URL_ORIGIN . '/school' ; ?> ">
                             <p>ШКОЛА ТАНЦА</p>
                             <hr>
                         </a>
@@ -132,7 +132,7 @@
                 </section>
                 <section class="front_content">
                     <div class="clipboard" style="background: url(<?php echo MIPARTI_IMG_DIR . '/bg_body.jpg' ?>) center/cover;">
-                        <img src="<?php echo MIPARTI_IMG_DIR . ' /miparti_logo_plus.png' ?>" alt="">
+                        <img src="<?php echo MIPARTI_IMG_DIR . '/miparti_logo_plus.png' ?>" alt="">
                     </div>
                     <div class="btn_push_wrapper">
                         <button class="push btn_menu_active">
@@ -157,22 +157,22 @@
                 </section>
                 <div class="interactive_studio">
                     <div class="interactive_studio_inner">
-                        <a class="direction_item" href="<?php echo home_url() . '/studio' ; ?>">
+                        <a class="direction_item" href="<?php echo HOME_URL_ORIGIN . '/studio' ; ?>">
                             <p>ШОУ-БАЛЕТ</p>
                             <hr>
                         </a>
-                        <a class="direction_item" href="<?php echo home_url() . '/studio' ; ?>">
+                        <a class="direction_item" href="<?php echo HOME_URL_ORIGIN . '/studio' ; ?>">
                             <p>концертные выступления</p>
                         </a>
                     </div>
                 </div>
                 <div class="interactive_school">
                     <div class="interactive_school_inner">
-                        <a class="direction_item" href="<?php echo home_url() . '/school' ; ?>">
+                        <a class="direction_item" href="<?php echo HOME_URL_ORIGIN . '/school' ; ?>">
                             <p>ШКОЛА ТАНЦА</p>
                             <hr>
                         </a>
-                        <a class="direction_item" href="<?php echo home_url() . '/school' ; ?>">
+                        <a class="direction_item" href="<?php echo HOME_URL_ORIGIN . '/school' ; ?>">
                             <p>танцуют ВСЕ от 3 до 99 лет</p>
                         </a>
                     </div>
