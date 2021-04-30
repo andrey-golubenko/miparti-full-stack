@@ -32,12 +32,9 @@ function meta_box_sliders_photos($post) {
                 $image_source = explode(' ', $photo_value);
                 ?>
                 <div class="photos_fields_item">
-                    <picture>
-                        <source srcset="<?php echo $image_source[0] ?>" media="(max-width: 1440px)">
-                        <source srcset="<?php echo $image_source[1] ?>" media="(max-width: 2000px)">
-                        <img src="<?php echo $image_source[2] ?>"  alt="">
-                    </picture>
+                    <img src="<?php echo $image_source[0] ?>"  alt="">
                     <div class="photos_fields_item_delete">Удалить<span class="dashicons dashicons-trash"></span></div>
+                    <div class="photos_fields_item_exchange">Изменить<span class="dashicons dashicons-update-alt"></span></div>
                     <input name="slider_photos[]" type="hidden" value="<?php echo $photo_value; ?>">
                 </div>
                 <?php
@@ -72,12 +69,9 @@ function meta_box_all_photos($post) {
 
                 ?>
                 <div class="photos_fields_item">
-                    <picture>
-                            <source srcset="<?php echo $image_source[0] ?>" media="(max-width: 1440px)">
-                            <source srcset="<?php echo $image_source[1] ?>" media="(max-width: 2000px)">
-                            <img src="<?php echo $image_source[2] ?>"  alt="">
-                    </picture>
-                <div class="photos_fields_item_delete">Удалить<span class="dashicons dashicons-trash"></span></div>
+                    <img src="<?php echo $image_source[0] ?>"  alt="">
+                    <div class="photos_fields_item_delete">Удалить<span class="dashicons dashicons-trash"></span></div>
+                    <div class="photos_fields_item_exchange">Изменить<span class="dashicons dashicons-update-alt"></span></div>
                     <input name="uploadedPhoto[]" type="hidden" value="<?php echo $value; ?>">
                 </div>
                 <?php
@@ -110,9 +104,7 @@ function meta_box_videos_url_and_description ($post) {
         </textarea>
         <input type="hidden" name="miparti_video_fields_nonce" value="<?php echo wp_create_nonce(__FILE__); ?>" />
     </div>
-
     <?php
-
 }
 
 // Custom fields func. in admin-panel for adding Pre-Description (anchor in the top of the section) in dance staging post-type
@@ -147,7 +139,7 @@ function meta_box_school_prices ($post) {
         </div>
 
         <div class="school_prices_visible">
-            <p class="miparti_prices_tooltip"> Введите количество занятий в месяц для Группового абонемента&nbsp;(1 занятие / 2 занятия / 5 занятий):</p>
+            <p class="miparti_prices_tooltip"> Введите количество занятий в месяц для Группового абонемента&nbsp;(Например: 1 занятие / 2 занятия / 5 занятий):</p>
             <p class="miparti_prices_tooltip_detail">(если абонемент Индивидуальный, то ничего не вводите)</p>
             <input type="text" class="miparti_prices_item" id="group_lessons_value" name="miparti_prices[lesson_count]" value="<?php echo esc_attr(get_post_meta($post->ID, 'lesson_count', 1)); ?>" /><span class="miparti_prices_tooltip">в месяц.</span>
         </div>
@@ -159,7 +151,7 @@ function meta_box_school_prices ($post) {
         </div>
 
         <div class="school_prices_individual_visible">
-            <p class="miparti_prices_tooltip"> Введите количество учасников и их наименование (1 человек / пара / 3 человека и т.д.) для Индивидуального абонемента&nbsp;:</p>
+            <p class="miparti_prices_tooltip"> Введите количество учасников и их наименование (Например: 1 человек / пара / 3 человека и т.д.) для Индивидуального абонемента&nbsp;:</p>
             <p class="miparti_prices_tooltip_detail">(если абонемент Групповой, то ничего не вводите)</p>
             <input type="text" class="miparti_prices_item_exception" id="individual_lessons_value" name="miparti_prices[persons_number]" value="<?php echo esc_attr(get_post_meta($post->ID, 'persons_number', 1)); ?>" />
         </div>

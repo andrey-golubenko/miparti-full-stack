@@ -59,7 +59,7 @@
                 <section class="mobile_front_slider">
                     <div class="mobile_front_slider_center">
                         <?php
-                        $front_slider_mobile = get_post_meta(576,'slider_photos', 1) ? get_post_meta(576,'slider_photos', 1) : [];
+                        $front_slider_mobile = get_post_meta(62,'slider_photos', 1) ? get_post_meta(62,'slider_photos', 1) : [];
                         foreach ($front_slider_mobile as $value){
                             $image_source = explode(' ', $value);
                             $image_source[3] = $image_source[3] ? $image_source[3] : $image_source[1];
@@ -70,7 +70,7 @@
                             // $image_source[2] - sizes.large.url
                             // $image_source[3] - sizes.full.url
                             echo  ' <div>
-                                        <img data-lazy="' . $image_source[1] . '"  alt="">
+                                        <img data-lazy="' . $image_source[2] . '"  alt="">
                                     </div> ' ;
                         }
                         ?>
@@ -103,28 +103,28 @@
                 <section class="sliders">
                     <div class="slider_left">
                     <?php
-                        $front_slider_left = get_post_meta(572,'slider_photos', 1) ? get_post_meta(572,'slider_photos', 1) : [] ;
+                        $front_slider_left = get_post_meta(58,'slider_photos', 1) ? get_post_meta(58,'slider_photos', 1) : [] ;
                     foreach ($front_slider_left as $value) {
                         $image_source = explode(' ', $value);
                         $image_source[3] = $image_source[3] ? $image_source[3] : $image_source[1];
                         $image_source[2] = $image_source[2] ? $image_source[2] : ($image_source[1] ? $image_source[1] : $image_source[3]);
                         $image_source[1] = $image_source[1] ? $image_source[1] : $image_source[2];
                         echo  ' <div>
-                                    <img data-lazy="' . $image_source[1] . '"  alt="">
+                                    <img data-lazy="' . $image_source[2] . '"  alt="">
                                 </div> ' ;
                     }
                     ?>
                     </div>
                     <div class="slider_right">
                     <?php
-                        $front_slider_right = get_post_meta(574,'slider_photos', 1) ? get_post_meta(574,'slider_photos', 1) : [];
+                        $front_slider_right = get_post_meta(60,'slider_photos', 1) ? get_post_meta(60,'slider_photos', 1) : [];
                     foreach ($front_slider_right as $value){
                         $image_source = explode(' ', $value);
                         $image_source[3] = $image_source[3] ? $image_source[3] : $image_source[1];
                         $image_source[2] = $image_source[2] ? $image_source[2] : ($image_source[1] ? $image_source[1] : $image_source[3]);
                         $image_source[1] = $image_source[1] ? $image_source[1] : $image_source[2];
                         echo  ' <div>
-                                    <img data-lazy="' . $image_source[1] . '"  alt="">
+                                    <img data-lazy="' . $image_source[2] . '"  alt="">
                                 </div> ' ;
                         }
                     ?>

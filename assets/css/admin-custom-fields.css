@@ -9,13 +9,13 @@
     height: 30px !important;
 }
 
-.photos_fields_item {
+.photos_fields_item  {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-    margin: 1rem;
     position: relative;
+    margin: 1rem;
     width: 200px;
 }
 
@@ -45,27 +45,38 @@
     background: #16a085;
 }
 
-.photos_fields_item .photos_fields_item_delete {
+.photos_fields_item .photos_fields_item_delete, .photos_fields_item .photos_fields_item_exchange {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
     font-size: 1.05rem;
     width: 60%;
     height: 25px;
-    background: #e74c3c;
     color: white;
     border-radius: 10px;
     cursor: pointer;
     text-align: center;
     padding: 3px 3px 7px 3px ;
-    margin: -5px 0 0;
+    margin: 3px 0 0;
+}
+
+.photos_fields_item .photos_fields_item_delete {
+    background: #e74c3c;
+}
+
+.photos_fields_item .photos_fields_item_exchange {
+    background: #415FF8;
+}
+
+.photos_fields_item .photos_fields_item_exchange:hover {
+    background: #3956B4;
 }
 
 .photos_fields_item .photos_fields_item_delete:hover {
      background: #c0392b;
  }
 
-.photos_fields_item > picture, .photos_fields_item > img, .photos_fields_item > picture > img {
+.photos_fields_item > img {
     width: 150px;
     height: 150px;
     object-fit: cover;

@@ -168,7 +168,7 @@
         mainClass: 'mfp-width-zoom',
         preloader: false,
         fixedContentPos: false,
-        closeBtnInside: false,
+        closeBtnInside: true,
     });
 
     // magnific-popup Image - Gallery
@@ -231,7 +231,7 @@
             type: 'image',
             delegate: 'a',
             closeOnContentClick: true,
-            closeBtnInside: false,
+            closeBtnInside: true,
             fixedContentPos: true,
             gallery: {
                 enabled: true,
@@ -255,6 +255,9 @@
 
     $('.photos_albums h2').click(function(){
         const clickedClass = this.className.slice(0, 21);
+        if ($(this).hasClass('active_photos_tab')) {
+            return
+        }
         $('div[class*="photos_link_"]').hide();
         $('div.' + clickedClass).fadeIn(500);
         $('.photos_content').css({'opacity' : 1});
