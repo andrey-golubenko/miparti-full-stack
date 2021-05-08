@@ -563,7 +563,6 @@ div.mobile_front_wrapper section.mobile_front_menu .head_menu nav.nav_menu {
     z-index: 999;
     top: -1000%;
     width: 100%;
-    background: url("../images/bg_body.jpg") no-repeat center/cover;
     -webkit-transition: top 1.2s ease-out;
     -o-transition: top 1.2s ease-out;
     transition: top 1.2s ease-out;

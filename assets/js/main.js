@@ -255,12 +255,12 @@
 
     $('.photos_albums h2').click(function(){
         const clickedClass = this.className.slice(0, 21);
+        $('.photos_content').css({'opacity' : 1});
         if ($(this).hasClass('active_photos_tab')) {
             return
         }
         $('div[class*="photos_link_"]').hide();
         $('div.' + clickedClass).fadeIn(500);
-        $('.photos_content').css({'opacity' : 1});
         $('.photos_albums h2').removeClass('active_photos_tab');
         $(this).addClass('active_photos_tab');
     });

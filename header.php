@@ -46,6 +46,13 @@
                     <p class="head_menu_icon_text">МЕНЮ</p>
                 </div>
             </div>
+            <style>
+                @media (max-width: 1023px) {
+                    header .head_menu nav.nav_menu {
+                        background: url(<?php echo MIPARTI_IMG_DIR . '/bg_body_optimized.jpg' ?>) no-repeat center/cover;
+                    }
+                }
+            </style>
             <nav class="nav_menu">
                 <?php wp_nav_menu([
                     'theme_location'  => 'common',

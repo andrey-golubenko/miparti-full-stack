@@ -25,17 +25,17 @@
                 if (adminPhotosBox.is('#six_photos') && ($('.photos_fields_item').length >= 6)){
                     return false;
                 }
-                photosInAdmin.imagesEvents.addNewImage(this);
+                photosInAdmin.imagesEvents.addOrChangeImage(this, adminPhotosBox);
                 return false;
             });
             // exchange slide images
             $(document).on('click', '.photos_fields_item_exchange', function(event) {
-                photosInAdmin.imagesEvents.exchangeImage(this);
+                photosInAdmin.imagesEvents.addOrChangeImage(this);
                 return false;
             });
         },
         imagesEvents: {
-            addNewImage: function(thisClass) {
+            addOrChangeImage: function(thisClass, workItem) {
                 let sendAttachmentToAdmin = wp.media.editor.send.attachment;
                 const buttonAdd = $(thisClass);
                 wp.media.editor.send.attachment = function(props, attachment) {
@@ -50,7 +50,12 @@
                     }
                     newItemContext +=  `type="hidden" value="` + attachment.sizes.thumbnail.url + ` ` + sizeMedium + ` ` + sizeLarge + ` ` + attachment.sizes.full.url + `"></div>`;
 
-                    adminPhotosBox.append(newItemContext);
+                    if (workItem){
+                        workItem.append(newItemContext);
+                    }
+                    else {
+                        $(thisClass).parent().replaceWith(newItemContext);
+                    }
 
                     if (adminPhotosBox.is('#six_photos') && ($('.photos_fields_item').length >= 6)) {
                         buttonAddImage.css({'background': '#dbe3e2'});
@@ -67,26 +72,6 @@
                     buttonAddImage.css({'background': '#16a085'});
                 }
             },
-            exchangeImage : function (thisClass) {
-                let sendAttachmentToAdmin = wp.media.editor.send.attachment;
-                const buttonExchange = $(thisClass);
-                wp.media.editor.send.attachment = function(props, attachment) {
-                    let sizeLarge = (attachment.sizes && attachment.sizes.large && attachment.sizes.large.url) ? attachment.sizes.large.url : '';
-                    let sizeMedium = (attachment.sizes && attachment.sizes.medium && attachment.sizes.medium.url) ? attachment.sizes.medium.url : '';
-                    let exchangeContext = `<div class="photos_fields_item"><img src="` + attachment.sizes.thumbnail.url + `" width="150" height="150" alt="Photos image in admin-bar" /><div class="photos_fields_item_delete">Удалить<span class="dashicons dashicons-trash"></span></div><div class="photos_fields_item_exchange">Изменить<span class="dashicons dashicons-update-alt"></span></div><input `;
-                    if (adminSliderBox.length !== 0) {
-                        exchangeContext += `name="slider_photos[]"`;
-                    }
-                    else {
-                        exchangeContext += `name="uploadedPhoto[]"`;
-                    }
-                    exchangeContext +=  `type="hidden" value="` + attachment.sizes.thumbnail.url + ` ` + sizeMedium + ` ` + sizeLarge + ` ` + attachment.sizes.full.url + `"></div>`;
-                    $(thisClass).parent().replaceWith(exchangeContext);
-                    wp.media.editor.send.attachment = sendAttachmentToAdmin;
-                };
-                wp.media.editor.open(buttonExchange);
-                return false;
-            }
         }
     };
     $(document).ready(function() {
