@@ -495,7 +495,7 @@
             const innerRoundCountries = `
                 <div class="indicator_inner">
                     <a class="round-countries-ajax-popup" href="${siteRootUrl}/miparti/${countries_obj[key].slider_page}">
-                        <img data-lazy="${siteRootUrl}/miparti/wp-content/themes/Miparti_All/assets/images/flags/${countries_obj[key].image_name}" alt="" class="indicator_inner_image">
+                        <img data-lazy="${siteRootUrl}/miparti/wp-content/themes/miparti-full-stack/assets/images/flags/${countries_obj[key].image_name}" alt="" class="indicator_inner_image">
                     </a>
                     <p class="indicator_inner_country">Мы ${countries_obj[key].ru_name}</p>
                 </div>`;
@@ -516,7 +516,7 @@
             over( _actionPointX, _actionPointY) {
                 $('#svg_map path').not(countries_obj[key].selector_name).css('fill', '#000');
 
-                $('.inner-ajax-popup').attr(`href`, `${siteRootUrl}/miparti/${countries_obj[key].slider_page}`).html(`<div class="indicator_inner"><img src="${siteRootUrl}/miparti/wp-content/themes/Miparti_All/assets/images/flags/${countries_obj[key].image_name}" alt="" class="indicator_inner_image"><p class="indicator_inner_country">Мы ${countries_obj[key].ru_name}</p></div>`);
+                $('.inner-ajax-popup').attr(`href`, `${siteRootUrl}/miparti/${countries_obj[key].slider_page}`).html(`<div class="indicator_inner"><img src="${siteRootUrl}/miparti/wp-content/themes/miparti-full-stack/assets/images/flags/${countries_obj[key].image_name}" alt="" class="indicator_inner_image"><p class="indicator_inner_country">Мы ${countries_obj[key].ru_name}</p></div>`);
                 this.addedHeight = (key === 'all_portugal' || key === 'all_vietnam' || key === 'all_barbados') ? 30 : 0;// тернарный опер-ор (отдел. усл-я для Португалии, Вьетнама, Барбадоса из-за их формы на карте)
                 $('#indicator').css({'top': _actionPointY - this.addedHeight + 'px', 'left': _actionPointX + 3 + 'px'}).fadeToggle(300);
             },
